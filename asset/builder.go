@@ -8,10 +8,10 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/blockchain/signers"
-	"github.com/bytom/bytom/blockchain/txbuilder"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
+	"github.com/bytom/bytom-classic/blockchain/signers"
+	"github.com/bytom/bytom-classic/blockchain/txbuilder"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
 )
 
 //NewIssueAction create a new asset issue action

@@ -5,12 +5,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bytom/bytom/blockchain/signers"
-	"github.com/bytom/bytom/blockchain/txbuilder"
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/testutil"
+	"github.com/bytom/bytom-classic/blockchain/signers"
+	"github.com/bytom/bytom-classic/blockchain/txbuilder"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/testutil"
 )
 
 func TestReserveBtmUtxoChain(t *testing.T) {

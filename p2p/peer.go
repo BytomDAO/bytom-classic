@@ -15,9 +15,9 @@ import (
 	cmn "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/flowrate"
 
-	cfg "github.com/bytom/bytom/config"
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/p2p/connection"
+	cfg "github.com/bytom/bytom-classic/config"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/p2p/connection"
 )
 
 // peerConn contains the raw connection and its config.

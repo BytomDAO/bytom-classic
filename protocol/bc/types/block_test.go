@@ -9,10 +9,10 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/encoding/blockchain"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/testutil"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/encoding/blockchain"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/testutil"
 )
 
 func TestBlock(t *testing.T) {

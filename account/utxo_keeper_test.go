@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	dbm "github.com/bytom/bytom/database/leveldb"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/testutil"
+	dbm "github.com/bytom/bytom-classic/database/leveldb"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/testutil"
 )
 
 func TestAddUnconfirmedUtxo(t *testing.T) {

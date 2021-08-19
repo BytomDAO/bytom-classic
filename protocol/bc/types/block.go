@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/bytom/bytom/encoding/blockchain"
-	"github.com/bytom/bytom/encoding/bufpool"
-	"github.com/bytom/bytom/errors"
+	"github.com/bytom/bytom-classic/encoding/blockchain"
+	"github.com/bytom/bytom-classic/encoding/bufpool"
+	"github.com/bytom/bytom-classic/errors"
 )
 
 // serflag variables, start with 1

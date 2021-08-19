@@ -14,8 +14,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/common"
-	"github.com/bytom/bytom/crypto"
+	"github.com/bytom/bytom-classic/common"
+	"github.com/bytom/bytom-classic/crypto"
 )
 
 const (

@@ -5,13 +5,13 @@ import (
 	"encoding/hex"
 	"strings"
 
-	"github.com/bytom/bytom/blockchain/signers"
-	"github.com/bytom/bytom/common"
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/crypto"
-	"github.com/bytom/bytom/crypto/ed25519"
-	"github.com/bytom/bytom/crypto/ed25519/chainkd"
-	chainjson "github.com/bytom/bytom/encoding/json"
+	"github.com/bytom/bytom-classic/blockchain/signers"
+	"github.com/bytom/bytom-classic/common"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/crypto"
+	"github.com/bytom/bytom-classic/crypto/ed25519"
+	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	chainjson "github.com/bytom/bytom-classic/encoding/json"
 )
 
 // SignMsgResp is response for sign message

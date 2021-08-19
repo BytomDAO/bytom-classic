@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytom/bytom/common/bech32"
-	"github.com/bytom/bytom/consensus"
+	"github.com/bytom/bytom-classic/common/bech32"
+	"github.com/bytom/bytom-classic/consensus"
 )
 
 func TestAddresses(t *testing.T) {

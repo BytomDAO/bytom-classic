@@ -8,15 +8,15 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/account"
-	"github.com/bytom/bytom/asset"
-	"github.com/bytom/bytom/blockchain/query"
-	"github.com/bytom/bytom/crypto/sha3pool"
-	dbm "github.com/bytom/bytom/database/leveldb"
-	chainjson "github.com/bytom/bytom/encoding/json"
-	"github.com/bytom/bytom/errors"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
+	"github.com/bytom/bytom-classic/account"
+	"github.com/bytom/bytom-classic/asset"
+	"github.com/bytom/bytom-classic/blockchain/query"
+	"github.com/bytom/bytom-classic/crypto/sha3pool"
+	dbm "github.com/bytom/bytom-classic/database/leveldb"
+	chainjson "github.com/bytom/bytom-classic/encoding/json"
+	"github.com/bytom/bytom-classic/errors"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
 )
 
 const (

@@ -3,9 +3,9 @@ package state
 import (
 	"errors"
 
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/database/storage"
-	"github.com/bytom/bytom/protocol/bc"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/database/storage"
+	"github.com/bytom/bytom-classic/protocol/bc"
 )
 
 // UtxoViewpoint represents a view into the set of unspent transaction outputs

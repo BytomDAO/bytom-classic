@@ -5,15 +5,15 @@ import (
 	"math"
 	"testing"
 
-	"github.com/bytom/bytom/account"
-	"github.com/bytom/bytom/blockchain/signers"
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
-	"github.com/bytom/bytom/protocol/validation"
-	"github.com/bytom/bytom/protocol/vm/vmutil"
-	"github.com/bytom/bytom/testutil"
+	"github.com/bytom/bytom-classic/account"
+	"github.com/bytom/bytom-classic/blockchain/signers"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/bytom/bytom-classic/protocol/validation"
+	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/bytom/bytom-classic/testutil"
 )
 
 func TestValidateUglyTx(t *testing.T) {

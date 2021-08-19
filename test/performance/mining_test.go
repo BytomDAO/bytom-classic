@@ -4,10 +4,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bytom/bytom/account"
-	dbm "github.com/bytom/bytom/database/leveldb"
-	"github.com/bytom/bytom/mining"
-	"github.com/bytom/bytom/test"
+	"github.com/bytom/bytom-classic/account"
+	dbm "github.com/bytom/bytom-classic/database/leveldb"
+	"github.com/bytom/bytom-classic/mining"
+	"github.com/bytom/bytom-classic/test"
 )
 
 // Function NewBlockTemplate's benchmark - 0.05s

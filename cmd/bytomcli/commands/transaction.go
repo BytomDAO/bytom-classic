@@ -9,11 +9,11 @@ import (
 	"github.com/spf13/cobra"
 	jww "github.com/spf13/jwalterweatherman"
 
-	"github.com/bytom/bytom/api"
-	"github.com/bytom/bytom/blockchain/txbuilder"
-	chainjson "github.com/bytom/bytom/encoding/json"
-	"github.com/bytom/bytom/protocol/bc/types"
-	"github.com/bytom/bytom/util"
+	"github.com/bytom/bytom-classic/api"
+	"github.com/bytom/bytom-classic/blockchain/txbuilder"
+	chainjson "github.com/bytom/bytom-classic/encoding/json"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/bytom/bytom-classic/util"
 )
 
 func init() {

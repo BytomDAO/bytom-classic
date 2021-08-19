@@ -14,12 +14,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/tendermint/go-wire"
 
-	"github.com/bytom/bytom/common"
-	cfg "github.com/bytom/bytom/config"
-	"github.com/bytom/bytom/crypto"
-	"github.com/bytom/bytom/crypto/ed25519"
-	"github.com/bytom/bytom/p2p/netutil"
-	"github.com/bytom/bytom/version"
+	"github.com/bytom/bytom-classic/common"
+	cfg "github.com/bytom/bytom-classic/config"
+	"github.com/bytom/bytom-classic/crypto"
+	"github.com/bytom/bytom-classic/crypto/ed25519"
+	"github.com/bytom/bytom-classic/p2p/netutil"
+	"github.com/bytom/bytom-classic/version"
 )
 
 const (

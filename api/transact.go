@@ -8,12 +8,12 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/account"
-	"github.com/bytom/bytom/blockchain/txbuilder"
-	"github.com/bytom/bytom/errors"
-	"github.com/bytom/bytom/net/http/reqid"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
+	"github.com/bytom/bytom-classic/account"
+	"github.com/bytom/bytom-classic/blockchain/txbuilder"
+	"github.com/bytom/bytom-classic/errors"
+	"github.com/bytom/bytom-classic/net/http/reqid"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
 )
 
 var (

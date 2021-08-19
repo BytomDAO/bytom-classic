@@ -4,9 +4,9 @@ import (
 	"context"
 	"strings"
 
-	"github.com/bytom/bytom/asset"
-	"github.com/bytom/bytom/crypto/ed25519/chainkd"
-	chainjson "github.com/bytom/bytom/encoding/json"
+	"github.com/bytom/bytom-classic/asset"
+	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	chainjson "github.com/bytom/bytom-classic/encoding/json"
 
 	log "github.com/sirupsen/logrus"
 )
