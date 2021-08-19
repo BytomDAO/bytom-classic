@@ -1,7 +1,7 @@
 Bytom
 ======
 
-[![Build Status](https://travis-ci.org/Bytom/bytom.svg)](https://travis-ci.org/Bytom/bytom) [![AGPL v3](https://img.shields.io/badge/license-AGPL%20v3-brightgreen.svg)](./LICENSE)
+[![Build Status](https://travis-ci.org/Bytom/bytom-classic.svg)](https://travis-ci.org/Bytom/bytom-classic) [![AGPL v3](https://img.shields.io/badge/license-AGPL%20v3-brightgreen.svg)](./LICENSE)
 
 **Official golang implementation of the Bytom protocol.**
 
@@ -40,15 +40,15 @@ $ go env GOROOT GOPATH
 - Get the source code
 
 ``` bash
-$ git clone https://github.com/Bytom/bytom.git $GOPATH/src/github.com/bytom/bytom
+$ git clone https://github.com/Bytom/bytom-classic.git $GOPATH/src/github.com/bytom/bytom-classic
 ```
 
 - Build source code
 
 ``` bash
-$ cd $GOPATH/src/github.com/bytom/bytom
-$ make bytomd    # build bytomd
-$ make bytomcli  # build bytomcli
+$ cd $GOPATH/src/github.com/bytom/bytom-classic
+$ GO111MODULE=off make bytomd    # build bytomd
+$ GO111MODULE=off make bytomcli  # build bytomcli
 ```
 
 When successfully building the project, the `bytomd` and `bytomcli` binary should be present in `cmd/bytomd` and `cmd/bytomcli` directory, respectively.
@@ -147,7 +147,7 @@ What is more,
 + if you are using _Mac_, please make sure _llvm_ is installed by `brew install llvm`.
 + if you are using _Windows_, please make sure _mingw-w64_ is installed and set up the _PATH_ environment variable accordingly.
 
-For more details about using `bytomcli` command please refer to [API Reference](https://github.com/Bytom/bytom/wiki/API-Reference)
+For more details about using `bytomcli` command please refer to [API Reference](https://github.com/Bytom/bytom-classic/wiki/API-Reference)
 
 ### Dashboard
 
@@ -165,13 +165,13 @@ Ensure your [Docker](https://www.docker.com/) version is 17.05 or higher.
 $ docker build -t bytom .
 ```
 
-For the usage please refer to [running-in-docker-wiki](https://github.com/Bytom/bytom/wiki/Running-in-Docker).
+For the usage please refer to [running-in-docker-wiki](https://github.com/Bytom/bytom-classic/wiki/Running-in-Docker).
 
 ## Contributing
 
 Thank you for considering helping out with the source code! Any contributions are highly appreciated, and we are grateful for even the smallest of fixes!
 
-If you run into an issue, feel free to [bytom issues](https://github.com/Bytom/bytom/issues/) in this repository. We are glad to help!
+If you run into an issue, feel free to [bytom issues](https://github.com/Bytom/bytom-classic/issues/) in this repository. We are glad to help!
 
 ## License
 
