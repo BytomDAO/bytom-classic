@@ -5,7 +5,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/common"
+	"github.com/bytom/bytom-classic/common"
 )
 
 // Image is the struct for hold export asset data

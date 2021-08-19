@@ -6,12 +6,12 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/consensus/segwit"
-	"github.com/bytom/bytom/errors"
-	"github.com/bytom/bytom/math/checked"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/vm"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/consensus/segwit"
+	"github.com/bytom/bytom-classic/errors"
+	"github.com/bytom/bytom-classic/math/checked"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/vm"
 )
 
 const ruleAA = 142500

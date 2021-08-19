@@ -1,8 +1,8 @@
 package account
 
 import (
-	"github.com/bytom/bytom/blockchain/query"
-	"github.com/bytom/bytom/protocol/bc"
+	"github.com/bytom/bytom-classic/blockchain/query"
+	"github.com/bytom/bytom-classic/protocol/bc"
 )
 
 const (

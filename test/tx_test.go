@@ -11,15 +11,15 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/account"
-	"github.com/bytom/bytom/asset"
-	"github.com/bytom/bytom/blockchain/pseudohsm"
-	"github.com/bytom/bytom/consensus"
-	dbm "github.com/bytom/bytom/database/leveldb"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
-	"github.com/bytom/bytom/protocol/validation"
-	"github.com/bytom/bytom/protocol/vm"
+	"github.com/bytom/bytom-classic/account"
+	"github.com/bytom/bytom-classic/asset"
+	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
+	"github.com/bytom/bytom-classic/consensus"
+	dbm "github.com/bytom/bytom-classic/database/leveldb"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/bytom/bytom-classic/protocol/validation"
+	"github.com/bytom/bytom-classic/protocol/vm"
 )
 
 func init() {

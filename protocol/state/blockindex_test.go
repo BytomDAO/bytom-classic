@@ -8,11 +8,11 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/consensus/difficulty"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
-	"github.com/bytom/bytom/testutil"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/consensus/difficulty"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/bytom/bytom-classic/testutil"
 )
 
 func stringToBigInt(s string, base int) *big.Int {

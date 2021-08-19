@@ -1,8 +1,8 @@
 package query
 
 import (
-	"github.com/bytom/bytom/blockchain/query/filter"
-	"github.com/bytom/bytom/errors"
+	"github.com/bytom/bytom-classic/blockchain/query/filter"
+	"github.com/bytom/bytom-classic/errors"
 )
 
 var filterTable = filter.Table{

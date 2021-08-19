@@ -6,18 +6,18 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/account"
-	"github.com/bytom/bytom/asset"
-	"github.com/bytom/bytom/blockchain/query"
-	"github.com/bytom/bytom/blockchain/signers"
-	"github.com/bytom/bytom/common"
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/consensus/segwit"
-	"github.com/bytom/bytom/crypto/sha3pool"
-	dbm "github.com/bytom/bytom/database/leveldb"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
-	"github.com/bytom/bytom/protocol/vm/vmutil"
+	"github.com/bytom/bytom-classic/account"
+	"github.com/bytom/bytom-classic/asset"
+	"github.com/bytom/bytom-classic/blockchain/query"
+	"github.com/bytom/bytom-classic/blockchain/signers"
+	"github.com/bytom/bytom-classic/common"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/consensus/segwit"
+	"github.com/bytom/bytom-classic/crypto/sha3pool"
+	dbm "github.com/bytom/bytom-classic/database/leveldb"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
 )
 
 // annotateTxs adds asset data to transactions

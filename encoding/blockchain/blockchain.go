@@ -9,7 +9,7 @@ import (
 	"math"
 	"sync"
 
-	"github.com/bytom/bytom/encoding/bufpool"
+	"github.com/bytom/bytom-classic/encoding/bufpool"
 )
 
 var bufPool = sync.Pool{New: func() interface{} { return new([9]byte) }}

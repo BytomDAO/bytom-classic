@@ -4,10 +4,10 @@ import (
 	"context"
 	"net"
 
-	"github.com/bytom/bytom/errors"
-	"github.com/bytom/bytom/netsync"
-	"github.com/bytom/bytom/p2p"
-	"github.com/bytom/bytom/version"
+	"github.com/bytom/bytom-classic/errors"
+	"github.com/bytom/bytom-classic/netsync"
+	"github.com/bytom/bytom-classic/p2p"
+	"github.com/bytom/bytom-classic/version"
 )
 
 type VersionInfo struct {

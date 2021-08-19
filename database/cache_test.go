@@ -3,8 +3,8 @@ package database
 import (
 	"testing"
 
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
 )
 
 func TestBlockCache(t *testing.T) {

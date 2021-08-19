@@ -4,10 +4,10 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
-	"github.com/bytom/bytom/protocol/vm"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/bytom/bytom-classic/protocol/vm"
 )
 
 func TestValidateTx(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytom/bytom/errors"
+	"github.com/bytom/bytom-classic/errors"
 )
 
 var wd, _ = os.Getwd()

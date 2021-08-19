@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytom/bytom/accesstoken"
-	dbm "github.com/bytom/bytom/database/leveldb"
-	"github.com/bytom/bytom/errors"
+	"github.com/bytom/bytom-classic/accesstoken"
+	dbm "github.com/bytom/bytom-classic/database/leveldb"
+	"github.com/bytom/bytom-classic/errors"
 )
 
 func TestAuthenticate(t *testing.T) {

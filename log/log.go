@@ -12,7 +12,7 @@ import (
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/config"
+	"github.com/bytom/bytom-classic/config"
 )
 
 const (

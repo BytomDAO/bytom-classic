@@ -6,11 +6,11 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom/crypto/sha3pool"
-	chainjson "github.com/bytom/bytom/encoding/json"
-	"github.com/bytom/bytom/errors"
-	"github.com/bytom/bytom/protocol/vm"
+	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/bytom/bytom-classic/crypto/sha3pool"
+	chainjson "github.com/bytom/bytom-classic/encoding/json"
+	"github.com/bytom/bytom-classic/errors"
+	"github.com/bytom/bytom-classic/protocol/vm"
 )
 
 type (

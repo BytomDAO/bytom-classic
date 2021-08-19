@@ -6,8 +6,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	core "github.com/bytom/bytom/protocol"
-	"github.com/bytom/bytom/protocol/bc/types"
+	core "github.com/bytom/bytom-classic/protocol"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
 )
 
 const (

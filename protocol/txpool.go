@@ -9,11 +9,11 @@ import (
 	"github.com/golang/groupcache/lru"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/event"
-	"github.com/bytom/bytom/protocol/bc"
-	"github.com/bytom/bytom/protocol/bc/types"
-	"github.com/bytom/bytom/protocol/state"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/event"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/bytom/bytom-classic/protocol/state"
 )
 
 // msg type

@@ -12,9 +12,9 @@ import (
 
 	"github.com/pborman/uuid"
 
-	"github.com/bytom/bytom/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom/errors"
-	mnem "github.com/bytom/bytom/wallet/mnemonic"
+	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/bytom/bytom-classic/errors"
+	mnem "github.com/bytom/bytom-classic/wallet/mnemonic"
 )
 
 // pre-define errors for supporting bytom errorFormatter

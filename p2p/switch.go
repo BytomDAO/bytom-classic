@@ -11,17 +11,17 @@ import (
 	"github.com/tendermint/go-crypto"
 	cmn "github.com/tendermint/tmlibs/common"
 
-	cfg "github.com/bytom/bytom/config"
-	"github.com/bytom/bytom/consensus"
-	"github.com/bytom/bytom/crypto/ed25519"
-	"github.com/bytom/bytom/errors"
-	"github.com/bytom/bytom/event"
-	"github.com/bytom/bytom/p2p/connection"
-	"github.com/bytom/bytom/p2p/discover/dht"
-	"github.com/bytom/bytom/p2p/discover/mdns"
-	"github.com/bytom/bytom/p2p/netutil"
-	"github.com/bytom/bytom/p2p/security"
-	"github.com/bytom/bytom/version"
+	cfg "github.com/bytom/bytom-classic/config"
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/crypto/ed25519"
+	"github.com/bytom/bytom-classic/errors"
+	"github.com/bytom/bytom-classic/event"
+	"github.com/bytom/bytom-classic/p2p/connection"
+	"github.com/bytom/bytom-classic/p2p/discover/dht"
+	"github.com/bytom/bytom-classic/p2p/discover/mdns"
+	"github.com/bytom/bytom-classic/p2p/netutil"
+	"github.com/bytom/bytom-classic/p2p/security"
+	"github.com/bytom/bytom-classic/version"
 )
 
 const (
