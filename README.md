@@ -1,17 +1,17 @@
-Bytom
+Bytom classic
 ======
 
 [![Build Status](https://travis-ci.org/Bytom/bytom-classic.svg)](https://travis-ci.org/Bytom/bytom-classic) [![AGPL v3](https://img.shields.io/badge/license-AGPL%20v3-brightgreen.svg)](./LICENSE)
 
-**Official golang implementation of the Bytom protocol.**
+**Official golang implementation of the Bytom classic protocol.**
 
-Automated builds are available for stable releases and the unstable master branch. Binary archives are published at https://github.com/Bytom/bytom/releases.
+Automated builds are available for stable releases and the unstable master branch. Binary archives are published at https://github.com/Bytom/bytom-classic/releases.
 
-## What is Bytom?
+## What is Bytom classic?
 
-Bytom is software designed to operate and connect to highly scalable blockchain networks confirming to the Bytom Blockchain Protocol, which allows partipicants to define, issue and transfer digitial assets on a multi-asset shared ledger. Please refer to the [White Paper](https://github.com/Bytom/wiki/blob/master/White-Paper/%E6%AF%94%E5%8E%9F%E9%93%BE%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6-%E8%8B%B1%E6%96%87%E7%89%88.md) for more details.
+Bytom classic is software designed to operate and connect to highly scalable blockchain networks confirming to the Bytom classic Blockchain Protocol, which allows partipicants to define, issue and transfer digitial assets on a multi-asset shared ledger. Please refer to the [White Paper](https://github.com/Bytom/wiki/blob/master/en-US/Bytom-Technical-White-Paper-EN.pdf) for more details.
 
-In the current state `bytom` is able to:
+In the current state `bytom classic` is able to:
 
 - Manage key, account as well as asset
 - Send transactions, i.e., issue, spend and retire asset
@@ -19,7 +19,7 @@ In the current state `bytom` is able to:
 ## Installing with Homebrew
 
 ```
-brew tap bytom/bytom && brew install bytom
+brew tap bytom/bytom-classic && brew install bytom-classic
 ```
 
 ## Building from source
@@ -47,11 +47,11 @@ $ git clone https://github.com/Bytom/bytom-classic.git $GOPATH/src/github.com/by
 
 ``` bash
 $ cd $GOPATH/src/github.com/bytom/bytom-classic
-$ GO111MODULE=off make bytomd    # build bytomd
-$ GO111MODULE=off make bytomcli  # build bytomcli
+$ GO111MODULE=off make bytomcd    # build bytom-classic daemon
+$ GO111MODULE=off make bytomccli  # build bytom-classic command line
 ```
 
-When successfully building the project, the `bytomd` and `bytomcli` binary should be present in `cmd/bytomd` and `cmd/bytomcli` directory, respectively.
+When successfully building the project, the `bytomd` and `bytomcli` binary should be present in `cmd/bytomcd` and `cmd/bytomccli` directory, respectively.
 
 ### Executables
 
@@ -59,20 +59,20 @@ The Bytom project comes with several executables found in the `cmd` directory.
 
 | Command      | Description                                                  |
 | ------------ | ------------------------------------------------------------ |
-| **bytomd**   | bytomd command can help to initialize and launch bytom domain by custom parameters. `bytomd --help` for command line options. |
-| **bytomcli** | Our main Bytom CLI client. It is the entry point into the Bytom network (main-, test- or private net), capable of running as a full node archive node (retaining all historical state). It can be used by other processes as a gateway into the Bytom network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `bytomcli --help` and the [bytomcli Wiki page](https://github.com/Bytom/bytom/wiki/Command-Line-Options) for command line options. |
+| **bytomcd**   | bytomd command can help to initialize and launch bytom domain by custom parameters. `bytomcd --help` for command line options. |
+| **bytomccli** | Our main Bytom CLI client. It is the entry point into the Bytom network (main-, test- or private net), capable of running as a full node archive node (retaining all historical state). It can be used by other processes as a gateway into the Bytom network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `bytomccli --help` and the [bytomccli Wiki page](https://github.com/Bytom/bytom-classic/wiki/Command-Line-Options) for command line options. |
 
-## Running bytom
+## Running bytom classic
 
-Currently, bytom is still in active development and a ton of work needs to be done, but we also provide the following content for these eager to do something with `bytom`. This section won't cover all the commands of `bytomd` and `bytomcli` at length, for more information, please the help of every command, e.g., `bytomcli help`.
+Currently, bytom classic is still in active development and a ton of work needs to be done, but we also provide the following content for these eager to do something with `bytom classic`. This section won't cover all the commands of `bytomcd` and `bytomccli` at length, for more information, please the help of every command, e.g., `bytomccli help`.
 
 ### Initialize
 
 First of all, initialize the node:
 
 ```bash
-$ cd ./cmd/bytomd
-$ ./bytomd init --chain_id mainnet
+$ cd ./cmd/bytomcd
+$ ./bytomcd init --chain_id mainnet
 ```
 
 There are three options for the flag `--chain_id`:
@@ -86,10 +86,10 @@ After that, you'll see `config.toml` generated, then launch the node.
 ### launch
 
 ``` bash
-$ ./bytomd node
+$ ./bytomcd node
 ```
 
-available flags for `bytomd node`:
+available flags for `bytomcd node`:
 
 ```
 Flags:
@@ -123,11 +123,11 @@ Flags:
 
 Global Flags:
       --home string   root directory for config and data
-  -r, --root string   DEPRECATED. Use --home (default "/Users/zcc/Library/Application Support/Bytom")
+  -r, --root string   DEPRECATED. Use --home (default "/Users/zcc/Library/Application Support/Bytomclassic")
       --trace         print out full stack trace on errors
 ```
 
-Given the `bytomd` node is running, the general workflow is as follows:
+Given the `bytomcd` node is running, the general workflow is as follows:
 
 - create key, then you can create account and asset.
 - send transaction, i.e., build, sign and submit transaction.
@@ -137,10 +137,10 @@ __simd feature:__
 
 You could enable the _simd_ feature to speed up the _PoW_ verification (e.g., during mining and block verification) by simply:
 ```
-bytomd node --simd.enable
+bytomcd node --simd.enable
 ```
 
-To enable this feature you will need to compile from the source code by yourself, and `make bytomd-simd`. 
+To enable this feature you will need to compile from the source code by yourself, and `make bytomcd-simd`. 
 
 What is more,
 
@@ -162,7 +162,7 @@ $ open http://localhost:9888/
 Ensure your [Docker](https://www.docker.com/) version is 17.05 or higher.
 
 ```bash
-$ docker build -t bytom .
+$ docker build -t bytom-classic .
 ```
 
 For the usage please refer to [running-in-docker-wiki](https://github.com/Bytom/bytom-classic/wiki/Running-in-Docker).
@@ -171,7 +171,7 @@ For the usage please refer to [running-in-docker-wiki](https://github.com/Bytom/
 
 Thank you for considering helping out with the source code! Any contributions are highly appreciated, and we are grateful for even the smallest of fixes!
 
-If you run into an issue, feel free to [bytom issues](https://github.com/Bytom/bytom-classic/issues/) in this repository. We are glad to help!
+If you run into an issue, feel free to [bytom classic issues](https://github.com/Bytom/bytom-classic/issues/) in this repository. We are glad to help!
 
 ## License
 
