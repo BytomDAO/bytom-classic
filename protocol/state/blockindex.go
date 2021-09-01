@@ -104,7 +104,18 @@ func (node *BlockNode) CalcNextBits() uint64 {
 	for compareNode.Height%consensus.BlocksPerRetarget != 0 {
 		compareNode = compareNode.Parent
 	}
-	return difficulty.CalcNextRequiredDifficulty(node.BlockHeader(), compareNode.BlockHeader())
+	return difficulty.CalcNextEDARequiredDifficulty(node.BlockHeader(), node.getPrevsHeader(6), compareNode.BlockHeader())
+}
+
+func (node *BlockNode) getPrevsHeader(n int) *types.BlockHeader {
+	prev := node
+	for i := 0; i < n; i++ {
+		prev = prev.Parent
+		if prev == nil {
+			return nil
+		}
+	}
+	return prev.BlockHeader()
 }
 
 // CalcNextSeed calculate the seed for next block

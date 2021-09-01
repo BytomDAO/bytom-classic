@@ -140,3 +140,29 @@ func CalcNextRequiredDifficulty(lastBH, compareBH *types.BlockHeader) uint64 {
 
 	return newTargetBits
 }
+
+// Compute the next required proof of work using adjustment + Emergency Difficulty Adjustment (EDA).
+func CalcNextEDARequiredDifficulty(lastBH, lastBH6, compareBH *types.BlockHeader) uint64 {
+	if (lastBH.Height)%consensus.BlocksPerRetarget != 0 || lastBH.Height == 0 {
+		if lastBH6 != nil {
+			if lastBH.Timestamp-lastBH6.Timestamp > (6*2)*consensus.TargetSecondsPerBlock {
+				oldTarget := CompactToBig(lastBH.Bits)
+				inc := new(big.Int).Div(oldTarget, big.NewInt(4))
+				newTarget := new(big.Int).Add(oldTarget, inc)
+				return BigToCompact(newTarget)
+			}
+		}
+
+		return lastBH.Bits
+	}
+
+	targetTimeSpan := int64(consensus.BlocksPerRetarget * consensus.TargetSecondsPerBlock)
+	actualTimeSpan := int64(lastBH.Timestamp - compareBH.Timestamp)
+
+	oldTarget := CompactToBig(lastBH.Bits)
+	newTarget := new(big.Int).Mul(oldTarget, big.NewInt(actualTimeSpan))
+	newTarget.Div(newTarget, big.NewInt(targetTimeSpan))
+	newTargetBits := BigToCompact(newTarget)
+
+	return newTargetBits
+}

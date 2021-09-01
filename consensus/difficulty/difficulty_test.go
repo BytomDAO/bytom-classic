@@ -456,7 +456,7 @@ func TestCompactToBig(t *testing.T) {
 			in: `00011110` + //Exponent
 				`0` + //Sign
 				`0000000000000000000000000000000000011011011111000010011`, //Mantissa
-			out: big.NewInt(0).Lsh(big.NewInt(0x0dbe13), 27*8), //2161727821138738707
+			out: big.NewInt(0).Lsh(big.NewInt(0x0dbe13), 27*8),            //2161727821138738707
 		},
 	}
 
@@ -882,6 +882,69 @@ func TestCalcWork(t *testing.T) {
 	for i, c := range testCases {
 		if got := CalcWork(c.bits); got.Cmp(c.want) != 0 {
 			t.Errorf("test case with uint64 for CalcWork(%d) = %s, want %s\n", i, got, c.want)
+			return
+		}
+	}
+}
+
+// A lower difficulty Int actually reflects a more difficult mining progress with EDA.
+func TestCalcNextEDARequiredDifficulty(t *testing.T) {
+	targetTimeSpan := uint64(consensus.BlocksPerRetarget * consensus.TargetSecondsPerBlock)
+	cases := []struct {
+		lastBH    *types.BlockHeader
+		lastBH6   *types.BlockHeader
+		compareBH *types.BlockHeader
+		want      uint64
+	}{
+		{
+			&types.BlockHeader{
+				Height:    consensus.BlocksPerRetarget - 1,
+				Timestamp: targetTimeSpan*2 - consensus.TargetSecondsPerBlock,
+				Bits:      BigToCompact(big.NewInt(1000)),
+			},
+			&types.BlockHeader{
+				Timestamp: targetTimeSpan*2 - 1*consensus.TargetSecondsPerBlock - 13*consensus.TargetSecondsPerBlock,
+			},
+			&types.BlockHeader{
+				Height:    0,
+				Timestamp: 0,
+			},
+			BigToCompact(big.NewInt(1000 + 1000/4)),
+		},
+		{
+			&types.BlockHeader{
+				Height:    consensus.BlocksPerRetarget*2 - 1,
+				Timestamp: targetTimeSpan + targetTimeSpan*2 - consensus.TargetSecondsPerBlock,
+				Bits:      BigToCompact(big.NewInt(1000)),
+			},
+			&types.BlockHeader{
+				Height:    consensus.BlocksPerRetarget*2 - 1 - 6,
+				Timestamp: targetTimeSpan + targetTimeSpan*2 - consensus.TargetSecondsPerBlock - 12*consensus.TargetSecondsPerBlock,
+			},
+			&types.BlockHeader{
+				Height:    consensus.BlocksPerRetarget,
+				Timestamp: targetTimeSpan,
+			},
+			BigToCompact(big.NewInt(1000)),
+		},
+		{
+			&types.BlockHeader{
+				Height:    consensus.BlocksPerRetarget*2 - 1,
+				Timestamp: targetTimeSpan + targetTimeSpan/2 - consensus.TargetSecondsPerBlock,
+				Bits:      BigToCompact(big.NewInt(1000)),
+			},
+			nil,
+			&types.BlockHeader{
+				Height:    consensus.BlocksPerRetarget,
+				Timestamp: targetTimeSpan,
+			},
+			BigToCompact(big.NewInt(1000)),
+		},
+	}
+
+	for i, c := range cases {
+		if got := CalcNextEDARequiredDifficulty(c.lastBH, c.lastBH6, c.compareBH); got != c.want {
+			t.Errorf("Compile(%d) = %d want %d\n", i, got, c.want)
 			return
 		}
 	}
