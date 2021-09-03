@@ -104,10 +104,10 @@ func (node *BlockNode) CalcNextBits() uint64 {
 	for compareNode.Height%consensus.BlocksPerRetarget != 0 {
 		compareNode = compareNode.Parent
 	}
-	return difficulty.CalcNextEDARequiredDifficulty(node.BlockHeader(), node.getPrevsHeader(6), compareNode.BlockHeader())
+	return difficulty.CalcNextEDARequiredDifficulty(node.BlockHeader(), node.getLastNHeader(difficulty.EDABlocks), compareNode.BlockHeader())
 }
 
-func (node *BlockNode) getPrevsHeader(n int) *types.BlockHeader {
+func (node *BlockNode) getLastNHeader(n int) *types.BlockHeader {
 	prev := node
 	for i := 0; i < n; i++ {
 		prev = prev.Parent

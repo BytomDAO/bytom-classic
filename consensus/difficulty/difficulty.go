@@ -1,12 +1,18 @@
 package difficulty
 
 import (
-	"math/big"
-
 	"github.com/bytom/bytom-classic/consensus"
 	"github.com/bytom/bytom-classic/mining/tensority"
 	"github.com/bytom/bytom-classic/protocol/bc"
 	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"math/big"
+)
+
+const (
+	// EDAMinDuration while Emergency Difficulty Adjustment trigger，min time duration
+	EDAMinDuration = 12 * 3600
+	// EDABlocks while Emergency Difficulty Adjustment trigger，now - last n blocks time
+	EDABlocks = 60
 )
 
 var (
@@ -142,10 +148,10 @@ func CalcNextRequiredDifficulty(lastBH, compareBH *types.BlockHeader) uint64 {
 }
 
 // Compute the next required proof of work using adjustment + Emergency Difficulty Adjustment (EDA).
-func CalcNextEDARequiredDifficulty(lastBH, lastBH6, compareBH *types.BlockHeader) uint64 {
+func CalcNextEDARequiredDifficulty(lastBH, lastBHn, compareBH *types.BlockHeader) uint64 {
 	if (lastBH.Height)%consensus.BlocksPerRetarget != 0 || lastBH.Height == 0 {
-		if lastBH6 != nil {
-			if lastBH.Timestamp-lastBH6.Timestamp > (6*2)*consensus.TargetSecondsPerBlock {
+		if lastBHn != nil {
+			if lastBH.Timestamp-lastBHn.Timestamp > EDAMinDuration {
 				oldTarget := CompactToBig(lastBH.Bits)
 				inc := new(big.Int).Div(oldTarget, big.NewInt(4))
 				newTarget := new(big.Int).Add(oldTarget, inc)

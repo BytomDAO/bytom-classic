@@ -1,14 +1,13 @@
 package difficulty
 
 import (
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
 	"math/big"
 	"reflect"
 	"strconv"
 	"testing"
-
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
 )
 
 // A lower difficulty Int actually reflects a more difficult mining progress.
@@ -903,7 +902,7 @@ func TestCalcNextEDARequiredDifficulty(t *testing.T) {
 				Bits:      BigToCompact(big.NewInt(1000)),
 			},
 			&types.BlockHeader{
-				Timestamp: targetTimeSpan*2 - 1*consensus.TargetSecondsPerBlock - 13*consensus.TargetSecondsPerBlock,
+				Timestamp: targetTimeSpan*2 - consensus.TargetSecondsPerBlock - EDAMinDuration - 1,
 			},
 			&types.BlockHeader{
 				Height:    0,
@@ -919,7 +918,7 @@ func TestCalcNextEDARequiredDifficulty(t *testing.T) {
 			},
 			&types.BlockHeader{
 				Height:    consensus.BlocksPerRetarget*2 - 1 - 6,
-				Timestamp: targetTimeSpan + targetTimeSpan*2 - consensus.TargetSecondsPerBlock - 12*consensus.TargetSecondsPerBlock,
+				Timestamp: (targetTimeSpan + targetTimeSpan*2 - consensus.TargetSecondsPerBlock) - EDAMinDuration,
 			},
 			&types.BlockHeader{
 				Height:    consensus.BlocksPerRetarget,
