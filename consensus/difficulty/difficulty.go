@@ -1,11 +1,12 @@
 package difficulty
 
 import (
+	"math/big"
+
 	"github.com/bytom/bytom-classic/consensus"
 	"github.com/bytom/bytom-classic/mining/tensority"
 	"github.com/bytom/bytom-classic/protocol/bc"
 	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"math/big"
 )
 
 const (

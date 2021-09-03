@@ -1,13 +1,14 @@
 package difficulty
 
 import (
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
 	"math/big"
 	"reflect"
 	"strconv"
 	"testing"
+
+	"github.com/bytom/bytom-classic/consensus"
+	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/bytom/bytom-classic/protocol/bc/types"
 )
 
 // A lower difficulty Int actually reflects a more difficult mining progress.
