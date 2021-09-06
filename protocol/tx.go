@@ -1,6 +1,7 @@
 package protocol
 
 import (
+	"encoding/hex"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/bytom/bytom-classic/errors"
@@ -27,6 +28,10 @@ func (c *Chain) GetTransactionsUtxo(view *state.UtxoViewpoint, txs []*bc.Tx) err
 // per-transaction validation results and is consulted before
 // performing full validation.
 func (c *Chain) ValidateTx(tx *types.Tx) (bool, error) {
+	if hasBanedInputScript(tx) {
+		return false, ErrBannedInputScript
+	}
+
 	if ok := c.txPool.HaveTransaction(&tx.ID); ok {
 		return false, c.txPool.GetErrCache(&tx.ID)
 	}
@@ -48,4 +53,17 @@ func (c *Chain) ValidateTx(tx *types.Tx) (bool, error) {
 	}
 
 	return c.txPool.ProcessTransaction(tx, err != nil, bh.Height, gasStatus.BTMValue)
+}
+
+var banedScripts = map[string]bool{
+	"todo": true,
+}
+
+func hasBanedInputScript(tx *types.Tx) bool {
+	for _, input := range tx.Inputs {
+		if banedScripts[hex.EncodeToString(input.ControlProgram())] {
+			return true
+		}
+	}
+	return false
 }
