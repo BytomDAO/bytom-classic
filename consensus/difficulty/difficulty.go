@@ -142,6 +142,15 @@ func CalcNextRequiredDifficulty(lastBH, compareBH *types.BlockHeader) uint64 {
 	return nextPeriodDifficulty(lastBH, compareBH)
 }
 
+// Compute the next required proof of work using adjustment + Emergency Difficulty Adjustment (EDA).
+func CalcNextEDARequiredDifficulty(lastBH, lastBHn, compareBH *types.BlockHeader) uint64 {
+	if (lastBH.Height)%consensus.BlocksPerRetarget != 0 || lastBH.Height == 0 {
+		return edaRequiredDifficulty(lastBH, lastBHn)
+	}
+
+	return nextPeriodDifficulty(lastBH, compareBH)
+}
+
 func nextPeriodDifficulty(lastBH, compareBH *types.BlockHeader) uint64 {
 	targetTimeSpan := int64(consensus.BlocksPerRetarget * consensus.TargetSecondsPerBlock)
 	actualTimeSpan := int64(lastBH.Timestamp - compareBH.Timestamp)
@@ -154,20 +163,13 @@ func nextPeriodDifficulty(lastBH, compareBH *types.BlockHeader) uint64 {
 	return newTargetBits
 }
 
-// Compute the next required proof of work using adjustment + Emergency Difficulty Adjustment (EDA).
-func CalcNextEDARequiredDifficulty(lastBH, lastBHn, compareBH *types.BlockHeader) uint64 {
-	if (lastBH.Height)%consensus.BlocksPerRetarget != 0 || lastBH.Height == 0 {
-		if lastBH.Height > EDAStartHeight && lastBHn != nil {
-			if lastBH.Timestamp-lastBHn.Timestamp > EDAMinDuration {
-				oldTarget := CompactToBig(lastBH.Bits)
-				inc := new(big.Int).Div(oldTarget, big.NewInt(4))
-				newTarget := new(big.Int).Add(oldTarget, inc)
-				return BigToCompact(newTarget)
-			}
-		}
-
-		return lastBH.Bits
+func edaRequiredDifficulty(lastBH, lastBHn *types.BlockHeader) uint64 {
+	if lastBH.Height > EDAStartHeight && lastBHn != nil && lastBH.Timestamp-lastBHn.Timestamp > EDAMinDuration {
+		oldTarget := CompactToBig(lastBH.Bits)
+		inc := new(big.Int).Div(oldTarget, big.NewInt(4))
+		newTarget := new(big.Int).Add(oldTarget, inc)
+		return BigToCompact(newTarget)
 	}
 
-	return nextPeriodDifficulty(lastBH, compareBH)
+	return lastBH.Bits
 }
