@@ -326,7 +326,7 @@ func TestCalcNextRequiredDifficulty(t *testing.T) {
 	}
 
 	for i, c := range cases {
-		if got := CalcNextRequiredDifficulty(c.lastBH, c.compareBH); got != c.want {
+		if got := CalcNextRequiredDifficulty(c.lastBH, nil, c.compareBH); got != c.want {
 			t.Errorf("Compile(%d) = %d want %d\n", i, got, c.want)
 			return
 		}
@@ -888,15 +888,17 @@ func TestCalcWork(t *testing.T) {
 }
 
 // A lower difficulty Int actually reflects a more difficult mining progress with EDA.
-func TestCalcNextEDARequiredDifficulty(t *testing.T) {
+func TestCalcNextRequiredDifficultyWithEDA(t *testing.T) {
 	targetTimeSpan := uint64(consensus.BlocksPerRetarget * consensus.TargetSecondsPerBlock)
 	cases := []struct {
 		lastBH    *types.BlockHeader
-		lastBH6   *types.BlockHeader
+		lastBHn   *types.BlockHeader
 		compareBH *types.BlockHeader
 		want      uint64
 	}{
 		{
+
+			// lastBH.Timestamp - lastBHn.Timestamp >  EDAMinDuration
 			&types.BlockHeader{
 				Height:    consensus.BlocksPerRetarget - 1,
 				Timestamp: targetTimeSpan*2 - consensus.TargetSecondsPerBlock,
@@ -912,6 +914,8 @@ func TestCalcNextEDARequiredDifficulty(t *testing.T) {
 			BigToCompact(big.NewInt(1000 + 1000/4)),
 		},
 		{
+
+			// lastBH.Timestamp - lastBHn.Timestamp ==  EDAMinDuration
 			&types.BlockHeader{
 				Height:    consensus.BlocksPerRetarget*2 - 1,
 				Timestamp: targetTimeSpan + targetTimeSpan*2 - consensus.TargetSecondsPerBlock,
@@ -928,6 +932,8 @@ func TestCalcNextEDARequiredDifficulty(t *testing.T) {
 			BigToCompact(big.NewInt(1000)),
 		},
 		{
+
+			// lastBHn is nil
 			&types.BlockHeader{
 				Height:    consensus.BlocksPerRetarget*2 - 1,
 				Timestamp: targetTimeSpan + targetTimeSpan/2 - consensus.TargetSecondsPerBlock,
@@ -943,7 +949,7 @@ func TestCalcNextEDARequiredDifficulty(t *testing.T) {
 	}
 
 	for i, c := range cases {
-		if got := CalcNextEDARequiredDifficulty(c.lastBH, c.lastBH6, c.compareBH); got != c.want {
+		if got := CalcNextRequiredDifficulty(c.lastBH, c.lastBHn, c.compareBH); got != c.want {
 			t.Errorf("Compile(%d) = %d want %d\n", i, got, c.want)
 			return
 		}
