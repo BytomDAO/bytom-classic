@@ -15,7 +15,7 @@ const (
 	// EDABlocks while Emergency Difficulty Adjustment trigger，now - last n blocks time
 	EDABlocks = 60
 	// EDAStartHeight use eda block height
-	EDAStartHeight = 710682
+	EDAStartHeight = 710850
 )
 
 var (
