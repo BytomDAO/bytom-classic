@@ -2,6 +2,7 @@ package protocol
 
 import (
 	"encoding/hex"
+
 	log "github.com/sirupsen/logrus"
 
 	"github.com/bytom/bytom-classic/errors"

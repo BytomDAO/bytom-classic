@@ -39,7 +39,7 @@ var (
 	// ErrDustTx indicates transaction is dust tx
 	ErrDustTx = errors.New("transaction is dust tx")
 	// ErrBannedInputScript tx inputs have banned input script
-	ErrBannedInputScript = errors.New("")
+	ErrBannedInputScript = errors.New("input script have been banned")
 )
 
 type TxMsgEvent struct{ TxMsg *TxPoolMsg }
