@@ -1,4 +1,4 @@
-// Package account stores and tracks accounts within a Bytom Core.
+// Package account stores and tracks accounts within a Anonimitycash Core.
 package account
 
 import (

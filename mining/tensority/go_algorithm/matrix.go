@@ -8,8 +8,8 @@ import (
 
 	"gonum.org/v1/gonum/mat"
 
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
 )
 
 const (

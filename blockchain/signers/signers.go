@@ -4,8 +4,8 @@ package signers
 import (
 	"bytes"
 	"encoding/binary"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 type keySpace byte
@@ -45,8 +45,8 @@ var (
 var (
 	// BIP44Purpose purpose field 0x0000002c little-endian mode.
 	BIP44Purpose = []byte{0x2C, 0x00, 0x00, 0x00}
-	// BTMCoinType coin type field 0x00000099 little-endian mode.
-	BTMCoinType = []byte{0x99, 0x00, 0x00, 0x00}
+	// MITYCoinType coin type field 0x00000099 little-endian mode.
+	MITYCoinType = []byte{0x99, 0x00, 0x00, 0x00}
 )
 
 // Signer is the abstract concept of a signer,
@@ -78,7 +78,7 @@ func GetBip0032Path(s *Signer, ks keySpace, itemIndexes ...uint64) [][]byte {
 func getBip0044Path(accountIndex uint64, change bool, addrIndex uint64) [][]byte {
 	var path [][]byte
 	path = append(path, BIP44Purpose[:]) //purpose
-	path = append(path, BTMCoinType[:])  //coin type
+	path = append(path, MITYCoinType[:])  //coin type
 	accIdxBytes := make([]byte, 4)
 	binary.LittleEndian.PutUint32(accIdxBytes, uint32(accountIndex))
 	path = append(path, accIdxBytes) //account index

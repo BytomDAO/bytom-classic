@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 func TestCheckOutput(t *testing.T) {

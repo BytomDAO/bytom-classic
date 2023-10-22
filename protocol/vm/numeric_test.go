@@ -5,7 +5,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestNumericOps(t *testing.T) {

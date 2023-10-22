@@ -5,13 +5,13 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/bytom/bytom-classic/encoding/blockchain"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/blockchain"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestReadWriteSpendCommitment(t *testing.T) {
-	btmAssetID := testutil.MustDecodeAsset("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+	mityAssetID := testutil.MustDecodeAsset("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
 	cases := []struct {
 		sc           *SpendCommitment
 		encodeString string
@@ -19,7 +19,7 @@ func TestReadWriteSpendCommitment(t *testing.T) {
 		{
 			sc: &SpendCommitment{
 				AssetAmount: bc.AssetAmount{
-					AssetId: &btmAssetID,
+					AssetId: &mityAssetID,
 					Amount:  100,
 				},
 				SourceID:       testutil.MustDecodeHash("3160fb24f97e06ad5a9717cd47fe2b65c7409903216b39120b10550282b20e99"),
@@ -32,7 +32,7 @@ func TestReadWriteSpendCommitment(t *testing.T) {
 		{
 			sc: &SpendCommitment{
 				AssetAmount: bc.AssetAmount{
-					AssetId: &btmAssetID,
+					AssetId: &mityAssetID,
 					Amount:  999,
 				},
 				SourceID:       testutil.MustDecodeHash("4b5cb973f5bef4eadde4c89b92ee73312b940e84164da0594149554cc8a2adea"),

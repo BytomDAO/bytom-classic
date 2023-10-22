@@ -8,8 +8,8 @@ import (
 	"testing"
 	"testing/quick"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 type tracebuf struct {

@@ -1,6 +1,6 @@
 package mining
 
-import "github.com/bytom/bytom-classic/protocol"
+import "github.com/anonimitycash/anonimitycash-classic/protocol"
 
 type byTime []*protocol.TxDesc
 

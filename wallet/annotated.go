@@ -6,18 +6,18 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/asset"
-	"github.com/bytom/bytom-classic/blockchain/query"
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/consensus/segwit"
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/asset"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/query"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/consensus/segwit"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 // annotateTxs adds asset data to transactions
@@ -61,9 +61,9 @@ func (w *Wallet) getExternalDefinition(assetID *bc.AssetID) json.RawMessage {
 }
 
 func (w *Wallet) getAliasDefinition(assetID bc.AssetID) (string, json.RawMessage) {
-	//btm
-	if assetID.String() == consensus.BTMAssetID.String() {
-		alias := consensus.BTMAlias
+	//mity
+	if assetID.String() == consensus.MITYAssetID.String() {
+		alias := consensus.MITYAlias
 		definition := []byte(asset.DefaultNativeAsset.RawDefinitionByte)
 
 		return alias, definition

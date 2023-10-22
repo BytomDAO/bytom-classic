@@ -8,20 +8,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/asset"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/database"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/asset"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 func TestEncodeDecodeGlobalTxIndex(t *testing.T) {
@@ -155,8 +155,8 @@ func TestWalletUpdate(t *testing.T) {
 	}
 
 	utxos := []*account.UTXO{}
-	btmUtxo := mockUTXO(controlProg, consensus.BTMAssetID)
-	utxos = append(utxos, btmUtxo)
+	mityUtxo := mockUTXO(controlProg, consensus.MITYAssetID)
+	utxos = append(utxos, mityUtxo)
 	OtherUtxo := mockUTXO(controlProg, &asset.AssetID)
 	utxos = append(utxos, OtherUtxo)
 
@@ -299,8 +299,8 @@ func TestMemPoolTxQueryLoop(t *testing.T) {
 	}
 
 	utxos := []*account.UTXO{}
-	btmUtxo := mockUTXO(controlProg, consensus.BTMAssetID)
-	utxos = append(utxos, btmUtxo)
+	mityUtxo := mockUTXO(controlProg, consensus.MITYAssetID)
+	utxos = append(utxos, mityUtxo)
 	OtherUtxo := mockUTXO(controlProg, &asset.AssetID)
 	utxos = append(utxos, OtherUtxo)
 
@@ -359,7 +359,7 @@ func mockTxData(utxos []*account.UTXO, testAccount *account.Account) (*txbuilder
 		tplBuilder.AddInput(txInput, sigInst)
 
 		out := &types.TxOutput{}
-		if utxo.AssetID == *consensus.BTMAssetID {
+		if utxo.AssetID == *consensus.MITYAssetID {
 			out = types.NewTxOutput(utxo.AssetID, 100, utxo.ControlProgram)
 		} else {
 			out = types.NewTxOutput(utxo.AssetID, utxo.Amount, utxo.ControlProgram)

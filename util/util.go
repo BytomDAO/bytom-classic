@@ -3,9 +3,9 @@ package util
 import (
 	"context"
 
-	"github.com/bytom/bytom-classic/api"
-	"github.com/bytom/bytom-classic/blockchain/rpc"
-	"github.com/bytom/bytom-classic/env"
+	"github.com/anonimitycash/anonimitycash-classic/api"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/rpc"
+	"github.com/anonimitycash/anonimitycash-classic/env"
 	jww "github.com/spf13/jwalterweatherman"
 )
 
@@ -14,17 +14,17 @@ const (
 	Success = iota
 	// ErrLocalExe indicates error occurs before the rpc calling.
 	ErrLocalExe
-	// ErrConnect indicates error occurs connecting to the bytomd, e.g.,
-	// bytomd can't parse the received arguments.
+	// ErrConnect indicates error occurs connecting to the anonimitycashd, e.g.,
+	// anonimitycashd can't parse the received arguments.
 	ErrConnect
 	// ErrLocalParse indicates error occurs locally when parsing the response.
 	ErrLocalParse
-	// ErrRemote indicates error occurs in bytomd.
+	// ErrRemote indicates error occurs in anonimitycashd.
 	ErrRemote
 )
 
 var (
-	coreURL = env.String("BYTOM_URL", "http://127.0.0.1:9888")
+	coreURL = env.String("ANONIMITYCASH_URL", "http://127.0.0.1:9888")
 )
 
 // Wraper rpc's client
@@ -51,7 +51,7 @@ func ClientCall(path string, req ...interface{}) (interface{}, int) {
 		jww.ERROR.Println(response.Msg)
 		return nil, ErrRemote
 	case "":
-		jww.ERROR.Println("Unable to connect to the bytomd")
+		jww.ERROR.Println("Unable to connect to the anonimitycashd")
 		return nil, ErrConnect
 	}
 

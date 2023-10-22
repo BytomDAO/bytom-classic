@@ -4,12 +4,12 @@ import (
 	"bytes"
 	"context"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 var (
@@ -132,24 +132,24 @@ func checkTxSighashCommitment(tx *types.Tx) error {
 
 // CalculateTxFee calculate transaction fee
 func CalculateTxFee(tx *types.Tx) (fee uint64) {
-	totalInputBTM := uint64(0)
-	totalOutputBTM := uint64(0)
+	totalInputMITY := uint64(0)
+	totalOutputMITY := uint64(0)
 
 	for _, input := range tx.Inputs {
 		if input.InputType() == types.CoinbaseInputType {
 			return 0
 		}
-		if input.AssetID() == *consensus.BTMAssetID {
-			totalInputBTM += input.Amount()
+		if input.AssetID() == *consensus.MITYAssetID {
+			totalInputMITY += input.Amount()
 		}
 	}
 
 	for _, output := range tx.Outputs {
-		if *output.AssetId == *consensus.BTMAssetID {
-			totalOutputBTM += output.Amount
+		if *output.AssetId == *consensus.MITYAssetID {
+			totalOutputMITY += output.Amount
 		}
 	}
 
-	fee = totalInputBTM - totalOutputBTM
+	fee = totalInputMITY - totalOutputMITY
 	return
 }

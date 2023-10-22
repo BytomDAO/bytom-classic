@@ -1,6 +1,6 @@
-/* BytomPoW.h */
-#ifndef BYTOMPOW_H
-#define BYTOMPOW_H
+/* AnonimitycashPoW.h */
+#ifndef ANONIMITYCASHPOW_H
+#define ANONIMITYCASHPOW_H
 
 #include "scrypt.h"
 #include "sha3-allInOne.h"
@@ -267,14 +267,14 @@ struct Arr256x64i32 {
     }
 };
 
-// struct BytomMatList8 {
+// struct AnonimitycashMatList8 {
 //     std::vector<Mat256x256i8*> matVec;
 
 //     Mat256x256i8 at(int i) {
 //         return *(matVec[i]);
 //     }
 
-//     BytomMatList8() {
+//     AnonimitycashMatList8() {
 //         for(int i=0; i<256; i++) {
 //             Mat256x256i8* ptr = new Mat256x256i8;
 //             assert(ptr!=NULL);
@@ -282,7 +282,7 @@ struct Arr256x64i32 {
 //         }
 //     }
 
-//     ~BytomMatList8() {
+//     ~AnonimitycashMatList8() {
 //         for(int i=0; i<256; i++) {
 //             delete matVec[i];
 //         }
@@ -299,14 +299,14 @@ struct Arr256x64i32 {
 //     }
 // };
 
-struct BytomMatList16 {
+struct AnonimitycashMatList16 {
     std::vector<Mat256x256i16*> matVec;
 
     Mat256x256i16 at(int i) {
         return *(matVec[i]);
     }
 
-    BytomMatList16() {
+    AnonimitycashMatList16() {
         for(int i = 0; i < 256; i++) {
             Mat256x256i16* ptr = new Mat256x256i16;
             assert(ptr != NULL);
@@ -314,7 +314,7 @@ struct BytomMatList16 {
         }
     }
 
-    ~BytomMatList16() {
+    ~AnonimitycashMatList16() {
         for(int i = 0; i < 256; i++)
             delete matVec[i];
     }
@@ -329,23 +329,23 @@ struct BytomMatList16 {
         }
     }
 
-    // void copyFrom(BytomMatList8& other) {
+    // void copyFrom(AnonimitycashMatList8& other) {
     //     for(int i=0; i<256; i++) {
     //         matVec[i]->copyFrom(*other.matVec[i]);
     //     }
     // }
 
-    // void copyFrom(BytomMatList16& other) {
+    // void copyFrom(AnonimitycashMatList16& other) {
     //     for(int i=0; i<256; i++) {
     //         matVec[i]->copyFrom(*other.matVec[i]);
     //     }
     // }
 };
 
-// extern BytomMatList8* matList_int8;
-extern BytomMatList16* matList_int16;
+// extern AnonimitycashMatList8* matList_int8;
+extern AnonimitycashMatList16* matList_int16;
 
-inline void iter_mineBytom(const uint8_t *fixedMessage,
+inline void iter_mineAnonimitycash(const uint8_t *fixedMessage,
                             uint32_t len,
                             // uint8_t nonce[8],
                             uint8_t result[32]) {
@@ -446,7 +446,7 @@ inline int countLeadingZero(uint8_t result[32]) {
     return count;
 }
 
-// inline int test_mineBytom(
+// inline int test_mineAnonimitycash(
 //     const uint8_t *fixedMessage,
 //     uint32_t len,
 //     uint8_t nonce[32],
@@ -458,7 +458,7 @@ inline int countLeadingZero(uint8_t result[32]) {
 //   for(step=0; step<count; step++) {
 //     uint8_t result[32];
 //     //std::cerr<<"Mine step "<<step<<std::endl;
-//     iter_mineBytom(fixedMessage,100,nonce,result);
+//     iter_mineAnonimitycash(fixedMessage,100,nonce,result);
 //     std::cerr<<"Mine step "<<step<<std::endl;
 //     for (int i = 0; i < 32; i++) {
 //       printf("%02x ", result[i]);

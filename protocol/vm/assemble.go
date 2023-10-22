@@ -10,7 +10,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 // Assemble converts a string like "2 3 ADD 5 NUMEQUAL" into 0x525393559c.

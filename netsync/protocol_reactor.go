@@ -5,9 +5,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/p2p"
-	"github.com/bytom/bytom-classic/p2p/connection"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/p2p"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/connection"
 )
 
 const (

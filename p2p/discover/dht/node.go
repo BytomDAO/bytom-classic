@@ -14,8 +14,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/crypto"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/crypto"
 )
 
 // Node represents a host on the network.

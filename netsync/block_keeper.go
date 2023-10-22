@@ -6,12 +6,12 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/mining/tensority"
-	"github.com/bytom/bytom-classic/p2p/security"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/mining/tensority"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/security"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 const (

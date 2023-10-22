@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 // ErrBadFilter is returned from Parse when

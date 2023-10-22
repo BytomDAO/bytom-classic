@@ -1,10 +1,10 @@
 package txbuilder
 
 import (
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/consensus/segwit"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/consensus/segwit"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 const (

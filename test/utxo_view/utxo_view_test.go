@@ -4,16 +4,16 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 
 	"github.com/golang/protobuf/proto"
 
-	"github.com/bytom/bytom-classic/database"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/database/storage"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/database/storage"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
 )
 
 func TestAttachOrDetachBlocks(t *testing.T) {

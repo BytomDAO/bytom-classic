@@ -12,9 +12,9 @@ import (
 	"github.com/tendermint/go-wire"
 	"golang.org/x/crypto/sha3"
 
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/crypto/ed25519"
-	"github.com/bytom/bytom-classic/p2p/netutil"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/netutil"
 )
 
 var (

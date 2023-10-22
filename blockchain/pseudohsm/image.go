@@ -9,7 +9,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
 )
 
 const logModule = "pseudohsm"

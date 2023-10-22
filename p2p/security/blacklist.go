@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
 )
 
 const (

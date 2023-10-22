@@ -7,15 +7,15 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/database"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestCreateAccountWithUppercase(t *testing.T) {

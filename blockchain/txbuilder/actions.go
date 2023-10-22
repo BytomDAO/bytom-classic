@@ -5,12 +5,12 @@ import (
 	stdjson "encoding/json"
 	"errors"
 
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/encoding/json"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 // DecodeControlAddressAction convert input data to action struct

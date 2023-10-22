@@ -6,12 +6,12 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/consensus/segwit"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/math/checked"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/consensus/segwit"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/math/checked"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 const ruleAA = 142500
@@ -42,22 +42,22 @@ var (
 
 // GasState record the gas usage status
 type GasState struct {
-	BTMValue   uint64
+	MITYValue   uint64
 	GasLeft    int64
 	GasUsed    int64
 	GasValid   bool
 	StorageGas int64
 }
 
-func (g *GasState) setGas(BTMValue int64, txSize int64) error {
-	if BTMValue < 0 {
-		return errors.Wrap(ErrGasCalculate, "input BTM is negative")
+func (g *GasState) setGas(MITYValue int64, txSize int64) error {
+	if MITYValue < 0 {
+		return errors.Wrap(ErrGasCalculate, "input MITY is negative")
 	}
 
-	g.BTMValue = uint64(BTMValue)
+	g.MITYValue = uint64(MITYValue)
 
 	var ok bool
-	if g.GasLeft, ok = checked.DivInt64(BTMValue, consensus.VMGasRate); !ok {
+	if g.GasLeft, ok = checked.DivInt64(MITYValue, consensus.VMGasRate); !ok {
 		return errors.Wrap(ErrGasCalculate, "setGas calc gas amount")
 	}
 
@@ -170,7 +170,7 @@ func checkValid(vs *validationState, e bc.Entry) (err error) {
 		}
 
 		for assetID, amount := range parity {
-			if assetID == *consensus.BTMAssetID {
+			if assetID == *consensus.MITYAssetID {
 				if err = vs.gasStatus.setGas(amount, int64(vs.tx.SerializedSize)); err != nil {
 					return err
 				}
@@ -179,14 +179,14 @@ func checkValid(vs *validationState, e bc.Entry) (err error) {
 			}
 		}
 
-		for _, BTMInputID := range vs.tx.GasInputIDs {
-			e, ok := vs.tx.Entries[BTMInputID]
+		for _, MITYInputID := range vs.tx.GasInputIDs {
+			e, ok := vs.tx.Entries[MITYInputID]
 			if !ok {
-				return errors.Wrapf(bc.ErrMissingEntry, "entry for bytom input %x not found", BTMInputID)
+				return errors.Wrapf(bc.ErrMissingEntry, "entry for anonimitycash input %x not found", MITYInputID)
 			}
 
 			vs2 := *vs
-			vs2.entryID = BTMInputID
+			vs2.entryID = MITYInputID
 			if err := checkValid(&vs2, e); err != nil {
 				return errors.Wrap(err, "checking gas input")
 			}
@@ -289,7 +289,7 @@ func checkValid(vs *validationState, e bc.Entry) (err error) {
 			return ErrWrongCoinbaseTransaction
 		}
 
-		if *e.WitnessDestination.Value.AssetId != *consensus.BTMAssetID {
+		if *e.WitnessDestination.Value.AssetId != *consensus.MITYAssetID {
 			return ErrWrongCoinbaseAsset
 		}
 
@@ -470,7 +470,7 @@ func checkStandardTx(tx *bc.Tx, blockHeight uint64) error {
 		}
 
 		output, ok := e.(*bc.Output)
-		if !ok || *output.Source.Value.AssetId != *consensus.BTMAssetID {
+		if !ok || *output.Source.Value.AssetId != *consensus.MITYAssetID {
 			continue
 		}
 

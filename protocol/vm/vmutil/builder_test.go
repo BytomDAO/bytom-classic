@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 func TestAddJump(t *testing.T) {

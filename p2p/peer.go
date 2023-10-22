@@ -15,9 +15,9 @@ import (
 	cmn "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/flowrate"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/p2p/connection"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/connection"
 )
 
 // peerConn contains the raw connection and its config.
@@ -49,7 +49,7 @@ func DefaultPeerConfig(config *cfg.P2PConfig) *PeerConfig {
 	}
 }
 
-// Peer represent a bytom network node
+// Peer represent a anonimitycash network node
 type Peer struct {
 	cmn.BaseService
 	*NodeInfo

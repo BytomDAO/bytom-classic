@@ -7,19 +7,19 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	"github.com/bytom/bytom-classic/node"
+	"github.com/anonimitycash/anonimitycash-classic/node"
 )
 
 const logModule = "cmd"
 
 var runNodeCmd = &cobra.Command{
 	Use:   "node",
-	Short: "Run the bytomd",
+	Short: "Run the anonimitycashd",
 	RunE:  runNode,
 }
 
 func init() {
-	runNodeCmd.Flags().String("prof_laddr", config.ProfListenAddress, "Use http to profile bytomd programs")
+	runNodeCmd.Flags().String("prof_laddr", config.ProfListenAddress, "Use http to profile anonimitycashd programs")
 	runNodeCmd.Flags().Bool("mining", config.Mining, "Enable mining")
 
 	runNodeCmd.Flags().Bool("simd.enable", config.Simd.Enable, "Enable SIMD mechan for tensority")

@@ -8,9 +8,9 @@ import (
 
 	"github.com/tendermint/go-crypto"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	conn "github.com/bytom/bytom-classic/p2p/connection"
-	"github.com/bytom/bytom-classic/version"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	conn "github.com/anonimitycash/anonimitycash-classic/p2p/connection"
+	"github.com/anonimitycash/anonimitycash-classic/version"
 )
 
 const testCh = 0x01

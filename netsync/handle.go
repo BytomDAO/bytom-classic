@@ -6,14 +6,14 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/p2p"
-	"github.com/bytom/bytom-classic/p2p/security"
-	core "github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/p2p"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/security"
+	core "github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 	"github.com/tendermint/go-crypto"
 )
 
@@ -28,7 +28,7 @@ var (
 	errVaultModeDialPeer = errors.New("can't dial peer in vault mode")
 )
 
-// Chain is the interface for Bytom core
+// Chain is the interface for Anonimitycash core
 type Chain interface {
 	BestBlockHeader() *types.BlockHeader
 	BestBlockHeight() uint64

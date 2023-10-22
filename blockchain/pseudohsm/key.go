@@ -7,13 +7,13 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
 	"github.com/pborman/uuid"
 )
 
 const (
 	version = 1
-	keytype = "bytom_kd"
+	keytype = "anonimitycash_kd"
 )
 
 // XKey struct type for keystore file

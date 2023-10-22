@@ -7,9 +7,9 @@ import (
 
 	"github.com/tendermint/go-crypto"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/version"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/version"
 )
 
 const maxNodeInfoSize = 10240 // 10Kb

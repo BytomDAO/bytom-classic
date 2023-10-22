@@ -1,9 +1,9 @@
 package txbuilder
 
 import (
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/vm"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 // Constraint types express a constraint on an input of a proposed

@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
 	"github.com/cespare/cp"
 	"github.com/davecgh/go-spew/spew"
 )
@@ -72,7 +72,7 @@ func TestWatchNoDir(t *testing.T) {
 
 	// Create am but not the directory that it watches.
 	rand.Seed(time.Now().UnixNano())
-	dir := filepath.Join(os.TempDir(), fmt.Sprintf("bytom-keystore-watch-test-%d-%d", os.Getpid(), rand.Int()))
+	dir := filepath.Join(os.TempDir(), fmt.Sprintf("anonimitycash-keystore-watch-test-%d-%d", os.Getpid(), rand.Int()))
 	kc := newKeyCache(dir)
 	list := kc.keys()
 	if len(list) > 0 {
@@ -280,7 +280,7 @@ func TestCacheFind(t *testing.T) {
 }
 
 func tmpManager(t *testing.T) (string, *keyCache) {
-	d, err := ioutil.TempDir("", "bytom-keystore-test")
+	d, err := ioutil.TempDir("", "anonimitycash-keystore-test")
 	if err != nil {
 		t.Fatal(err)
 	}

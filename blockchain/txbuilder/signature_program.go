@@ -1,8 +1,8 @@
 package txbuilder
 
 import (
-	"github.com/bytom/bytom-classic/protocol/vm"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 // Signature programs constrain how the signed inputs of a transaction

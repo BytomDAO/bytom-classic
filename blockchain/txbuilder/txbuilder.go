@@ -9,12 +9,12 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/math/checked"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/math/checked"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 const logModule = "txbuilder"
@@ -74,7 +74,7 @@ func Build(ctx context.Context, tx *types.TxData, actions []Action, maxTime time
 		return nil, err
 	}
 
-	/*TODO: This part is use for check the balance, but now we are using btm as gas fee
+	/*TODO: This part is use for check the balance, but now we are using mity as gas fee
 	the rule need to be rewrite when we have time
 	err = checkBlankCheck(tx)
 	if err != nil {

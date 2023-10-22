@@ -7,16 +7,16 @@ import (
 	"path"
 	"reflect"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/asset"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	w "github.com/bytom/bytom-classic/wallet"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/asset"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	w "github.com/anonimitycash/anonimitycash-classic/wallet"
 )
 
 type walletTestConfig struct {

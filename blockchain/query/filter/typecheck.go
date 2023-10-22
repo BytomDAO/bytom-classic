@@ -3,7 +3,7 @@ package filter
 import (
 	"fmt"
 
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 //Column describe a column

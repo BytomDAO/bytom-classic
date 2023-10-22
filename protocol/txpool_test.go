@@ -6,13 +6,13 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/database/storage"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/state"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/database/storage"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 var testTxs = []*types.Tx{
@@ -20,20 +20,20 @@ var testTxs = []*types.Tx{
 	types.NewTx(types.TxData{
 		SerializedSize: 100,
 		Inputs: []*types.TxInput{
-			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.BTMAssetID, 1, 1, []byte{0x51}),
+			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.MITYAssetID, 1, 1, []byte{0x51}),
 		},
 		Outputs: []*types.TxOutput{
-			types.NewTxOutput(*consensus.BTMAssetID, 1, []byte{0x6a}),
+			types.NewTxOutput(*consensus.MITYAssetID, 1, []byte{0x6a}),
 		},
 	}),
 	//tx1
 	types.NewTx(types.TxData{
 		SerializedSize: 100,
 		Inputs: []*types.TxInput{
-			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.BTMAssetID, 1, 1, []byte{0x51}),
+			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.MITYAssetID, 1, 1, []byte{0x51}),
 		},
 		Outputs: []*types.TxOutput{
-			types.NewTxOutput(*consensus.BTMAssetID, 1, []byte{0x6b}),
+			types.NewTxOutput(*consensus.MITYAssetID, 1, []byte{0x6b}),
 		},
 	}),
 	//tx2
@@ -41,11 +41,11 @@ var testTxs = []*types.Tx{
 		SerializedSize: 150,
 		TimeRange:      0,
 		Inputs: []*types.TxInput{
-			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.BTMAssetID, 1, 1, []byte{0x51}),
+			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.MITYAssetID, 1, 1, []byte{0x51}),
 			types.NewSpendInput(nil, bc.NewHash([32]byte{0x02}), bc.NewAssetID([32]byte{0xa1}), 4, 1, []byte{0x51}),
 		},
 		Outputs: []*types.TxOutput{
-			types.NewTxOutput(*consensus.BTMAssetID, 1, []byte{0x6b}),
+			types.NewTxOutput(*consensus.MITYAssetID, 1, []byte{0x6b}),
 			types.NewTxOutput(bc.NewAssetID([32]byte{0xa1}), 4, []byte{0x61}),
 		},
 	}),
@@ -75,21 +75,21 @@ var testTxs = []*types.Tx{
 	types.NewTx(types.TxData{
 		SerializedSize: 100,
 		Inputs: []*types.TxInput{
-			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.BTMAssetID, 1, 1, []byte{0x51}),
+			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.MITYAssetID, 1, 1, []byte{0x51}),
 		},
 		Outputs: []*types.TxOutput{
-			types.NewTxOutput(*consensus.BTMAssetID, 0, []byte{0x51}),
+			types.NewTxOutput(*consensus.MITYAssetID, 0, []byte{0x51}),
 		},
 	}),
 	//tx6
 	types.NewTx(types.TxData{
 		SerializedSize: 100,
 		Inputs: []*types.TxInput{
-			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.BTMAssetID, 3, 1, []byte{0x51}),
+			types.NewSpendInput(nil, bc.NewHash([32]byte{0x01}), *consensus.MITYAssetID, 3, 1, []byte{0x51}),
 			types.NewSpendInput(nil, testutil.MustDecodeHash("d84d0be0fd08e7341f2d127749bb0d0844d4560f53bd54861cee9981fd922cad"), bc.NewAssetID([32]byte{0xa1}), 3, 0, []byte{0x62}),
 		},
 		Outputs: []*types.TxOutput{
-			types.NewTxOutput(*consensus.BTMAssetID, 2, []byte{0x51}),
+			types.NewTxOutput(*consensus.MITYAssetID, 2, []byte{0x51}),
 			types.NewTxOutput(bc.NewAssetID([32]byte{0xa1}), 0, []byte{0x65}),
 		},
 	}),

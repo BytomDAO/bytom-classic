@@ -4,9 +4,9 @@ import (
 	"encoding/binary"
 	"unsafe"
 
-	"github.com/bytom/bytom-classic/crypto/scrypt"
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/scrypt"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
 )
 
 func calcSeed(blockHashs []*bc.Hash) []byte {

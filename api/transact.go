@@ -8,12 +8,12 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/net/http/reqid"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/net/http/reqid"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 var (

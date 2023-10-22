@@ -4,11 +4,11 @@ import (
 	"os"
 	"testing"
 
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/database/storage"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/state"
-	"github.com/bytom/bytom-classic/testutil"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/database/storage"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestSaveUtxoView(t *testing.T) {

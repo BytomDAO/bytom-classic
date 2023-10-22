@@ -3,9 +3,9 @@ package integration
 import (
 	"fmt"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/util"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/util"
 )
 
 // Mock config.

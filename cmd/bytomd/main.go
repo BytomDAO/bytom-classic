@@ -10,8 +10,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/tendermint/tmlibs/cli"
 
-	"github.com/bytom/bytom-classic/cmd/bytomd/commands"
-	"github.com/bytom/bytom-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/cmd/anonimitycashd/commands"
+	"github.com/anonimitycash/anonimitycash-classic/config"
 )
 
 // ContextHook is a hook for logrus.
@@ -44,9 +44,9 @@ func (hook ContextHook) Fire(entry *log.Entry) error {
 func init() {
 	log.SetFormatter(&log.TextFormatter{TimestampFormat: time.StampMilli, DisableColors: true})
 
-	// If environment variable BYTOM_DEBUG is not empty,
+	// If environment variable ANONIMITYCASH_DEBUG is not empty,
 	// then add the hook to logrus and set the log level to DEBUG
-	if os.Getenv("BYTOM_DEBUG") != "" {
+	if os.Getenv("ANONIMITYCASH_DEBUG") != "" {
 		log.AddHook(ContextHook{})
 	}
 }

@@ -4,10 +4,10 @@ import (
 	"context"
 	"strings"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/encoding/json"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 // action error
@@ -43,8 +43,8 @@ func (a *API) completeMissingAssetID(m map[string]interface{}, index int) error 
 	if id == "" && alias != "" {
 		alias = strings.ToUpper(alias)
 		switch alias {
-		case consensus.BTMAlias:
-			m["asset_id"] = consensus.BTMAssetID.String()
+		case consensus.MITYAlias:
+			m["asset_id"] = consensus.MITYAssetID.String()
 		default:
 			asset, err := a.wallet.AssetReg.FindByAlias(alias)
 			if err != nil {

@@ -1,4 +1,4 @@
-// Package account stores and tracks accounts within a Bytom Core.
+// Package account stores and tracks accounts within a Anonimitycash Core.
 package account
 
 import (
@@ -11,19 +11,19 @@ import (
 	"github.com/golang/groupcache/lru"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/consensus/segwit"
-	"github.com/bytom/bytom-classic/crypto"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/consensus/segwit"
+	"github.com/anonimitycash/anonimitycash-classic/crypto"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 const (
@@ -45,7 +45,7 @@ var (
 	CoinbaseAbKey       = []byte("CoinbaseArbitrary")
 )
 
-// pre-define errors for supporting bytom errorFormatter
+// pre-define errors for supporting anonimitycash errorFormatter
 var (
 	ErrDuplicateAlias  = errors.New("Duplicate account alias")
 	ErrDuplicateIndex  = errors.New("Duplicate account with same xPubs and index")
@@ -85,7 +85,7 @@ func contractIndexKey(accountID string) []byte {
 	return append(contractIndexPrefix, []byte(accountID)...)
 }
 
-// Account is structure of Bytom account
+// Account is structure of Anonimitycash account
 type Account struct {
 	*signers.Signer
 	ID    string `json:"id"`

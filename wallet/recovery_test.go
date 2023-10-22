@@ -9,17 +9,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 // MockBlock mock a block
@@ -115,7 +115,7 @@ func MockTxsP2PKH(acctMgr *account.Manager, xPub chainkd.XPub, multiTypeAccount 
 				return nil, err
 			}
 
-			utxo := MockSimpleUtxo(0, consensus.BTMAssetID, 1000000000, controlProg)
+			utxo := MockSimpleUtxo(0, consensus.MITYAssetID, 1000000000, controlProg)
 			tpl, err := BuildTx(utxo, acct.Signer)
 			if err != nil {
 				return nil, err

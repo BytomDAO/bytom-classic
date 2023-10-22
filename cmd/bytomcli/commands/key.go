@@ -7,9 +7,9 @@ import (
 	"github.com/spf13/cobra"
 	jww "github.com/spf13/jwalterweatherman"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
-	"github.com/bytom/bytom-classic/util"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/util"
 )
 
 var createKeyCmd = &cobra.Command{

@@ -3,7 +3,7 @@ package ecmath
 import (
 	"crypto/subtle"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/internal/edwards25519"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/internal/edwards25519"
 )
 
 // Scalar is a 256-bit little-endian scalar.

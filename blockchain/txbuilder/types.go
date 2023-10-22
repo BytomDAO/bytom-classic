@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 // Template represents a partially- or fully-signed transaction.

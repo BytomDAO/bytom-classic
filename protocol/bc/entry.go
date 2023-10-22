@@ -8,9 +8,9 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	"github.com/bytom/bytom-classic/encoding/blockchain"
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/blockchain"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 // Entry is the interface implemented by each addressable unit in a

@@ -3,9 +3,9 @@ package types
 import (
 	"io"
 
-	"github.com/bytom/bytom-classic/encoding/blockchain"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/blockchain"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
 )
 
 // TxOutput is the top level struct of tx output.

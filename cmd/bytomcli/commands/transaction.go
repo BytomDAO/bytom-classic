@@ -9,11 +9,11 @@ import (
 	"github.com/spf13/cobra"
 	jww "github.com/spf13/jwalterweatherman"
 
-	"github.com/bytom/bytom-classic/api"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/util"
+	"github.com/anonimitycash/anonimitycash-classic/api"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/util"
 )
 
 func init() {
@@ -22,7 +22,7 @@ func init() {
 	buildTransactionCmd.PersistentFlags().StringVarP(&address, "address", "a", "", "address of receiver when type is address")
 	buildTransactionCmd.PersistentFlags().StringVarP(&program, "program", "p", "", "program of receiver when type is program")
 	buildTransactionCmd.PersistentFlags().StringVarP(&arbitrary, "arbitrary", "v", "", "additional arbitrary data when type is retire")
-	buildTransactionCmd.PersistentFlags().StringVarP(&btmGas, "gas", "g", "20000000", "gas of this transaction")
+	buildTransactionCmd.PersistentFlags().StringVarP(&mityGas, "gas", "g", "20000000", "gas of this transaction")
 	buildTransactionCmd.PersistentFlags().StringVarP(&contractName, "contract-name", "c", "",
 		"name of template contract, currently supported: 'LockWithPublicKey', 'LockWithMultiSig', 'LockWithPublicKeyHash',"+
 			"\n\t\t\t       'RevealPreimage', 'TradeOffer', 'Escrow', 'CallOption', 'LoanCollateral'")
@@ -40,7 +40,7 @@ func init() {
 
 var (
 	buildType       = ""
-	btmGas          = ""
+	mityGas          = ""
 	receiverProgram = ""
 	address         = ""
 	password        = ""
@@ -64,7 +64,7 @@ var buildIssueReqFmt = `
 
 var buildIssueReqFmtByAlias = `
 	{"actions": [
-		{"type": "spend_account", "asset_alias": "BTM", "amount":%s, "account_alias": "%s"},
+		{"type": "spend_account", "asset_alias": "MITY", "amount":%s, "account_alias": "%s"},
 		{"type": "issue", "asset_alias": "%s", "amount": %s},
 		{"type": "control_address", "asset_alias": "%s", "amount": %s, "address": "%s"}
 	]}`
@@ -78,7 +78,7 @@ var buildSpendReqFmt = `
 
 var buildSpendReqFmtByAlias = `
 	{"actions": [
-		{"type": "spend_account", "asset_alias": "BTM", "amount":%s, "account_alias": "%s"},
+		{"type": "spend_account", "asset_alias": "MITY", "amount":%s, "account_alias": "%s"},
 		{"type": "spend_account", "asset_alias": "%s","amount": %s,"account_alias": "%s"},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"}
 	]}`
@@ -92,7 +92,7 @@ var buildRetireReqFmt = `
 
 var buildRetireReqFmtByAlias = `
 	{"actions": [
-		{"type": "spend_account", "asset_alias": "BTM", "amount":%s, "account_alias": "%s"},
+		{"type": "spend_account", "asset_alias": "MITY", "amount":%s, "account_alias": "%s"},
 		{"type": "spend_account", "asset_alias": "%s", "amount": %s, "account_alias": "%s"},
 		{"type": "retire", "asset_alias": "%s", "amount": %s, "arbitrary": "%s"}
 	]}`
@@ -106,7 +106,7 @@ var buildControlAddressReqFmt = `
 
 var buildControlAddressReqFmtByAlias = `
 	{"actions": [
-		{"type": "spend_account", "asset_alias": "BTM", "amount":%s, "account_alias": "%s"},
+		{"type": "spend_account", "asset_alias": "MITY", "amount":%s, "account_alias": "%s"},
 		{"type": "spend_account", "asset_alias": "%s","amount": %s, "account_alias": "%s"},
 		{"type": "control_address", "asset_alias": "%s", "amount": %s,"address": "%s"}
 	]}`
@@ -129,31 +129,31 @@ var buildTransactionCmd = &cobra.Command{
 		switch buildType {
 		case "issue":
 			if alias {
-				buildReqStr = fmt.Sprintf(buildIssueReqFmtByAlias, btmGas, accountInfo, assetInfo, amount, assetInfo, amount, address)
+				buildReqStr = fmt.Sprintf(buildIssueReqFmtByAlias, mityGas, accountInfo, assetInfo, amount, assetInfo, amount, address)
 				break
 			}
-			buildReqStr = fmt.Sprintf(buildIssueReqFmt, btmGas, accountInfo, assetInfo, amount, assetInfo, amount, address)
+			buildReqStr = fmt.Sprintf(buildIssueReqFmt, mityGas, accountInfo, assetInfo, amount, assetInfo, amount, address)
 		case "spend":
 			if alias {
-				buildReqStr = fmt.Sprintf(buildSpendReqFmtByAlias, btmGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, receiverProgram)
+				buildReqStr = fmt.Sprintf(buildSpendReqFmtByAlias, mityGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, receiverProgram)
 				break
 			}
-			buildReqStr = fmt.Sprintf(buildSpendReqFmt, btmGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, receiverProgram)
+			buildReqStr = fmt.Sprintf(buildSpendReqFmt, mityGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, receiverProgram)
 		case "retire":
 			if alias {
-				buildReqStr = fmt.Sprintf(buildRetireReqFmtByAlias, btmGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, arbitrary)
+				buildReqStr = fmt.Sprintf(buildRetireReqFmtByAlias, mityGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, arbitrary)
 				break
 			}
-			buildReqStr = fmt.Sprintf(buildRetireReqFmt, btmGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, arbitrary)
+			buildReqStr = fmt.Sprintf(buildRetireReqFmt, mityGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, arbitrary)
 		case "address":
 			if alias {
-				buildReqStr = fmt.Sprintf(buildControlAddressReqFmtByAlias, btmGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, address)
+				buildReqStr = fmt.Sprintf(buildControlAddressReqFmtByAlias, mityGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, address)
 				break
 			}
-			buildReqStr = fmt.Sprintf(buildControlAddressReqFmt, btmGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, address)
+			buildReqStr = fmt.Sprintf(buildControlAddressReqFmt, mityGas, accountInfo, assetInfo, amount, accountInfo, assetInfo, amount, address)
 		case "unlock":
 			var err error
-			usage := "Usage:\n  bytomcli build-transaction <accountID|alias> <assetID|alias> <amount> <outputID> -c <contractName>"
+			usage := "Usage:\n  anonimitycashcli build-transaction <accountID|alias> <assetID|alias> <amount> <outputID> -c <contractName>"
 			baseCount := 4
 			if len(args) < baseCount {
 				jww.ERROR.Printf("%s <contract_argument> ... [flags]\n\n", usage)
@@ -166,7 +166,7 @@ var buildTransactionCmd = &cobra.Command{
 				amount:      amount,
 				alias:       alias,
 				program:     program,
-				btmGas:      btmGas,
+				mityGas:      mityGas,
 				outputID:    args[baseCount-1],
 			}
 			specArgs := args[baseCount:]

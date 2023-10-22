@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 const (
@@ -45,7 +45,7 @@ var buildCommonRecvReqFmtByAlias = `
 	{"actions": [
 		{"type": "spend_account_unspent_output", "output_id": "%s", "arguments": [{"type": "data", "raw_data": {"value": "%s"}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"}
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"}
 	]}`
 
 // contract is LockWithPublicKey
@@ -60,7 +60,7 @@ var buildLockWithPublicKeyReqFmtByAlias = `
 	{"actions": [
 		{"type": "spend_account_unspent_output", "output_id": "%s", "arguments": [{"type": "raw_tx_signature", "raw_data": {"xpub": "%s", "derivation_path": ["%s", "%s"]}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"}
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"}
 	]}`
 
 // contract is LockWithMultiSig
@@ -77,7 +77,7 @@ var buildLockWithMultiSigReqFmtByAlias = `
 		{"type": "spend_account_unspent_output", "output_id": "%s", "arguments": [{"type": "raw_tx_signature", "raw_data": {"xpub": "%s", "derivation_path": ["%s", "%s"]}},
 				{"type": "raw_tx_signature", "raw_data": {"xpub": "%s", "derivation_path": ["%s", "%s"]}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"}
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"}
 	]}`
 
 // contract is LockWithPublicKeyHash
@@ -94,7 +94,7 @@ var buildLockWithPublicKeyHashReqFmtByAlias = `
 		{"type": "spend_account_unspent_output", "output_id": "%s", "arguments": [{"type": "data", "raw_data": {"value": "%s"}},
 				{"type": "raw_tx_signature", "raw_data": {"xpub": "%s", "derivation_path": ["%s", "%s"]}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"}
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"}
 	]}`
 
 // contract is TradeOffer's clause trade, the code of clause contains only two statement with "lock payment with program" and "unlock value"
@@ -112,7 +112,7 @@ var buildTradeOfferClauseTradeReqFmtByAlias = `
 		{"type": "spend_account_unspent_output", "output_id":"%s", "arguments": [{"type": "data", "raw_data": {"value": "%s"}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
 		{"type": "spend_account", "asset_alias": "%s", "amount": %s, "account_alias": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"},
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"}
 	]}`
 
@@ -130,7 +130,7 @@ var buildTradeOfferClauseCancelReqFmtByAlias = `
 		{"type": "spend_account_unspent_output", "output_id": "%s", "arguments": [{"type": "raw_tx_signature", "raw_data": {"xpub": "%s", "derivation_path": ["%s", "%s"]}},
 				{"type": "data", "raw_data": {"value": "%s"}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"}
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"}
 	]}`
 
 // contract is Escrow
@@ -147,7 +147,7 @@ var buildEscrowReqFmtByAlias = `
 		{"type": "spend_account_unspent_output", "output_id":"%s", "arguments": [{"type": "raw_tx_signature", "raw_data": {"xpub": "%s", "derivation_path": ["%s", "%s"]}},
 				{"type": "data", "raw_data": {"value": "%s"}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"}
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"}
 	]}`
 
 // contract is LoanCollateral's clause repay, the code of clause contains only two statement with "lock payment with program" and "lock value with control_program"
@@ -166,7 +166,7 @@ var buildLoanCollateralClauseRepayReqFmtByAlias = `
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
 		{"type": "spend_account", "asset_alias": "%s", "amount": %s, "account_alias": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"}
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"}
 	]}`
 
 // contract is CallOption's clause exercise, the code of clause contains only two statement with "lock payment with program" and "unlock value"
@@ -186,7 +186,7 @@ var buildCallOptionClauseExerciseReqFmtByAlias = `
 				{"type": "data", "raw_data": {"value": "%s"}}]},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"},
 		{"type": "spend_account", "asset_alias": "%s", "amount": %s, "account_alias": "%s"},
-		{"type": "spend_account", "asset_alias": "BTM", "amount": %s, "account_alias": "%s"},
+		{"type": "spend_account", "asset_alias": "MITY", "amount": %s, "account_alias": "%s"},
 		{"type": "control_program", "asset_alias": "%s", "amount": %s, "control_program": "%s"}
 	]}`
 
@@ -197,7 +197,7 @@ type baseContractArg struct {
 	amount      string
 	alias       bool
 	program     string
-	btmGas      string
+	mityGas      string
 	outputID    string
 }
 
@@ -425,7 +425,7 @@ func addLockWithPublicKeyArg(baseArg baseContractArg, pubInfo basePubInfo) (buil
 	}
 
 	buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, pubInfo.rootPub, pubInfo.path1, pubInfo.path2,
-		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.btmGas, baseArg.accountInfo)
+		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.mityGas, baseArg.accountInfo)
 
 	return
 }
@@ -438,7 +438,7 @@ func addLockWithMultiSigArg(baseArg baseContractArg, pubInfos [2]basePubInfo) (b
 
 	buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, pubInfos[0].rootPub, pubInfos[0].path1, pubInfos[0].path2,
 		pubInfos[1].rootPub, pubInfos[1].path1, pubInfos[1].path2,
-		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.btmGas, baseArg.accountInfo)
+		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.mityGas, baseArg.accountInfo)
 
 	return
 }
@@ -450,7 +450,7 @@ func addLockWithPublicKeyHashArg(baseArg baseContractArg, pubInfo basePubInfo, p
 	}
 
 	buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, pubkey, pubInfo.rootPub, pubInfo.path1, pubInfo.path2,
-		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.btmGas, baseArg.accountInfo)
+		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.mityGas, baseArg.accountInfo)
 
 	return
 }
@@ -462,7 +462,7 @@ func addRevealPreimageArg(baseArg baseContractArg, value string) (buildReqStr st
 	}
 
 	buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, value,
-		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.btmGas, baseArg.accountInfo)
+		baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.mityGas, baseArg.accountInfo)
 
 	return
 }
@@ -483,7 +483,7 @@ func addTradeOfferArg(baseArg baseContractArg, selector string, innerArg *innerC
 		buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, selector,
 			innerArg.innerAssetInfo, innerArg.innerAmount, innerArg.innerProgram,
 			innerArg.innerAssetInfo, innerArg.innerAmount, innerArg.innerAccountInfo,
-			baseArg.btmGas, baseArg.accountInfo,
+			baseArg.mityGas, baseArg.accountInfo,
 			baseArg.assetInfo, baseArg.amount, baseArg.program)
 
 	case clauseCancel:
@@ -498,7 +498,7 @@ func addTradeOfferArg(baseArg baseContractArg, selector string, innerArg *innerC
 		}
 
 		buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, pubInfo.rootPub, pubInfo.path1, pubInfo.path2, selector,
-			baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.btmGas, baseArg.accountInfo)
+			baseArg.assetInfo, baseArg.amount, baseArg.program, baseArg.mityGas, baseArg.accountInfo)
 
 	default:
 		err = errors.New("Invalid contract clause selector")
@@ -521,7 +521,7 @@ func addEscrowArg(baseArg baseContractArg, selector string, pubInfo *basePubInfo
 		}
 
 		buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, pubInfo.rootPub, pubInfo.path1, pubInfo.path2, selector,
-			baseArg.assetInfo, baseArg.amount, controlProgram, baseArg.btmGas, baseArg.accountInfo)
+			baseArg.assetInfo, baseArg.amount, controlProgram, baseArg.mityGas, baseArg.accountInfo)
 
 	default:
 		err = errors.New("Invalid contract clause selector")
@@ -547,7 +547,7 @@ func addLoanCollateralArg(baseArg baseContractArg, selector string, innerArg *in
 			innerArg.innerAssetInfo, innerArg.innerAmount, innerArg.innerProgram,
 			baseArg.assetInfo, baseArg.amount, controlProgram,
 			innerArg.innerAssetInfo, innerArg.innerAmount, innerArg.innerAccountInfo,
-			baseArg.btmGas, baseArg.accountInfo)
+			baseArg.mityGas, baseArg.accountInfo)
 
 	case clauseDefault:
 		buildReqFmt := buildCommonRecvReqFmt
@@ -556,7 +556,7 @@ func addLoanCollateralArg(baseArg baseContractArg, selector string, innerArg *in
 		}
 
 		buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, selector,
-			baseArg.assetInfo, baseArg.amount, controlProgram, baseArg.btmGas, baseArg.accountInfo)
+			baseArg.assetInfo, baseArg.amount, controlProgram, baseArg.mityGas, baseArg.accountInfo)
 
 	default:
 		err = errors.New("Invalid contract clause selector")
@@ -581,7 +581,7 @@ func addCallOptionArg(baseArg baseContractArg, selector string, innerArg *innerC
 		buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, pubInfo.rootPub, pubInfo.path1, pubInfo.path2, selector,
 			innerArg.innerAssetInfo, innerArg.innerAmount, innerArg.innerProgram,
 			innerArg.innerAssetInfo, innerArg.innerAmount, innerArg.innerAccountInfo,
-			baseArg.btmGas, baseArg.accountInfo,
+			baseArg.mityGas, baseArg.accountInfo,
 			baseArg.assetInfo, baseArg.amount, baseArg.program)
 
 	case clauseExpire:
@@ -591,7 +591,7 @@ func addCallOptionArg(baseArg baseContractArg, selector string, innerArg *innerC
 		}
 
 		buildReqStr = fmt.Sprintf(buildReqFmt, baseArg.outputID, selector,
-			baseArg.assetInfo, baseArg.amount, controlProgram, baseArg.btmGas, baseArg.accountInfo)
+			baseArg.assetInfo, baseArg.amount, controlProgram, baseArg.mityGas, baseArg.accountInfo)
 
 	default:
 		err = errors.New("Invalid contract clause selector")

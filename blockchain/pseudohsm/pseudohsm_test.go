@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519"
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 const dirPath = "testdata/pseudo"
@@ -87,7 +87,7 @@ func TestPseudoHSMChainKDKeys(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	xpub2, _, err := hsm.XCreate("bytom", "nopassword", "en")
+	xpub2, _, err := hsm.XCreate("anonimitycash", "nopassword", "en")
 	if err != nil {
 		t.Fatal(err)
 	}

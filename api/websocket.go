@@ -6,7 +6,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/net/websocket"
+	"github.com/anonimitycash/anonimitycash-classic/net/websocket"
 )
 
 // timeZeroVal is simply the zero value for a time.Time and is used to avoid

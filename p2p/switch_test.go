@@ -10,11 +10,11 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"github.com/tendermint/go-crypto"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
-	conn "github.com/bytom/bytom-classic/p2p/connection"
-	"github.com/bytom/bytom-classic/p2p/security"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	conn "github.com/anonimitycash/anonimitycash-classic/p2p/connection"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/security"
 )
 
 var (

@@ -7,13 +7,13 @@ import (
 
 	"gopkg.in/fatih/set.v0"
 
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
 )
 
 // merkleFlag represent the type of merkle tree node, it's used to generate the structure of merkle tree
 // Bitcoin has only two flags, which zero means the hash of assist node. And one means the hash of the related
-// transaction node or it's parents, which distinguish them according to the height of the tree. But in the bytom,
+// transaction node or it's parents, which distinguish them according to the height of the tree. But in the anonimitycash,
 // the height of transaction node is not fixed, so we need three flags to distinguish these nodes.
 const (
 	// FlagAssist represent assist node

@@ -1,22 +1,22 @@
-Bytom version 1.0.9 is now available from:
+Anonimitycash version 1.0.9 is now available from:
 
-  https://github.com/Bytom/bytom/releases/tag/v1.0.9
+  https://github.com/Anonimitycash/anonimitycash/releases/tag/v1.0.9
 
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/Bytom/bytom/issues
+  https://github.com/Anonimitycash/anonimitycash/issues
 
 How to Upgrade
 ===============
 
-If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Bytom.
-You can operate according to the user manual.[(Bytom User Manual)](https://bytom.io/wp-content/themes/freddo/images/wallet/BytomUsermanualV1.0_en.pdf)
+If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Anonimitycash.
+You can operate according to the user manual.[(Anonimitycash User Manual)](https://anonimitycash.io/wp-content/themes/freddo/images/wallet/AnonimitycashUsermanualV1.0_en.pdf)
 
 
 1.0.9 changelog
 ================
-__Bytom Node__
+__Anonimitycash Node__
 
 + `PR #1657`
     - Save the index for all history transactions when "txindex" flag is provided for the purpose of future querying.
@@ -36,7 +36,7 @@ __Bytom Node__
     - Add timestamp as random number generator seed number, ensure random number security.
 
 
-__Bytom Dashboard__
+__Anonimitycash Dashboard__
 
 - Update the Json structure and add new form stepper for the create asset page.
 - Add the issue asset option under the new transactions page. Support multi-signature under the issue asset transactions.

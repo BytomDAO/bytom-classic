@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 	cmn "github.com/tendermint/tmlibs/common"
 
-	cfg "github.com/bytom/bytom-classic/config"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
 )
 
 var (
@@ -16,7 +16,7 @@ var (
 )
 
 var RootCmd = &cobra.Command{
-	Use:   "bytomd",
+	Use:   "anonimitycashd",
 	Short: "Multiple asset management.",
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 		err := viper.Unmarshal(config)

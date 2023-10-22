@@ -9,10 +9,10 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/encoding/blockchain"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/blockchain"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestBlock(t *testing.T) {
@@ -65,7 +65,7 @@ func TestBlock(t *testing.T) {
 						TimeRange:      654,
 						Inputs: []*TxInput{
 							NewIssuanceInput([]byte("nonce"), 254354, []byte("issuanceProgram"), [][]byte{[]byte("arguments1"), []byte("arguments2")}, []byte("assetDefinition")),
-							NewSpendInput([][]byte{[]byte("arguments3"), []byte("arguments4")}, testutil.MustDecodeHash("fad5195a0c8e3b590b86a3c0a95e7529565888508aecca96e9aeda633002f409"), *consensus.BTMAssetID, 254354, 3, []byte("spendProgram")),
+							NewSpendInput([][]byte{[]byte("arguments3"), []byte("arguments4")}, testutil.MustDecodeHash("fad5195a0c8e3b590b86a3c0a95e7529565888508aecca96e9aeda633002f409"), *consensus.MITYAssetID, 254354, 3, []byte("spendProgram")),
 						},
 						Outputs: []*TxOutput{
 							NewTxOutput(testutil.MustDecodeAsset("a69849e11add96ac7053aad22ba2349a4abf5feb0475a0afcadff4e128be76cf"), 254354, []byte("true")),
@@ -78,8 +78,8 @@ func TestBlock(t *testing.T) {
 							NewCoinbaseInput([]byte("arbitrary")),
 						},
 						Outputs: []*TxOutput{
-							NewTxOutput(*consensus.BTMAssetID, 254354, []byte("true")),
-							NewTxOutput(*consensus.BTMAssetID, 254354, []byte("false")),
+							NewTxOutput(*consensus.MITYAssetID, 254354, []byte("true")),
+							NewTxOutput(*consensus.MITYAssetID, 254354, []byte("false")),
 						},
 					}),
 				},
@@ -135,7 +135,7 @@ func TestBlock(t *testing.T) {
 }
 
 func TestReadFrom(t *testing.T) {
-	btmAssetID := testutil.MustDecodeAsset("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+	mityAssetID := testutil.MustDecodeAsset("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
 
 	cases := []struct {
 		rawBlock  string
@@ -166,7 +166,7 @@ func TestReadFrom(t *testing.T) {
 								NewCoinbaseInput(testutil.MustDecodeHexString("003132313731")),
 							},
 							Outputs: []*TxOutput{
-								NewTxOutput(btmAssetID, 41450000000, testutil.MustDecodeHexString("001437e1aec83a4e6587ca9609e4e5aa728db7007449")),
+								NewTxOutput(mityAssetID, 41450000000, testutil.MustDecodeHexString("001437e1aec83a4e6587ca9609e4e5aa728db7007449")),
 							},
 						},
 					},
@@ -182,7 +182,7 @@ func TestReadFrom(t *testing.T) {
 										testutil.MustDecodeHexString("1381d35e235813ad1e62f9a602c82abee90565639cc4573568206b55bcd2aed9"),
 									},
 									testutil.MustDecodeHash("4b5cb973f5bef4eadde4c89b92ee73312b940e84164da0594149554cc8a2adea"),
-									btmAssetID,
+									mityAssetID,
 									9800000000,
 									2,
 									testutil.MustDecodeHexString("0014cb9f2391bafe2bc1159b2c4c8a0f17ba1b4dd94e"),
@@ -196,7 +196,7 @@ func TestReadFrom(t *testing.T) {
 								),
 							},
 							Outputs: []*TxOutput{
-								NewTxOutput(btmAssetID, 9600000000, testutil.MustDecodeHexString("00144b61da45324299e40dacc255e2ea07dfce3a56d2")),
+								NewTxOutput(mityAssetID, 9600000000, testutil.MustDecodeHexString("00144b61da45324299e40dacc255e2ea07dfce3a56d2")),
 								NewTxOutput(testutil.MustDecodeAsset("7b38dc897329a288ea31031724f5c55bcafec80468a546955023380af2faad14"), 100000000000, testutil.MustDecodeHexString("001437e1aec83a4e6587ca9609e4e5aa728db7007449")),
 							},
 						},

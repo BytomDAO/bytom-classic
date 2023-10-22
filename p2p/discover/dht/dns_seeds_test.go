@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/bytom/bytom-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
 	"github.com/davecgh/go-spew/spew"
 )
 

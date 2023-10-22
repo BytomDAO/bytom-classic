@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/bytom/bytom-classic/common/bech32"
-	"github.com/bytom/bytom-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/common/bech32"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
 )
 
 var (
@@ -64,7 +64,7 @@ type Address interface {
 	ScriptAddress() []byte
 
 	// IsForNet returns whether or not the address is associated with the
-	// passed bytom network.
+	// passed anonimitycash network.
 	IsForNet(*consensus.Params) bool
 }
 
@@ -104,12 +104,12 @@ func encodeSegWitAddress(hrp string, witnessVersion byte, witnessProgram []byte)
 // DecodeAddress decodes the string encoding of an address and returns
 // the Address if addr is a valid encoding for a known address type.
 //
-// The bytom network the address is associated with is extracted if possible.
+// The anonimitycash network the address is associated with is extracted if possible.
 // When the address does not encode the network, such as in the case of a raw
 // public key, the address will be associated with the passed defaultNet.
 func DecodeAddress(addr string, param *consensus.Params) (Address, error) {
 	// Bech32 encoded segwit addresses start with a human-readable part
-	// (hrp) followed by '1'. For Bytom mainnet the hrp is "bm", and for
+	// (hrp) followed by '1'. For Anonimitycash mainnet the hrp is "bm", and for
 	// testnet it is "tm". If the address string has a prefix that matches
 	// one of the prefixes for the known networks, we try to decode it as
 	// a segwit address.
@@ -331,7 +331,7 @@ func (a *AddressWitnessScriptHash) ScriptAddress() []byte {
 }
 
 // IsForNet returns whether or not the AddressWitnessScriptHash is associated
-// with the passed bytom network.
+// with the passed anonimitycash network.
 // Part of the Address interface.
 func (a *AddressWitnessScriptHash) IsForNet(param *consensus.Params) bool {
 	return a.hrp == param.Bech32HRPSegwit

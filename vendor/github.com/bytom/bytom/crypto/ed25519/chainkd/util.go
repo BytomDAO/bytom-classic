@@ -3,7 +3,7 @@ package chainkd
 import (
 	"io"
 
-	"github.com/bytom/bytom/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash/crypto/ed25519"
 )
 
 // Utility functions

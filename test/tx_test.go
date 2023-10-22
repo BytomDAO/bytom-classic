@@ -11,15 +11,15 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/asset"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/consensus"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/validation"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/asset"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/validation"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 func init() {
@@ -94,8 +94,8 @@ func (cfg *TxTestConfig) Run() error {
 		if gasOnlyTx != t.GasOnly {
 			return fmt.Errorf("gas only tx %s validate failed", t.Describe)
 		}
-		if result && t.TxFee != status.BTMValue {
-			return fmt.Errorf("gas used dismatch, expected: %d, have: %d", t.TxFee, status.BTMValue)
+		if result && t.TxFee != status.MITYValue {
+			return fmt.Errorf("gas used dismatch, expected: %d, have: %d", t.TxFee, status.MITYValue)
 		}
 	}
 	return nil

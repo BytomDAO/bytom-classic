@@ -8,12 +8,12 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/consensus"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestGetAccountUtxos(t *testing.T) {
@@ -387,7 +387,7 @@ func TestTxInToUtxos(t *testing.T) {
 					types.NewCoinbaseInput([]byte{0x51}),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 41250000000, []byte{0x51}),
+					types.NewTxOutput(*consensus.MITYAssetID, 41250000000, []byte{0x51}),
 				},
 			}),
 			statusFail: false,
@@ -399,7 +399,7 @@ func TestTxInToUtxos(t *testing.T) {
 					types.NewIssuanceInput([]byte{}, 4125, []byte{0x51}, [][]byte{}, []byte{}),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 4125, []byte{0x51}),
+					types.NewTxOutput(*consensus.MITYAssetID, 4125, []byte{0x51}),
 				},
 			}),
 			statusFail: false,
@@ -410,12 +410,12 @@ func TestTxInToUtxos(t *testing.T) {
 				Inputs: []*types.TxInput{
 					types.NewSpendInput([][]byte{}, bc.Hash{V0: 1}, bc.AssetID{V0: 1}, 1, 1, []byte{0x51}),
 					types.NewSpendInput([][]byte{}, bc.Hash{V0: 2}, bc.AssetID{V0: 1}, 3, 2, []byte{0x52}),
-					types.NewSpendInput([][]byte{}, bc.Hash{V0: 3}, *consensus.BTMAssetID, 5, 3, []byte{0x53}),
-					types.NewSpendInput([][]byte{}, bc.Hash{V0: 4}, *consensus.BTMAssetID, 7, 4, []byte{0x54}),
+					types.NewSpendInput([][]byte{}, bc.Hash{V0: 3}, *consensus.MITYAssetID, 5, 3, []byte{0x53}),
+					types.NewSpendInput([][]byte{}, bc.Hash{V0: 4}, *consensus.MITYAssetID, 7, 4, []byte{0x54}),
 				},
 				Outputs: []*types.TxOutput{
 					types.NewTxOutput(bc.AssetID{V0: 1}, 4, []byte{0x51}),
-					types.NewTxOutput(*consensus.BTMAssetID, 12, []byte{0x53}),
+					types.NewTxOutput(*consensus.MITYAssetID, 12, []byte{0x53}),
 				},
 			}),
 			statusFail: false,
@@ -438,7 +438,7 @@ func TestTxInToUtxos(t *testing.T) {
 				},
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0x3d, 0x0c, 0x52, 0xb0, 0x59, 0xe6, 0xdd, 0xcd, 0x31, 0xe1, 0x25, 0xc4, 0x33, 0xfc, 0x2c, 0x9c, 0xbe, 0xe3, 0x0c, 0x3e, 0x72, 0xb4, 0xac, 0x36, 0x5b, 0xbb, 0x8d, 0x44, 0xa0, 0x82, 0x27, 0xe4}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         5,
 					ControlProgram: []byte{0x53},
 					SourceID:       bc.Hash{V0: 3},
@@ -446,7 +446,7 @@ func TestTxInToUtxos(t *testing.T) {
 				},
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0x88, 0x9e, 0x88, 0xd6, 0x21, 0x74, 0x7f, 0xa0, 0x01, 0x79, 0x29, 0x9a, 0xd8, 0xa3, 0xe9, 0xc7, 0x67, 0xac, 0x39, 0x1c, 0x2b, 0x3a, 0xd1, 0x56, 0x50, 0x42, 0xe1, 0x6b, 0x43, 0x2c, 0x05, 0x91}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         7,
 					ControlProgram: []byte{0x54},
 					SourceID:       bc.Hash{V0: 4},
@@ -459,19 +459,19 @@ func TestTxInToUtxos(t *testing.T) {
 				Inputs: []*types.TxInput{
 					types.NewSpendInput([][]byte{}, bc.Hash{V0: 1}, bc.AssetID{V0: 1}, 1, 1, []byte{0x51}),
 					types.NewSpendInput([][]byte{}, bc.Hash{V0: 2}, bc.AssetID{V0: 1}, 3, 2, []byte{0x52}),
-					types.NewSpendInput([][]byte{}, bc.Hash{V0: 3}, *consensus.BTMAssetID, 5, 3, []byte{0x53}),
-					types.NewSpendInput([][]byte{}, bc.Hash{V0: 4}, *consensus.BTMAssetID, 7, 4, []byte{0x54}),
+					types.NewSpendInput([][]byte{}, bc.Hash{V0: 3}, *consensus.MITYAssetID, 5, 3, []byte{0x53}),
+					types.NewSpendInput([][]byte{}, bc.Hash{V0: 4}, *consensus.MITYAssetID, 7, 4, []byte{0x54}),
 				},
 				Outputs: []*types.TxOutput{
 					types.NewTxOutput(bc.AssetID{V0: 1}, 4, []byte{0x51}),
-					types.NewTxOutput(*consensus.BTMAssetID, 12, []byte{0x53}),
+					types.NewTxOutput(*consensus.MITYAssetID, 12, []byte{0x53}),
 				},
 			}),
 			statusFail: true,
 			wantUtxos: []*account.UTXO{
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0x3d, 0x0c, 0x52, 0xb0, 0x59, 0xe6, 0xdd, 0xcd, 0x31, 0xe1, 0x25, 0xc4, 0x33, 0xfc, 0x2c, 0x9c, 0xbe, 0xe3, 0x0c, 0x3e, 0x72, 0xb4, 0xac, 0x36, 0x5b, 0xbb, 0x8d, 0x44, 0xa0, 0x82, 0x27, 0xe4}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         5,
 					ControlProgram: []byte{0x53},
 					SourceID:       bc.Hash{V0: 3},
@@ -479,7 +479,7 @@ func TestTxInToUtxos(t *testing.T) {
 				},
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0x88, 0x9e, 0x88, 0xd6, 0x21, 0x74, 0x7f, 0xa0, 0x01, 0x79, 0x29, 0x9a, 0xd8, 0xa3, 0xe9, 0xc7, 0x67, 0xac, 0x39, 0x1c, 0x2b, 0x3a, 0xd1, 0x56, 0x50, 0x42, 0xe1, 0x6b, 0x43, 0x2c, 0x05, 0x91}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         7,
 					ControlProgram: []byte{0x54},
 					SourceID:       bc.Hash{V0: 4},
@@ -517,7 +517,7 @@ func TestTxOutToUtxos(t *testing.T) {
 					types.NewCoinbaseInput([]byte{0x51}),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 41250000000, []byte{0x51}),
+					types.NewTxOutput(*consensus.MITYAssetID, 41250000000, []byte{0x51}),
 				},
 			}),
 			statusFail:  false,
@@ -525,7 +525,7 @@ func TestTxOutToUtxos(t *testing.T) {
 			wantUtxos: []*account.UTXO{
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0x67, 0x13, 0xec, 0x34, 0x57, 0xf8, 0xdc, 0xf1, 0xb2, 0x95, 0x71, 0x4c, 0xe0, 0xca, 0x94, 0xef, 0x81, 0x84, 0x6b, 0xa4, 0xc0, 0x8b, 0xb4, 0x40, 0xd3, 0xc0, 0x55, 0xc2, 0x7a, 0x9c, 0x04, 0x0a}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         41250000000,
 					ControlProgram: []byte{0x51},
 					SourceID:       bc.NewHash([32]byte{0xb4, 0x7e, 0x94, 0x31, 0x88, 0xfe, 0xd3, 0xe9, 0xac, 0x99, 0x7c, 0xfc, 0x99, 0x6d, 0xd7, 0x4d, 0x04, 0x10, 0x77, 0xcb, 0x1c, 0xf8, 0x95, 0x14, 0x00, 0xe3, 0x42, 0x00, 0x8d, 0x05, 0xec, 0xdc}),
@@ -538,13 +538,13 @@ func TestTxOutToUtxos(t *testing.T) {
 			tx: types.NewTx(types.TxData{
 				Inputs: []*types.TxInput{
 					types.NewSpendInput([][]byte{}, bc.Hash{V0: 1}, bc.AssetID{V0: 1}, 5, 1, []byte{0x51}),
-					types.NewSpendInput([][]byte{}, bc.Hash{V0: 2}, *consensus.BTMAssetID, 7, 1, []byte{0x51}),
+					types.NewSpendInput([][]byte{}, bc.Hash{V0: 2}, *consensus.MITYAssetID, 7, 1, []byte{0x51}),
 				},
 				Outputs: []*types.TxOutput{
 					types.NewTxOutput(bc.AssetID{V0: 1}, 2, []byte{0x51}),
 					types.NewTxOutput(bc.AssetID{V0: 1}, 3, []byte{0x52}),
-					types.NewTxOutput(*consensus.BTMAssetID, 2, []byte{0x53}),
-					types.NewTxOutput(*consensus.BTMAssetID, 5, []byte{0x54}),
+					types.NewTxOutput(*consensus.MITYAssetID, 2, []byte{0x53}),
+					types.NewTxOutput(*consensus.MITYAssetID, 5, []byte{0x54}),
 				},
 			}),
 			statusFail:  false,
@@ -568,7 +568,7 @@ func TestTxOutToUtxos(t *testing.T) {
 				},
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0xcf, 0xb9, 0xeb, 0xa3, 0xc8, 0xe8, 0xf1, 0x5a, 0x5c, 0x70, 0xf8, 0x9e, 0x7d, 0x9e, 0xf7, 0xb2, 0x66, 0x42, 0x8c, 0x97, 0x8e, 0xc2, 0x4d, 0x4b, 0x28, 0x57, 0xa7, 0x61, 0x1c, 0xf1, 0xea, 0x9d}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         2,
 					ControlProgram: []byte{0x53},
 					SourceID:       bc.NewHash([32]byte{0x39, 0x4f, 0x89, 0xd4, 0xdc, 0x26, 0xb9, 0x57, 0x91, 0x2f, 0xe9, 0x7f, 0xba, 0x51, 0x68, 0xcf, 0xe4, 0xae, 0x0c, 0xef, 0x79, 0x56, 0xa0, 0x45, 0xda, 0x27, 0xdc, 0x69, 0xd8, 0xef, 0x32, 0x61}),
@@ -576,7 +576,7 @@ func TestTxOutToUtxos(t *testing.T) {
 				},
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0x21, 0xf2, 0xe4, 0xee, 0xec, 0x1f, 0x82, 0xd8, 0xf2, 0xe1, 0x2b, 0x9e, 0x72, 0xfa, 0x91, 0x2b, 0x8c, 0xce, 0xbd, 0x18, 0x6d, 0x16, 0xf8, 0xc4, 0xf1, 0x71, 0x9d, 0x6b, 0x44, 0x41, 0xde, 0xb9}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         5,
 					ControlProgram: []byte{0x54},
 					SourceID:       bc.NewHash([32]byte{0x39, 0x4f, 0x89, 0xd4, 0xdc, 0x26, 0xb9, 0x57, 0x91, 0x2f, 0xe9, 0x7f, 0xba, 0x51, 0x68, 0xcf, 0xe4, 0xae, 0x0c, 0xef, 0x79, 0x56, 0xa0, 0x45, 0xda, 0x27, 0xdc, 0x69, 0xd8, 0xef, 0x32, 0x61}),
@@ -588,13 +588,13 @@ func TestTxOutToUtxos(t *testing.T) {
 			tx: types.NewTx(types.TxData{
 				Inputs: []*types.TxInput{
 					types.NewSpendInput([][]byte{}, bc.Hash{V0: 1}, bc.AssetID{V0: 1}, 5, 1, []byte{0x51}),
-					types.NewSpendInput([][]byte{}, bc.Hash{V0: 2}, *consensus.BTMAssetID, 7, 1, []byte{0x51}),
+					types.NewSpendInput([][]byte{}, bc.Hash{V0: 2}, *consensus.MITYAssetID, 7, 1, []byte{0x51}),
 				},
 				Outputs: []*types.TxOutput{
 					types.NewTxOutput(bc.AssetID{V0: 1}, 2, []byte{0x51}),
 					types.NewTxOutput(bc.AssetID{V0: 1}, 3, []byte{0x52}),
-					types.NewTxOutput(*consensus.BTMAssetID, 2, []byte{0x53}),
-					types.NewTxOutput(*consensus.BTMAssetID, 5, []byte{0x54}),
+					types.NewTxOutput(*consensus.MITYAssetID, 2, []byte{0x53}),
+					types.NewTxOutput(*consensus.MITYAssetID, 5, []byte{0x54}),
 				},
 			}),
 			statusFail:  true,
@@ -602,7 +602,7 @@ func TestTxOutToUtxos(t *testing.T) {
 			wantUtxos: []*account.UTXO{
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0xcf, 0xb9, 0xeb, 0xa3, 0xc8, 0xe8, 0xf1, 0x5a, 0x5c, 0x70, 0xf8, 0x9e, 0x7d, 0x9e, 0xf7, 0xb2, 0x66, 0x42, 0x8c, 0x97, 0x8e, 0xc2, 0x4d, 0x4b, 0x28, 0x57, 0xa7, 0x61, 0x1c, 0xf1, 0xea, 0x9d}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         2,
 					ControlProgram: []byte{0x53},
 					SourceID:       bc.NewHash([32]byte{0x39, 0x4f, 0x89, 0xd4, 0xdc, 0x26, 0xb9, 0x57, 0x91, 0x2f, 0xe9, 0x7f, 0xba, 0x51, 0x68, 0xcf, 0xe4, 0xae, 0x0c, 0xef, 0x79, 0x56, 0xa0, 0x45, 0xda, 0x27, 0xdc, 0x69, 0xd8, 0xef, 0x32, 0x61}),
@@ -610,7 +610,7 @@ func TestTxOutToUtxos(t *testing.T) {
 				},
 				&account.UTXO{
 					OutputID:       bc.NewHash([32]byte{0x21, 0xf2, 0xe4, 0xee, 0xec, 0x1f, 0x82, 0xd8, 0xf2, 0xe1, 0x2b, 0x9e, 0x72, 0xfa, 0x91, 0x2b, 0x8c, 0xce, 0xbd, 0x18, 0x6d, 0x16, 0xf8, 0xc4, 0xf1, 0x71, 0x9d, 0x6b, 0x44, 0x41, 0xde, 0xb9}),
-					AssetID:        *consensus.BTMAssetID,
+					AssetID:        *consensus.MITYAssetID,
 					Amount:         5,
 					ControlProgram: []byte{0x54},
 					SourceID:       bc.NewHash([32]byte{0x39, 0x4f, 0x89, 0xd4, 0xdc, 0x26, 0xb9, 0x57, 0x91, 0x2f, 0xe9, 0x7f, 0xba, 0x51, 0x68, 0xcf, 0xe4, 0xae, 0x0c, 0xef, 0x79, 0x56, 0xa0, 0x45, 0xda, 0x27, 0xdc, 0x69, 0xd8, 0xef, 0x32, 0x61}),

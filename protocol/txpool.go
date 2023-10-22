@@ -9,11 +9,11 @@ import (
 	"github.com/golang/groupcache/lru"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
 )
 
 // msg type
@@ -194,9 +194,9 @@ func (tp *TxPool) HaveTransaction(txHash *bc.Hash) bool {
 	return tp.IsTransactionInPool(txHash) || tp.IsTransactionInErrCache(txHash)
 }
 
-func isTransactionNoBtmInput(tx *types.Tx) bool {
+func isTransactionNoMityInput(tx *types.Tx) bool {
 	for _, input := range tx.TxData.Inputs {
-		if input.AssetID() == *consensus.BTMAssetID {
+		if input.AssetID() == *consensus.MITYAssetID {
 			return false
 		}
 	}
@@ -213,7 +213,7 @@ func isTransactionZeroOutput(tx *types.Tx) bool {
 }
 
 func (tp *TxPool) IsDust(tx *types.Tx) bool {
-	return isTransactionNoBtmInput(tx) || isTransactionZeroOutput(tx)
+	return isTransactionNoMityInput(tx) || isTransactionZeroOutput(tx)
 }
 
 func (tp *TxPool) processTransaction(tx *types.Tx, statusFail bool, height, fee uint64) (bool, error) {
@@ -283,7 +283,7 @@ func (tp *TxPool) addTransaction(txD *TxDesc) error {
 			// error due to it's a retirement, utxo doesn't care this output type so skip it
 			continue
 		}
-		if !txD.StatusFail || *output.Source.Value.AssetId == *consensus.BTMAssetID {
+		if !txD.StatusFail || *output.Source.Value.AssetId == *consensus.MITYAssetID {
 			tp.utxo[*id] = tx
 		}
 	}

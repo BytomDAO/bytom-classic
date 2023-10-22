@@ -9,8 +9,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/bytom/bytom-classic/equity/compiler"
-	equityutil "github.com/bytom/bytom-classic/equity/equity/util"
+	"github.com/anonimitycash/anonimitycash-classic/equity/compiler"
+	equityutil "github.com/anonimitycash/anonimitycash-classic/equity/equity/util"
 )
 
 const (

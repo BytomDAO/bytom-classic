@@ -4,15 +4,15 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 //DecodeSpendAction unmarshal JSON-encoded data of spend action
@@ -65,12 +65,12 @@ func calcMergeGas(num int) uint64 {
 	return gas
 }
 
-func (m *Manager) reserveBtmUtxoChain(builder *txbuilder.TemplateBuilder, accountID string, amount uint64, useUnconfirmed bool) ([]*UTXO, error) {
+func (m *Manager) reserveMityUtxoChain(builder *txbuilder.TemplateBuilder, accountID string, amount uint64, useUnconfirmed bool) ([]*UTXO, error) {
 	reservedAmount := uint64(0)
 	utxos := []*UTXO{}
 	for gasAmount := uint64(0); reservedAmount < gasAmount+amount; gasAmount = calcMergeGas(len(utxos)) {
 		reserveAmount := amount + gasAmount - reservedAmount
-		res, err := m.utxoKeeper.Reserve(accountID, consensus.BTMAssetID, reserveAmount, useUnconfirmed, builder.MaxTime())
+		res, err := m.utxoKeeper.Reserve(accountID, consensus.MITYAssetID, reserveAmount, useUnconfirmed, builder.MaxTime())
 		if err != nil {
 			return nil, err
 		}
@@ -82,7 +82,7 @@ func (m *Manager) reserveBtmUtxoChain(builder *txbuilder.TemplateBuilder, accoun
 	return utxos, nil
 }
 
-func (m *Manager) buildBtmTxChain(utxos []*UTXO, signer *signers.Signer) ([]*txbuilder.Template, *UTXO, error) {
+func (m *Manager) buildMityTxChain(utxos []*UTXO, signer *signers.Signer) ([]*txbuilder.Template, *UTXO, error) {
 	if len(utxos) == 0 {
 		return nil, nil, errors.New("mergeSpendActionUTXO utxos num 0")
 	}
@@ -115,7 +115,7 @@ func (m *Manager) buildBtmTxChain(utxos []*UTXO, signer *signers.Signer) ([]*txb
 		}
 
 		outAmount := buildAmount - txbuilder.ChainTxMergeGas
-		output := types.NewTxOutput(*consensus.BTMAssetID, outAmount, acp.ControlProgram)
+		output := types.NewTxOutput(*consensus.MITYAssetID, outAmount, acp.ControlProgram)
 		if err := builder.AddOutput(output); err != nil {
 			return nil, nil, err
 		}
@@ -132,7 +132,7 @@ func (m *Manager) buildBtmTxChain(utxos []*UTXO, signer *signers.Signer) ([]*txb
 
 		utxos = append(utxos, &UTXO{
 			OutputID:            *tpl.Transaction.ResultIds[0],
-			AssetID:             *consensus.BTMAssetID,
+			AssetID:             *consensus.MITYAssetID,
 			Amount:              outAmount,
 			ControlProgram:      acp.ControlProgram,
 			SourceID:            *bcOut.Source.Ref,
@@ -158,11 +158,11 @@ func SpendAccountChain(ctx context.Context, builder *txbuilder.TemplateBuilder, 
 	if !ok {
 		return nil, errors.New("fail to convert the spend action")
 	}
-	if *act.AssetId != *consensus.BTMAssetID {
-		return nil, errors.New("spend chain action only support BTM")
+	if *act.AssetId != *consensus.MITYAssetID {
+		return nil, errors.New("spend chain action only support MITY")
 	}
 
-	utxos, err := act.accounts.reserveBtmUtxoChain(builder, act.AccountID, act.Amount, act.UseUnconfirmed)
+	utxos, err := act.accounts.reserveMityUtxoChain(builder, act.AccountID, act.Amount, act.UseUnconfirmed)
 	if err != nil {
 		return nil, err
 	}
@@ -172,7 +172,7 @@ func SpendAccountChain(ctx context.Context, builder *txbuilder.TemplateBuilder, 
 		return nil, err
 	}
 
-	tpls, utxo, err := act.accounts.buildBtmTxChain(utxos, acct.Signer)
+	tpls, utxo, err := act.accounts.buildMityTxChain(utxos, acct.Signer)
 	if err != nil {
 		return nil, err
 	}
@@ -187,7 +187,7 @@ func SpendAccountChain(ctx context.Context, builder *txbuilder.TemplateBuilder, 
 	}
 
 	if utxo.Amount > act.Amount {
-		if err = builder.AddOutput(types.NewTxOutput(*consensus.BTMAssetID, utxo.Amount-act.Amount, utxo.ControlProgram)); err != nil {
+		if err = builder.AddOutput(types.NewTxOutput(*consensus.MITYAssetID, utxo.Amount-act.Amount, utxo.ControlProgram)); err != nil {
 			return nil, errors.Wrap(err, "adding change output")
 		}
 	}

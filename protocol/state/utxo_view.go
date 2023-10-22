@@ -3,9 +3,9 @@ package state
 import (
 	"errors"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/database/storage"
-	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/database/storage"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
 )
 
 // UtxoViewpoint represents a view into the set of unspent transaction outputs
@@ -26,7 +26,7 @@ func (view *UtxoViewpoint) ApplyTransaction(block *bc.Block, tx *bc.Tx, statusFa
 		if err != nil {
 			return err
 		}
-		if statusFail && *spentOutput.Source.Value.AssetId != *consensus.BTMAssetID {
+		if statusFail && *spentOutput.Source.Value.AssetId != *consensus.MITYAssetID {
 			continue
 		}
 
@@ -49,7 +49,7 @@ func (view *UtxoViewpoint) ApplyTransaction(block *bc.Block, tx *bc.Tx, statusFa
 			// error due to it's a retirement, utxo doesn't care this output type so skip it
 			continue
 		}
-		if statusFail && *output.Source.Value.AssetId != *consensus.BTMAssetID {
+		if statusFail && *output.Source.Value.AssetId != *consensus.MITYAssetID {
 			continue
 		}
 
@@ -86,7 +86,7 @@ func (view *UtxoViewpoint) DetachTransaction(tx *bc.Tx, statusFail bool) error {
 		if err != nil {
 			return err
 		}
-		if statusFail && *spentOutput.Source.Value.AssetId != *consensus.BTMAssetID {
+		if statusFail && *spentOutput.Source.Value.AssetId != *consensus.MITYAssetID {
 			continue
 		}
 
@@ -107,7 +107,7 @@ func (view *UtxoViewpoint) DetachTransaction(tx *bc.Tx, statusFail bool) error {
 			// error due to it's a retirement, utxo doesn't care this output type so skip it
 			continue
 		}
-		if statusFail && *output.Source.Value.AssetId != *consensus.BTMAssetID {
+		if statusFail && *output.Source.Value.AssetId != *consensus.MITYAssetID {
 			continue
 		}
 

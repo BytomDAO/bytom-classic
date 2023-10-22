@@ -64,7 +64,7 @@ const (
 
 	sysIPV6_PREFER_SRC_TMP            = 0x1
 	sysIPV6_PREFER_SRC_PUBLIC         = 0x2
-	sysIPV6_PREFER_SRC_PUBTMP_DEFAULT = 0x100
+	sysIPV6_PREFER_SRC_PUMITYP_DEFAULT = 0x100
 	sysIPV6_PREFER_SRC_COA            = 0x4
 	sysIPV6_PREFER_SRC_HOME           = 0x400
 	sysIPV6_PREFER_SRC_CGA            = 0x8

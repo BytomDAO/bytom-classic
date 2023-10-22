@@ -8,9 +8,9 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom-classic/encoding/blockchain"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/blockchain"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestSerializationTxOutput(t *testing.T) {
@@ -56,14 +56,14 @@ func TestSerializationTxOutput(t *testing.T) {
 }
 
 func TestComputeOutputID(t *testing.T) {
-	btmAssetID := testutil.MustDecodeAsset("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+	mityAssetID := testutil.MustDecodeAsset("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
 	cases := []struct {
 		sc           *SpendCommitment
 		wantOutputID string
 	}{
 		{
 			sc: &SpendCommitment{
-				AssetAmount:    bc.AssetAmount{AssetId: &btmAssetID, Amount: 1000},
+				AssetAmount:    bc.AssetAmount{AssetId: &mityAssetID, Amount: 1000},
 				SourceID:       testutil.MustDecodeHash("4b5cb973f5bef4eadde4c89b92ee73312b940e84164da0594149554cc8a2adea"),
 				SourcePosition: 2,
 				VMVersion:      1,
@@ -73,7 +73,7 @@ func TestComputeOutputID(t *testing.T) {
 		},
 		{
 			sc: &SpendCommitment{
-				AssetAmount:    bc.AssetAmount{AssetId: &btmAssetID, Amount: 999},
+				AssetAmount:    bc.AssetAmount{AssetId: &mityAssetID, Amount: 999},
 				SourceID:       testutil.MustDecodeHash("9e74e35362ffc73c8967aa0008da8fcbc62a21d35673fb970445b5c2972f8603"),
 				SourcePosition: 2,
 				VMVersion:      1,
