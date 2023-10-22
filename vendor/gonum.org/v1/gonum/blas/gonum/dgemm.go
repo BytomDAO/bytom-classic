@@ -217,12 +217,12 @@ func dgemmSerialTransNot(m, n, k int, a []float64, lda int, b []float64, ldb int
 	// This style is used instead of the literal [i*stride +j]) is used because
 	// approximately 5 times faster as of go 1.3.
 	for l := 0; l < k; l++ {
-		btmp := b[l*ldb : l*ldb+n]
+		mityp := b[l*ldb : l*ldb+n]
 		for i, v := range a[l*lda : l*lda+m] {
 			tmp := alpha * v
 			if tmp != 0 {
 				ctmp := c[i*ldc : i*ldc+n]
-				f64.AxpyUnitaryTo(ctmp, tmp, btmp, ctmp)
+				f64.AxpyUnitaryTo(ctmp, tmp, mityp, ctmp)
 			}
 		}
 	}

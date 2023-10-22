@@ -6,8 +6,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	core "github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	core "github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 const (

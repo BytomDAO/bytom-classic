@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 const tokenSize = 32

@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 // A lower difficulty Int actually reflects a more difficult mining progress.
@@ -450,7 +450,7 @@ func TestCompactToBig(t *testing.T) {
 			out: big.NewInt(-16777216),
 		},
 		{
-			//btm PowMin test
+			//mity PowMin test
 			// PowMinBits = 2161727821138738707, i.e 0x1e000000000dbe13, as defined
 			// in /consensus/general.go
 			in: `00011110` + //Exponent
@@ -496,7 +496,7 @@ func TestBigToCompact(t *testing.T) {
 		}
 	}
 
-	// btm PowMin test
+	// mity PowMin test
 	// PowMinBits = 2161727821138738707, i.e 0x1e000000000dbe13, as defined
 	// in /consensus/general.go
 	n := big.NewInt(0).Lsh(big.NewInt(0x0dbe13), 27*8)

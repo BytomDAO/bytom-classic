@@ -6,8 +6,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/blockchain/txfeed"
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txfeed"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 // POST /create-txfeed

@@ -4,10 +4,10 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 func TestValidateTx(t *testing.T) {
@@ -18,7 +18,7 @@ func TestValidateTx(t *testing.T) {
 		err      error
 	}{
 		{
-			desc: "single utxo, single sign, non asset, btm stanard transaction",
+			desc: "single utxo, single sign, non asset, mity stanard transaction",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 331,
@@ -29,18 +29,18 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("5a260070d967d894a9c4a6e16670c2881ed4c225e12d93b0707156e71fce5bfd"),
 						},
 						bc.Hash{V0: 3485387979411255237, V1: 15603105575416882039, V2: 5974145557334619041, V3: 16513948410238218452},
-						*consensus.BTMAssetID, 21819700000, 0, mustDecodeString("001411ef7695d46e1f9288d996c3daa6ff4d956ac355")),
+						*consensus.MITYAssetID, 21819700000, 0, mustDecodeString("001411ef7695d46e1f9288d996c3daa6ff4d956ac355")),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 11818900000, mustDecodeString("001415c956112c2b46354690e36051803cc9d5a8f26b")),
-					types.NewTxOutput(*consensus.BTMAssetID, 10000000000, mustDecodeString("00149c9dd93184cc34ac5d47c145c5af3df852235aad")),
+					types.NewTxOutput(*consensus.MITYAssetID, 11818900000, mustDecodeString("001415c956112c2b46354690e36051803cc9d5a8f26b")),
+					types.NewTxOutput(*consensus.MITYAssetID, 10000000000, mustDecodeString("00149c9dd93184cc34ac5d47c145c5af3df852235aad")),
 				},
 			},
 			gasValid: true,
 			err:      nil,
 		},
 		{
-			desc: "multi utxo, single sign, non asset, btm stanard transaction",
+			desc: "multi utxo, single sign, non asset, mity stanard transaction",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 595,
@@ -51,26 +51,26 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("ca85ea98011ddd592d1f081ebd2a91ac0f4238784222ed85b9d95aeb654f1cf1"),
 						},
 						bc.Hash{V0: 14760873410800997144, V1: 1698395500822741684, V2: 5965908492734661392, V3: 9445539829830863994},
-						*consensus.BTMAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
+						*consensus.MITYAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
 					types.NewSpendInput(
 						[][]byte{
 							mustDecodeString("5d528bdb13b93c26245dc90c1fe51265555eb22a34fa013649db9aa874eb7770c6c4016320017224efdecf5fee39b682151f881f82c2c7195fe444ac5966140e"),
 							mustDecodeString("563cb0eedf2a2891926dfaa0b9ac20913c67a066517f06b1f77c5ab527a8a8c4"),
 						},
 						bc.Hash{V0: 13464118406972499748, V1: 5083224803004805715, V2: 16263625389659454272, V3: 9428032044180324575},
-						*consensus.BTMAssetID, 99439999900, 2, mustDecodeString("001419f79910f29df2ef80ec10d24c78e2009ed19302")),
+						*consensus.MITYAssetID, 99439999900, 2, mustDecodeString("001419f79910f29df2ef80ec10d24c78e2009ed19302")),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 1818900000, mustDecodeString("00145931e1b7b65897f47845ac08fc136e0c0a4ff166")),
-					types.NewTxOutput(*consensus.BTMAssetID, 89439999900, mustDecodeString("0014ca1f877c2787f746a4473adac932171dd18d55d7")),
-					types.NewTxOutput(*consensus.BTMAssetID, 19900000000, mustDecodeString("00145ade29df622cc68d0473aa1a20fb89690451c66e")),
+					types.NewTxOutput(*consensus.MITYAssetID, 1818900000, mustDecodeString("00145931e1b7b65897f47845ac08fc136e0c0a4ff166")),
+					types.NewTxOutput(*consensus.MITYAssetID, 89439999900, mustDecodeString("0014ca1f877c2787f746a4473adac932171dd18d55d7")),
+					types.NewTxOutput(*consensus.MITYAssetID, 19900000000, mustDecodeString("00145ade29df622cc68d0473aa1a20fb89690451c66e")),
 				},
 			},
 			gasValid: true,
 			err:      nil,
 		},
 		{
-			desc: "multi utxo, single sign, non asset, btm stanard transaction, insufficient gas",
+			desc: "multi utxo, single sign, non asset, mity stanard transaction, insufficient gas",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 595,
@@ -81,26 +81,26 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("ca85ea98011ddd592d1f081ebd2a91ac0f4238784222ed85b9d95aeb654f1cf1"),
 						},
 						bc.Hash{V0: 14760873410800997144, V1: 1698395500822741684, V2: 5965908492734661392, V3: 9445539829830863994},
-						*consensus.BTMAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
+						*consensus.MITYAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
 					types.NewSpendInput(
 						[][]byte{
 							mustDecodeString("b4f6876a97c8e6bd7e038b476fb6fd07cdd6cfcf7d661dfab796b5e2c777b3de166495de4fba2aa154af844ed6a3d51c26742241edb0d5d107fc52dfff0f6305"),
 							mustDecodeString("e5966eee4092eeefdd805b06f2ad368bb9392edec20998993ebe2a929052c1ce"),
 						},
 						bc.Hash{V0: 17091584763764411831, V1: 2315724244669489432, V2: 4322938623810388342, V3: 11167378497724951792},
-						*consensus.BTMAssetID, 99960000000, 1, mustDecodeString("0014cfbccfac5018ad4b4bfbcb1fab834e3c85037460")),
+						*consensus.MITYAssetID, 99960000000, 1, mustDecodeString("0014cfbccfac5018ad4b4bfbcb1fab834e3c85037460")),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 1818900000, mustDecodeString("00144b5637cc25b188136f440484f210541fa2a7ce64")),
-					types.NewTxOutput(*consensus.BTMAssetID, 89960000000, mustDecodeString("0014c7271a69dba57331b36221118dfeb1b1793933df")),
-					types.NewTxOutput(*consensus.BTMAssetID, 20000000000, mustDecodeString("0014447e597c1c326ad1a639f8023d3f87ae22a4e049")),
+					types.NewTxOutput(*consensus.MITYAssetID, 1818900000, mustDecodeString("00144b5637cc25b188136f440484f210541fa2a7ce64")),
+					types.NewTxOutput(*consensus.MITYAssetID, 89960000000, mustDecodeString("0014c7271a69dba57331b36221118dfeb1b1793933df")),
+					types.NewTxOutput(*consensus.MITYAssetID, 20000000000, mustDecodeString("0014447e597c1c326ad1a639f8023d3f87ae22a4e049")),
 				},
 			},
 			gasValid: false,
 			err:      vm.ErrRunLimitExceeded,
 		},
 		{
-			desc: "single utxo, multi sign, non asset, btm stanard transaction",
+			desc: "single utxo, multi sign, non asset, mity stanard transaction",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 396,
@@ -111,18 +111,18 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("ae203f56f71972918585ece56a21f77c3e9101ce14c75038b65454e10960266cceba20c9927f289b57c647578d07904a9d34597079d80e300df023a26658a770f611545152ad"),
 						},
 						bc.Hash{V0: 6970879411704044573, V1: 10086395903308657573, V2: 10107608596190358115, V3: 8645856247221333302},
-						*consensus.BTMAssetID, 89220000000, 1, mustDecodeString("0020ff726649e34c921ff61a97090fc62054f339597acfc710197bb0133e18a19c5c")),
+						*consensus.MITYAssetID, 89220000000, 1, mustDecodeString("0020ff726649e34c921ff61a97090fc62054f339597acfc710197bb0133e18a19c5c")),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 79220000000, mustDecodeString("00206205ec178dc1ac6ea05ea01bb0fcda6aa978173026fa75204a101bdad7bd6b48")),
-					types.NewTxOutput(*consensus.BTMAssetID, 9900000000, mustDecodeString("0014414eb62abda9a9191f9cba5d7e38d92f3e91e268")),
+					types.NewTxOutput(*consensus.MITYAssetID, 79220000000, mustDecodeString("00206205ec178dc1ac6ea05ea01bb0fcda6aa978173026fa75204a101bdad7bd6b48")),
+					types.NewTxOutput(*consensus.MITYAssetID, 9900000000, mustDecodeString("0014414eb62abda9a9191f9cba5d7e38d92f3e91e268")),
 				},
 			},
 			gasValid: true,
 			err:      nil,
 		},
 		{
-			desc: "single utxo, retire, non asset, btm stanard transaction",
+			desc: "single utxo, retire, non asset, mity stanard transaction",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 309,
@@ -133,18 +133,18 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("ca85ea98011ddd592d1f081ebd2a91ac0f4238784222ed85b9d95aeb654f1cf1"),
 						},
 						bc.Hash{V0: 14760873410800997144, V1: 1698395500822741684, V2: 5965908492734661392, V3: 9445539829830863994},
-						*consensus.BTMAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
+						*consensus.MITYAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 11718900000, mustDecodeString("0014085a02ecdf934a56343aa59a3dec9d9feb86ee43")),
-					types.NewTxOutput(*consensus.BTMAssetID, 90000000, []byte{byte(vm.OP_FAIL)}),
+					types.NewTxOutput(*consensus.MITYAssetID, 11718900000, mustDecodeString("0014085a02ecdf934a56343aa59a3dec9d9feb86ee43")),
+					types.NewTxOutput(*consensus.MITYAssetID, 90000000, []byte{byte(vm.OP_FAIL)}),
 				},
 			},
 			gasValid: true,
 			err:      nil,
 		},
 		{
-			desc: "single utxo, single sign, issuance, spend, retire, btm stanard transaction, gas sufficient",
+			desc: "single utxo, single sign, issuance, spend, retire, mity stanard transaction, gas sufficient",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 601,
@@ -155,7 +155,7 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("ca85ea98011ddd592d1f081ebd2a91ac0f4238784222ed85b9d95aeb654f1cf1"),
 						},
 						bc.Hash{V0: 14760873410800997144, V1: 1698395500822741684, V2: 5965908492734661392, V3: 9445539829830863994},
-						*consensus.BTMAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
+						*consensus.MITYAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
 					types.NewIssuanceInput(
 						mustDecodeString("fd0aec4229deb281"),
 						10000000000,
@@ -167,8 +167,8 @@ func TestValidateTx(t *testing.T) {
 					),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 1818900000, mustDecodeString("00147d6b00edfbbc758a5da6130a5fa1a4cfec8422c3")),
-					types.NewTxOutput(*consensus.BTMAssetID, 9900000000, []byte{byte(vm.OP_FAIL)}),
+					types.NewTxOutput(*consensus.MITYAssetID, 1818900000, mustDecodeString("00147d6b00edfbbc758a5da6130a5fa1a4cfec8422c3")),
+					types.NewTxOutput(*consensus.MITYAssetID, 9900000000, []byte{byte(vm.OP_FAIL)}),
 					types.NewTxOutput(bc.AssetID{V0: 8879089148261671560, V1: 16875272676673176923, V2: 14627348561007036053, V3: 5774520766896450836}, 10000000000, mustDecodeString("0014447e597c1c326ad1a639f8023d3f87ae22a4e049")),
 				},
 			},
@@ -176,7 +176,7 @@ func TestValidateTx(t *testing.T) {
 			err:      nil,
 		},
 		{
-			desc: "single utxo, single sign, issuance, spend, retire, btm stanard transaction, gas insufficient",
+			desc: "single utxo, single sign, issuance, spend, retire, mity stanard transaction, gas insufficient",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 601,
@@ -187,7 +187,7 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("ca85ea98011ddd592d1f081ebd2a91ac0f4238784222ed85b9d95aeb654f1cf1"),
 						},
 						bc.Hash{V0: 14760873410800997144, V1: 1698395500822741684, V2: 5965908492734661392, V3: 9445539829830863994},
-						*consensus.BTMAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
+						*consensus.MITYAssetID, 11818900000, 0, mustDecodeString("0014e6e1f8b11f1cfb7609037003b90f64837afd272c")),
 					types.NewIssuanceInput(
 						mustDecodeString("4b6afc9344c3ce63"),
 						10000000000,
@@ -199,8 +199,8 @@ func TestValidateTx(t *testing.T) {
 					),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 1818900000, mustDecodeString("001482b7991d64d001009b673ffe3ca2b35eab14f142")),
-					types.NewTxOutput(*consensus.BTMAssetID, 10000000000, []byte{byte(vm.OP_FAIL)}),
+					types.NewTxOutput(*consensus.MITYAssetID, 1818900000, mustDecodeString("001482b7991d64d001009b673ffe3ca2b35eab14f142")),
+					types.NewTxOutput(*consensus.MITYAssetID, 10000000000, []byte{byte(vm.OP_FAIL)}),
 					types.NewTxOutput(bc.AssetID{V0: 8879089148261671560, V1: 16875272676673176923, V2: 14627348561007036053, V3: 5774520766896450836}, 10000000000, mustDecodeString("0014447e597c1c326ad1a639f8023d3f87ae22a4e049")),
 				},
 			},
@@ -208,7 +208,7 @@ func TestValidateTx(t *testing.T) {
 			err:      vm.ErrRunLimitExceeded,
 		},
 		{
-			desc: "btm stanard transaction check signature is not passed",
+			desc: "mity stanard transaction check signature is not passed",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 331,
@@ -219,18 +219,18 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("5a260070d967d894a9c4a6e16670c2881ed4c225e12d93b0707156e71fce5bfd"),
 						},
 						bc.Hash{V0: 3485387979411255237, V1: 15603105575416882039, V2: 5974145557334619041, V3: 16513948410238218452},
-						*consensus.BTMAssetID, 21819700000, 0, mustDecodeString("001411ef7695d46e1f9288d996c3daa6ff4d956ac355")),
+						*consensus.MITYAssetID, 21819700000, 0, mustDecodeString("001411ef7695d46e1f9288d996c3daa6ff4d956ac355")),
 				},
 				Outputs: []*types.TxOutput{
-					types.NewTxOutput(*consensus.BTMAssetID, 11818900000, mustDecodeString("001415c956112c2b46354690e36051803cc9d5a8f26b")),
-					types.NewTxOutput(*consensus.BTMAssetID, 10000000000, mustDecodeString("00149c9dd93184cc34ac5d47c145c5af3df852235aad")),
+					types.NewTxOutput(*consensus.MITYAssetID, 11818900000, mustDecodeString("001415c956112c2b46354690e36051803cc9d5a8f26b")),
+					types.NewTxOutput(*consensus.MITYAssetID, 10000000000, mustDecodeString("00149c9dd93184cc34ac5d47c145c5af3df852235aad")),
 				},
 			},
 			gasValid: false,
 			err:      vm.ErrFalseVMResult,
 		},
 		{
-			desc: "non btm stanard transaction",
+			desc: "non mity stanard transaction",
 			txData: &types.TxData{
 				Version:        1,
 				SerializedSize: 508,
@@ -248,14 +248,14 @@ func TestValidateTx(t *testing.T) {
 							mustDecodeString("1381d35e235813ad1e62f9a602c82abee90565639cc4573568206b55bcd2aed9"),
 						},
 						bc.Hash{V0: 5430419158397285610, V1: 15989125147582690097, V2: 3140150800656736345, V3: 4704385074037173738},
-						*consensus.BTMAssetID, 9800000000, 2, mustDecodeString("0014cb9f2391bafe2bc1159b2c4c8a0f17ba1b4dd94e")),
+						*consensus.MITYAssetID, 9800000000, 2, mustDecodeString("0014cb9f2391bafe2bc1159b2c4c8a0f17ba1b4dd94e")),
 				},
 				Outputs: []*types.TxOutput{
 					types.NewTxOutput(
 						bc.AssetID{V0: 986236576456443635, V1: 13806502593573493203, V2: 9657495453304566675, V3: 15226142438973879401},
 						1000,
 						mustDecodeString("001437e1aec83a4e6587ca9609e4e5aa728db7007449")),
-					types.NewTxOutput(*consensus.BTMAssetID, 9750000000, mustDecodeString("0014ec75fda5c727cb0d41137ab62afbf9070a405744")),
+					types.NewTxOutput(*consensus.MITYAssetID, 9750000000, mustDecodeString("0014ec75fda5c727cb0d41137ab62afbf9070a405744")),
 				},
 			},
 			gasValid: true,

@@ -9,8 +9,8 @@ import (
 
 	"github.com/tendermint/go-wire"
 
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 //protocol msg byte
@@ -126,7 +126,7 @@ func (m *BlockMessage) String() string {
 	return fmt.Sprintf("{block_height: %d, block_hash: %s}", block.Height, blockHash.String())
 }
 
-//GetHeadersMessage is one of the bytom msg type
+//GetHeadersMessage is one of the anonimitycash msg type
 type GetHeadersMessage struct {
 	RawBlockLocator [][32]byte
 	RawStopHash     [32]byte
@@ -163,7 +163,7 @@ func (m *GetHeadersMessage) GetStopHash() *bc.Hash {
 	return &hash
 }
 
-//HeadersMessage is one of the bytom msg type
+//HeadersMessage is one of the anonimitycash msg type
 type HeadersMessage struct {
 	RawHeaders [][]byte
 }
@@ -200,7 +200,7 @@ func (m *HeadersMessage) String() string {
 	return fmt.Sprintf("{header_length: %d}", len(m.RawHeaders))
 }
 
-//GetBlocksMessage is one of the bytom msg type
+//GetBlocksMessage is one of the anonimitycash msg type
 type GetBlocksMessage struct {
 	RawBlockLocator [][32]byte
 	RawStopHash     [32]byte
@@ -237,7 +237,7 @@ func (m *GetBlocksMessage) String() string {
 	return fmt.Sprintf("{stop_hash: %s}", hex.EncodeToString(m.RawStopHash[:]))
 }
 
-//BlocksMessage is one of the bytom msg type
+//BlocksMessage is one of the anonimitycash msg type
 type BlocksMessage struct {
 	RawBlocks [][]byte
 }

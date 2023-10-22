@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
 	"github.com/pborman/uuid"
 )
 
@@ -16,11 +16,11 @@ const (
 
 // Tests that a json key file can be decrypted and encrypted in multiple rounds.
 func TestKeyEncryptDecrypt(t *testing.T) {
-	keyjson, err := ioutil.ReadFile("testdata/bytom-very-light-scrypt.json")
+	keyjson, err := ioutil.ReadFile("testdata/anonimitycash-very-light-scrypt.json")
 	if err != nil {
 		t.Fatal(err)
 	}
-	password := "bytomtest"
+	password := "anonimitycashtest"
 	alias := "verylight"
 	// Do a few rounds of decryption and encryption
 	for i := 0; i < 3; i++ {
@@ -55,13 +55,13 @@ func TestGenerateFile(t *testing.T) {
 	id := uuid.NewRandom()
 	key := &XKey{
 		ID:      id,
-		KeyType: "bytom_kd",
+		KeyType: "anonimitycash_kd",
 		XPub:    xpub,
 		XPrv:    xprv,
 		Alias:   "verylight",
 	}
 	t.Log(key)
-	password := "bytomtest"
+	password := "anonimitycashtest"
 	xkey, err := EncryptKey(key, password, veryLightScryptN, veryLightScryptP)
 	file := keyFileName(key.ID.String())
 	writeKeyFile(file, xkey)

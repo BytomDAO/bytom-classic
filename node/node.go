@@ -13,27 +13,27 @@ import (
 	cmn "github.com/tendermint/tmlibs/common"
 	browser "github.com/toqueteos/webbrowser"
 
-	"github.com/bytom/bytom-classic/accesstoken"
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/api"
-	"github.com/bytom/bytom-classic/asset"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/txfeed"
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/database"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/env"
-	"github.com/bytom/bytom-classic/event"
-	bytomLog "github.com/bytom/bytom-classic/log"
-	"github.com/bytom/bytom-classic/mining/cpuminer"
-	"github.com/bytom/bytom-classic/mining/miningpool"
-	"github.com/bytom/bytom-classic/mining/tensority"
-	"github.com/bytom/bytom-classic/net/websocket"
-	"github.com/bytom/bytom-classic/netsync"
-	"github.com/bytom/bytom-classic/p2p"
-	"github.com/bytom/bytom-classic/protocol"
-	w "github.com/bytom/bytom-classic/wallet"
+	"github.com/anonimitycash/anonimitycash-classic/accesstoken"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/api"
+	"github.com/anonimitycash/anonimitycash-classic/asset"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txfeed"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/env"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	anonimitycashLog "github.com/anonimitycash/anonimitycash-classic/log"
+	"github.com/anonimitycash/anonimitycash-classic/mining/cpuminer"
+	"github.com/anonimitycash/anonimitycash-classic/mining/miningpool"
+	"github.com/anonimitycash/anonimitycash-classic/mining/tensority"
+	"github.com/anonimitycash/anonimitycash-classic/net/websocket"
+	"github.com/anonimitycash/anonimitycash-classic/netsync"
+	"github.com/anonimitycash/anonimitycash-classic/p2p"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	w "github.com/anonimitycash/anonimitycash-classic/wallet"
 )
 
 const (
@@ -41,7 +41,7 @@ const (
 	logModule = "node"
 )
 
-// Node represent bytom node
+// Node represent anonimitycash node
 type Node struct {
 	cmn.BaseService
 
@@ -60,14 +60,14 @@ type Node struct {
 	miningEnable    bool
 }
 
-// NewNode create bytom node
+// NewNode create anonimitycash node
 func NewNode(config *cfg.Config) *Node {
 	ctx := context.Background()
 	if err := lockDataDirectory(config); err != nil {
 		cmn.Exit("Error: " + err.Error())
 	}
 
-	if err := bytomLog.InitLogFile(config); err != nil {
+	if err := anonimitycashLog.InitLogFile(config); err != nil {
 		log.WithField("err", err).Fatalln("InitLogFile failed")
 	}
 
@@ -134,7 +134,7 @@ func NewNode(config *cfg.Config) *Node {
 	// run the profile server
 	profileHost := config.ProfListenAddress
 	if profileHost != "" {
-		// Profiling bytomd programs.see (https://blog.golang.org/profiling-go-programs)
+		// Profiling anonimitycashd programs.see (https://blog.golang.org/profiling-go-programs)
 		// go tool pprof http://profileHose/debug/pprof/heap
 		go func() {
 			if err = http.ListenAndServe(profileHost, nil); err != nil {

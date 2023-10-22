@@ -12,7 +12,7 @@ import (
 	"strings"
 	"bytes"
 
-	"github.com/bytom/bytom/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash/crypto/ed25519"
 )
 
 // NewPrivateKey returns a PrivateKey by parsing the string s.

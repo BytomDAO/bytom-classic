@@ -11,15 +11,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/net/http/httperror"
-	"github.com/bytom/bytom-classic/net/http/reqid"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/net/http/httperror"
+	"github.com/anonimitycash/anonimitycash-classic/net/http/reqid"
 )
 
-// Bytom-specific header fields
+// Anonimitycash-specific header fields
 const (
 	HeaderBlockchainID = "Blockchain-ID"
-	HeaderCoreID       = "Bytom-Core-ID"
+	HeaderCoreID       = "Anonimitycash-Core-ID"
 	HeaderTimeout      = "RPC-Timeout"
 )
 
@@ -27,7 +27,7 @@ const (
 // the RPC client's blockchain ID.
 var ErrWrongNetwork = errors.New("connected to a peer on a different network")
 
-// A Client is a Bytom RPC client. It performs RPCs over HTTP using JSON
+// A Client is a Anonimitycash RPC client. It performs RPCs over HTTP using JSON
 // request and responses. A Client must be configured with a secret token
 // to authenticate with other Cores on the network.
 type Client struct {
@@ -44,7 +44,7 @@ type Client struct {
 }
 
 func (c Client) userAgent() string {
-	return fmt.Sprintf("Bytom; process=%s; buildtag=%s; blockchainID=%s",
+	return fmt.Sprintf("Anonimitycash; process=%s; buildtag=%s; blockchainID=%s",
 		c.Username, c.BuildTag, c.BlockchainID)
 }
 

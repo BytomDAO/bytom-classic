@@ -7,62 +7,62 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/consensus/difficulty"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/database"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/database/storage"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/mining"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/consensus/difficulty"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/database/storage"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/mining"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
 )
 
 func BenchmarkChain_CoinBaseTx_NoAsset(b *testing.B) {
 	benchInsertChain(b, 0, 0, "")
 }
 
-func BenchmarkChain_BtmTx_NoAsset_BASE(b *testing.B) {
+func BenchmarkChain_MityTx_NoAsset_BASE(b *testing.B) {
 	benchInsertChain(b, 1, 0, "")
 }
 
-func BenchmarkChain_5000BtmTx_NoAsset_BASE(b *testing.B) {
+func BenchmarkChain_5000MityTx_NoAsset_BASE(b *testing.B) {
 	benchInsertChain(b, 5000, 0, "")
 }
 
-func BenchmarkChain_5000BtmTx_1Asset_BASE(b *testing.B) {
+func BenchmarkChain_5000MityTx_1Asset_BASE(b *testing.B) {
 	benchInsertChain(b, 5000, 1, "")
 }
 
 // standard Transaction
-func BenchmarkChain_BtmTx_NoAsset_P2PKH(b *testing.B) {
+func BenchmarkChain_MityTx_NoAsset_P2PKH(b *testing.B) {
 	benchInsertChain(b, 1000, 0, "P2PKH")
 }
 
-func BenchmarkChain_BtmTx_1Asset_P2PKH(b *testing.B) {
+func BenchmarkChain_MityTx_1Asset_P2PKH(b *testing.B) {
 	benchInsertChain(b, 1000, 1, "P2PKH")
 }
 
-func BenchmarkChain_BtmTx_NoAsset_P2SH(b *testing.B) {
+func BenchmarkChain_MityTx_NoAsset_P2SH(b *testing.B) {
 	benchInsertChain(b, 100, 0, "P2SH")
 }
 
-func BenchmarkChain_BtmTx_1Asset_P2SH(b *testing.B) {
+func BenchmarkChain_MityTx_1Asset_P2SH(b *testing.B) {
 	benchInsertChain(b, 100, 1, "P2SH")
 }
 
-func BenchmarkChain_BtmTx_NoAsset_MultiSign(b *testing.B) {
+func BenchmarkChain_MityTx_NoAsset_MultiSign(b *testing.B) {
 	benchInsertChain(b, 100, 0, "MultiSign")
 }
 
-func BenchmarkChain_BtmTx_1Asset_MultiSign(b *testing.B) {
+func BenchmarkChain_MityTx_1Asset_MultiSign(b *testing.B) {
 	benchInsertChain(b, 100, 1, "MultiSign")
 }
 
@@ -237,7 +237,7 @@ func MockSimpleUtxo(index uint64, assetID *bc.AssetID, amount uint64, ctrlProg *
 func GenerateBaseUtxos(num int, amount uint64, ctrlProg *account.CtrlProgram) []*account.UTXO {
 	utxos := []*account.UTXO{}
 	for i := 0; i < num; i++ {
-		utxo := MockSimpleUtxo(uint64(i), consensus.BTMAssetID, amount, ctrlProg)
+		utxo := MockSimpleUtxo(uint64(i), consensus.MITYAssetID, amount, ctrlProg)
 		utxos = append(utxos, utxo)
 	}
 
@@ -276,7 +276,7 @@ func AddTxOutput(assetID bc.AssetID, amount uint64, controlProgram []byte) *type
 	return out
 }
 
-func CreateTxBuilder(baseUtxo *account.UTXO, btmServiceFlag bool, signer *signers.Signer) (*txbuilder.TemplateBuilder, error) {
+func CreateTxBuilder(baseUtxo *account.UTXO, mityServiceFlag bool, signer *signers.Signer) (*txbuilder.TemplateBuilder, error) {
 	tplBuilder := txbuilder.NewBuilder(time.Now())
 
 	// add input
@@ -286,8 +286,8 @@ func CreateTxBuilder(baseUtxo *account.UTXO, btmServiceFlag bool, signer *signer
 	}
 	tplBuilder.AddInput(txInput, signInst)
 
-	// if the btm is the service charge, didn't need to add the output
-	if btmServiceFlag {
+	// if the mity is the service charge, didn't need to add the output
+	if mityServiceFlag {
 		txOutput := AddTxOutput(baseUtxo.AssetID, 100, baseUtxo.ControlProgram)
 		tplBuilder.AddOutput(txOutput)
 	}
@@ -309,12 +309,12 @@ func AddTxBuilder(tplBuilder *txbuilder.TemplateBuilder, utxo *account.UTXO, sig
 }
 
 func BuildTx(baseUtxo *account.UTXO, otherUtxos []*account.UTXO, signer *signers.Signer) (*txbuilder.Template, error) {
-	btmServiceFlag := false
+	mityServiceFlag := false
 	if otherUtxos == nil || len(otherUtxos) == 0 {
-		btmServiceFlag = true
+		mityServiceFlag = true
 	}
 
-	tplBuilder, err := CreateTxBuilder(baseUtxo, btmServiceFlag, signer)
+	tplBuilder, err := CreateTxBuilder(baseUtxo, mityServiceFlag, signer)
 	if err != nil {
 		return nil, err
 	}
@@ -413,7 +413,7 @@ func MockTxsP2PKH(keyDirPath string, testDB dbm.DB, txNumber, otherAssetNum int)
 			return nil, err
 		}
 
-		utxo := MockSimpleUtxo(0, consensus.BTMAssetID, 1000000000, controlProg)
+		utxo := MockSimpleUtxo(0, consensus.MITYAssetID, 1000000000, controlProg)
 		otherUtxos := GenerateOtherUtxos(i, otherAssetNum, 6000, controlProg)
 		tpl, err := BuildTx(utxo, otherUtxos, testAccount.Signer)
 		if err != nil {
@@ -460,7 +460,7 @@ func MockTxsP2SH(keyDirPath string, testDB dbm.DB, txNumber, otherAssetNum int) 
 			return nil, err
 		}
 
-		utxo := MockSimpleUtxo(0, consensus.BTMAssetID, 1000000000, controlProg)
+		utxo := MockSimpleUtxo(0, consensus.MITYAssetID, 1000000000, controlProg)
 		otherUtxos := GenerateOtherUtxos(i, otherAssetNum, 6000, controlProg)
 		tpl, err := BuildTx(utxo, otherUtxos, testAccount.Signer)
 		if err != nil {
@@ -506,7 +506,7 @@ func MockTxsMultiSign(keyDirPath string, testDB dbm.DB, txNumber, otherAssetNum 
 			return nil, err
 		}
 
-		utxo := MockSimpleUtxo(0, consensus.BTMAssetID, 1000000000, controlProg)
+		utxo := MockSimpleUtxo(0, consensus.MITYAssetID, 1000000000, controlProg)
 		otherUtxos := GenerateOtherUtxos(i, otherAssetNum, 6000, controlProg)
 		tpl, err := BuildTx(utxo, otherUtxos, testAccount.Signer)
 		if err != nil {

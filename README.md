@@ -1,17 +1,17 @@
-Bytom classic
+Anonimitycash classic
 ======
 
-[![Build Status](https://travis-ci.org/Bytom/bytom-classic.svg)](https://travis-ci.org/Bytom/bytom-classic) [![AGPL v3](https://img.shields.io/badge/license-AGPL%20v3-brightgreen.svg)](./LICENSE)
+[![Build Status](https://travis-ci.org/Anonimitycash/anonimitycash-classic.svg)](https://travis-ci.org/Anonimitycash/anonimitycash-classic) [![AGPL v3](https://img.shields.io/badge/license-AGPL%20v3-brightgreen.svg)](./LICENSE)
 
-**Official golang implementation of the Bytom classic protocol.**
+**Official golang implementation of the Anonimitycash classic protocol.**
 
-Automated builds are available for stable releases and the unstable master branch. Binary archives are published at https://github.com/Bytom/bytom-classic/releases.
+Automated builds are available for stable releases and the unstable master branch. Binary archives are published at https://github.com/Anonimitycash/anonimitycash-classic/releases.
 
-## What is Bytom classic?
+## What is Anonimitycash classic?
 
-Bytom classic is software designed to operate and connect to highly scalable blockchain networks confirming to the Bytom classic Blockchain Protocol, which allows partipicants to define, issue and transfer digitial assets on a multi-asset shared ledger. Please refer to the [White Paper](https://github.com/Bytom/wiki/blob/master/en-US/Bytom-Technical-White-Paper-EN.pdf) for more details.
+Anonimitycash classic is software designed to operate and connect to highly scalable blockchain networks confirming to the Anonimitycash classic Blockchain Protocol, which allows partipicants to define, issue and transfer digitial assets on a multi-asset shared ledger. Please refer to the [White Paper](https://github.com/Anonimitycash/wiki/blob/master/en-US/Anonimitycash-Technical-White-Paper-EN.pdf) for more details.
 
-In the current state `bytom classic` is able to:
+In the current state `anonimitycash classic` is able to:
 
 - Manage key, account as well as asset
 - Send transactions, i.e., issue, spend and retire asset
@@ -19,7 +19,7 @@ In the current state `bytom classic` is able to:
 ## Installing with Homebrew
 
 ```
-brew tap bytom/bytom-classic && brew install bytom-classic
+brew tap anonimitycash/anonimitycash-classic && brew install anonimitycash-classic
 ```
 
 ## Building from source
@@ -40,39 +40,39 @@ $ go env GOROOT GOPATH
 - Get the source code
 
 ``` bash
-$ git clone https://github.com/Bytom/bytom-classic.git $GOPATH/src/github.com/bytom/bytom-classic
+$ git clone https://github.com/Anonimitycash/anonimitycash-classic.git $GOPATH/src/github.com/anonimitycash/anonimitycash-classic
 ```
 
 - Build source code
 
 ``` bash
-$ cd $GOPATH/src/github.com/bytom/bytom-classic
-$ GO111MODULE=off make bytomcd    # build bytom-classic daemon
-$ GO111MODULE=off make bytomccli  # build bytom-classic command line
+$ cd $GOPATH/src/github.com/anonimitycash/anonimitycash-classic
+$ GO111MODULE=off make anonimitycashcd    # build anonimitycash-classic daemon
+$ GO111MODULE=off make anonimitycashccli  # build anonimitycash-classic command line
 ```
 
-When successfully building the project, the `bytomd` and `bytomcli` binary should be present in `cmd/bytomcd` and `cmd/bytomccli` directory, respectively.
+When successfully building the project, the `anonimitycashd` and `anonimitycashcli` binary should be present in `cmd/anonimitycashcd` and `cmd/anonimitycashccli` directory, respectively.
 
 ### Executables
 
-The Bytom project comes with several executables found in the `cmd` directory.
+The Anonimitycash project comes with several executables found in the `cmd` directory.
 
 | Command      | Description                                                  |
 | ------------ | ------------------------------------------------------------ |
-| **bytomcd**   | bytomd command can help to initialize and launch bytom domain by custom parameters. `bytomcd --help` for command line options. |
-| **bytomccli** | Our main Bytom CLI client. It is the entry point into the Bytom network (main-, test- or private net), capable of running as a full node archive node (retaining all historical state). It can be used by other processes as a gateway into the Bytom network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `bytomccli --help` and the [bytomccli Wiki page](https://github.com/Bytom/bytom-classic/wiki/Command-Line-Options) for command line options. |
+| **anonimitycashcd**   | anonimitycashd command can help to initialize and launch anonimitycash domain by custom parameters. `anonimitycashcd --help` for command line options. |
+| **anonimitycashccli** | Our main Anonimitycash CLI client. It is the entry point into the Anonimitycash network (main-, test- or private net), capable of running as a full node archive node (retaining all historical state). It can be used by other processes as a gateway into the Anonimitycash network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `anonimitycashccli --help` and the [anonimitycashccli Wiki page](https://github.com/Anonimitycash/anonimitycash-classic/wiki/Command-Line-Options) for command line options. |
 
-## Running bytom classic
+## Running anonimitycash classic
 
-Currently, bytom classic is still in active development and a ton of work needs to be done, but we also provide the following content for these eager to do something with `bytom classic`. This section won't cover all the commands of `bytomcd` and `bytomccli` at length, for more information, please the help of every command, e.g., `bytomccli help`.
+Currently, anonimitycash classic is still in active development and a ton of work needs to be done, but we also provide the following content for these eager to do something with `anonimitycash classic`. This section won't cover all the commands of `anonimitycashcd` and `anonimitycashccli` at length, for more information, please the help of every command, e.g., `anonimitycashccli help`.
 
 ### Initialize
 
 First of all, initialize the node:
 
 ```bash
-$ cd ./cmd/bytomcd
-$ ./bytomcd init --chain_id mainnet
+$ cd ./cmd/anonimitycashcd
+$ ./anonimitycashcd init --chain_id mainnet
 ```
 
 There are three options for the flag `--chain_id`:
@@ -86,10 +86,10 @@ After that, you'll see `config.toml` generated, then launch the node.
 ### launch
 
 ``` bash
-$ ./bytomcd node
+$ ./anonimitycashcd node
 ```
 
-available flags for `bytomcd node`:
+available flags for `anonimitycashcd node`:
 
 ```
 Flags:
@@ -111,7 +111,7 @@ Flags:
       --p2p.proxy_username string        Username for proxy server
       --p2p.seeds string                 Comma delimited host:port seed nodes
       --p2p.skip_upnp                    Skip UPNP configuration
-      --prof_laddr string                Use http to profile bytomd programs
+      --prof_laddr string                Use http to profile anonimitycashd programs
       --simd.enable                      Enable SIMD mechan for tensority
       --vault_mode                       Run in the offline enviroment
       --wallet.disable                   Disable wallet
@@ -123,11 +123,11 @@ Flags:
 
 Global Flags:
       --home string   root directory for config and data
-  -r, --root string   DEPRECATED. Use --home (default "/Users/zcc/Library/Application Support/Bytomclassic")
+  -r, --root string   DEPRECATED. Use --home (default "/Users/zcc/Library/Application Support/Anonimitycashclassic")
       --trace         print out full stack trace on errors
 ```
 
-Given the `bytomcd` node is running, the general workflow is as follows:
+Given the `anonimitycashcd` node is running, the general workflow is as follows:
 
 - create key, then you can create account and asset.
 - send transaction, i.e., build, sign and submit transaction.
@@ -137,17 +137,17 @@ __simd feature:__
 
 You could enable the _simd_ feature to speed up the _PoW_ verification (e.g., during mining and block verification) by simply:
 ```
-bytomcd node --simd.enable
+anonimitycashcd node --simd.enable
 ```
 
-To enable this feature you will need to compile from the source code by yourself, and `make bytomcd-simd`. 
+To enable this feature you will need to compile from the source code by yourself, and `make anonimitycashcd-simd`. 
 
 What is more,
 
 + if you are using _Mac_, please make sure _llvm_ is installed by `brew install llvm`.
 + if you are using _Windows_, please make sure _mingw-w64_ is installed and set up the _PATH_ environment variable accordingly.
 
-For more details about using `bytomcli` command please refer to [API Reference](https://github.com/Bytom/bytom-classic/wiki/API-Reference)
+For more details about using `anonimitycashcli` command please refer to [API Reference](https://github.com/Anonimitycash/anonimitycash-classic/wiki/API-Reference)
 
 ### Dashboard
 
@@ -162,16 +162,16 @@ $ open http://localhost:9888/
 Ensure your [Docker](https://www.docker.com/) version is 17.05 or higher.
 
 ```bash
-$ docker build -t bytom-classic .
+$ docker build -t anonimitycash-classic .
 ```
 
-For the usage please refer to [running-in-docker-wiki](https://github.com/Bytom/bytom-classic/wiki/Running-in-Docker).
+For the usage please refer to [running-in-docker-wiki](https://github.com/Anonimitycash/anonimitycash-classic/wiki/Running-in-Docker).
 
 ## Contributing
 
 Thank you for considering helping out with the source code! Any contributions are highly appreciated, and we are grateful for even the smallest of fixes!
 
-If you run into an issue, feel free to [bytom classic issues](https://github.com/Bytom/bytom-classic/issues/) in this repository. We are glad to help!
+If you run into an issue, feel free to [anonimitycash classic issues](https://github.com/Anonimitycash/anonimitycash-classic/issues/) in this repository. We are glad to help!
 
 ## License
 

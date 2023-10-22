@@ -4,8 +4,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/karalabe/cookiejar.v2/collections/prque"
 
-	"github.com/bytom/bytom-classic/p2p/security"
-	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/security"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
 )
 
 const (

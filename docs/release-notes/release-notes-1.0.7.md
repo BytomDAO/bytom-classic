@@ -1,22 +1,22 @@
-Bytom version 1.0.7 is now available from:
+Anonimitycash version 1.0.7 is now available from:
 
-  https://github.com/Bytom/bytom/releases/tag/v1.0.7
+  https://github.com/Anonimitycash/anonimitycash/releases/tag/v1.0.7
 
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/Bytom/bytom/issues
+  https://github.com/Anonimitycash/anonimitycash/issues
 
 How to Upgrade
 ===============
 
-If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Bytom.
-You can operate according to the user manual.[(Bytom User Manual)](https://bytom.io/wp-content/themes/freddo/images/wallet/BytomUsermanualV1.0_en.pdf)
+If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Anonimitycash.
+You can operate according to the user manual.[(Anonimitycash User Manual)](https://anonimitycash.io/wp-content/themes/freddo/images/wallet/AnonimitycashUsermanualV1.0_en.pdf)
 
 
 1.0.7 changelog
 ================
-__Bytom Node__
+__Anonimitycash Node__
 
 + `PR #1409`
     - Support bip44 multi-account hierarchy for deterministic wallets.
@@ -31,7 +31,7 @@ __Bytom Node__
 + `PR #1450`
     - API get-block add asset definition for transaction's issue action.
 + `PR #1455`
-    - Node support using SOCKS5 connect to Bytom network through a proxy server.
+    - Node support using SOCKS5 connect to Anonimitycash network through a proxy server.
 + `PR #1459`
     - Modify equity compiler to support define/assign/if-else statement, and added the equity compiler tool..
 + `PR #1462`
@@ -39,9 +39,9 @@ __Bytom Node__
 + `PR #1466`
     - Add update account alias API.
 + `PR #1473`
-    - Support Mac using brew to install Bytom.
+    - Support Mac using brew to install Anonimitycash.
 
-__Bytom Dashboard__
+__Anonimitycash Dashboard__
 
 - Reconstruct the International language framework, change the hard code style into i18n mode.
 - Fixed the big number issue.

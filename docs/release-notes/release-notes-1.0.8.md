@@ -1,22 +1,22 @@
-Bytom version 1.0.8 is now available from:
+Anonimitycash version 1.0.8 is now available from:
 
-  https://github.com/Bytom/bytom/releases/tag/v1.0.8
+  https://github.com/Anonimitycash/anonimitycash/releases/tag/v1.0.8
 
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/Bytom/bytom/issues
+  https://github.com/Anonimitycash/anonimitycash/issues
 
 How to Upgrade
 ===============
 
-If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Bytom.
-You can operate according to the user manual.[(Bytom User Manual)](https://bytom.io/wp-content/themes/freddo/images/wallet/BytomUsermanualV1.0_en.pdf)
+If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Anonimitycash.
+You can operate according to the user manual.[(Anonimitycash User Manual)](https://anonimitycash.io/wp-content/themes/freddo/images/wallet/AnonimitycashUsermanualV1.0_en.pdf)
 
 
 1.0.8 changelog
 ================
-__Bytom Node__
+__Anonimitycash Node__
 
 + `PR #1537`
     - Add mined block subscribe function for easy wallet module subscription.
@@ -33,7 +33,7 @@ __Bytom Node__
 + `PR #1592`
     - Fix new mined orphan block broadcast bug to prevent invalid blocks from being malicious.
 + `PR #1605`
-    - Add no BTM input tx filter, to prevent dust transaction into the transaction pool.
+    - Add no MITY input tx filter, to prevent dust transaction into the transaction pool.
 + `PR #1544`
     - get-raw-block API support return the transaction status
 + `PR #1615`
@@ -48,7 +48,7 @@ __Bytom Node__
     - Optimize the UTXO manage transaction processing order of block rollback.
 
 
-__Bytom Dashboard__
+__Anonimitycash Dashboard__
 
 - Add the Qr code component for RawTransaction JSON and Signature JSON.
 

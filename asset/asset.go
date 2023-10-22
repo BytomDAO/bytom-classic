@@ -9,20 +9,20 @@ import (
 	"github.com/golang/groupcache/lru"
 	"golang.org/x/crypto/sha3"
 
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
-// DefaultNativeAsset native BTM asset
+// DefaultNativeAsset native MITY asset
 var DefaultNativeAsset *Asset
 
 const (
@@ -38,15 +38,15 @@ var (
 
 func initNativeAsset() {
 	signer := &signers.Signer{Type: "internal"}
-	alias := consensus.BTMAlias
+	alias := consensus.MITYAlias
 
-	definitionBytes, _ := serializeAssetDef(consensus.BTMDefinitionMap)
+	definitionBytes, _ := serializeAssetDef(consensus.MITYDefinitionMap)
 	DefaultNativeAsset = &Asset{
 		Signer:            signer,
-		AssetID:           *consensus.BTMAssetID,
+		AssetID:           *consensus.MITYAssetID,
 		Alias:             &alias,
 		VMVersion:         1,
-		DefinitionMap:     consensus.BTMDefinitionMap,
+		DefinitionMap:     consensus.MITYDefinitionMap,
 		RawDefinitionByte: definitionBytes,
 	}
 }
@@ -66,14 +66,14 @@ func ExtAssetKey(id *bc.AssetID) []byte {
 	return append(extAssetPrefix, id.Bytes()...)
 }
 
-// pre-define errors for supporting bytom errorFormatter
+// pre-define errors for supporting anonimitycash errorFormatter
 var (
 	ErrDuplicateAlias = errors.New("duplicate asset alias")
 	ErrDuplicateAsset = errors.New("duplicate asset id")
 	ErrSerializing    = errors.New("serializing asset definition")
 	ErrMarshalAsset   = errors.New("failed marshal asset")
 	ErrFindAsset      = errors.New("fail to find asset")
-	ErrInternalAsset  = errors.New("btm has been defined as the internal asset")
+	ErrInternalAsset  = errors.New("mity has been defined as the internal asset")
 	ErrNullAlias      = errors.New("null asset alias")
 )
 
@@ -101,7 +101,7 @@ type Registry struct {
 	assetMu      sync.Mutex
 }
 
-//Asset describe asset on bytom chain
+//Asset describe asset on anonimitycash chain
 type Asset struct {
 	*signers.Signer
 	AssetID           bc.AssetID             `json:"id"`
@@ -135,7 +135,7 @@ func (reg *Registry) Define(xpubs []chainkd.XPub, quorum int, definition map[str
 		return nil, errors.Wrap(ErrNullAlias)
 	}
 
-	if alias == consensus.BTMAlias {
+	if alias == consensus.MITYAlias {
 		return nil, ErrInternalAsset
 	}
 
@@ -258,9 +258,9 @@ func (reg *Registry) FindByAlias(alias string) (*Asset, error) {
 
 //GetAliasByID return asset alias string by AssetID string
 func (reg *Registry) GetAliasByID(id string) string {
-	//btm
-	if id == consensus.BTMAssetID.String() {
-		return consensus.BTMAlias
+	//mity
+	if id == consensus.MITYAssetID.String() {
+		return consensus.MITYAlias
 	}
 
 	assetID := &bc.AssetID{}
@@ -379,7 +379,7 @@ func (reg *Registry) UpdateAssetAlias(id, newAlias string) error {
 	oldAlias := reg.GetAliasByID(id)
 	newAlias = strings.ToUpper(strings.TrimSpace(newAlias))
 
-	if oldAlias == consensus.BTMAlias || newAlias == consensus.BTMAlias {
+	if oldAlias == consensus.MITYAlias || newAlias == consensus.MITYAlias {
 		return ErrInternalAsset
 	}
 

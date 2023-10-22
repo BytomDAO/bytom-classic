@@ -6,21 +6,21 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/asset"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/asset"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 // TxGenerator used to generate new tx
@@ -109,10 +109,10 @@ func (g *TxGenerator) mockUtxo(accountAlias, assetAlias string, amount uint64) (
 }
 
 func (g *TxGenerator) assetAmount(assetAlias string, amount uint64) (*bc.AssetAmount, error) {
-	if assetAlias == "BTM" {
+	if assetAlias == "MITY" {
 		a := &bc.AssetAmount{
 			Amount:  amount,
-			AssetId: consensus.BTMAssetID,
+			AssetId: consensus.MITYAssetID,
 		}
 		return a, nil
 	}
@@ -258,13 +258,13 @@ func txFee(tx *types.Tx) uint64 {
 	inputSum := uint64(0)
 	outputSum := uint64(0)
 	for _, input := range tx.Inputs {
-		if input.AssetID() == *consensus.BTMAssetID {
+		if input.AssetID() == *consensus.MITYAssetID {
 			inputSum += input.Amount()
 		}
 	}
 
 	for _, output := range tx.Outputs {
-		if *output.AssetId == *consensus.BTMAssetID {
+		if *output.AssetId == *consensus.MITYAssetID {
 			outputSum += output.Amount
 		}
 	}
@@ -362,7 +362,7 @@ func CreateCoinbaseTx(controlProgram []byte, height, txsFee uint64) (*types.Tx, 
 	if err := builder.AddInput(types.NewCoinbaseInput([]byte(string(height))), &txbuilder.SigningInstruction{}); err != nil {
 		return nil, err
 	}
-	if err := builder.AddOutput(types.NewTxOutput(*consensus.BTMAssetID, coinbaseValue, controlProgram)); err != nil {
+	if err := builder.AddOutput(types.NewTxOutput(*consensus.MITYAssetID, coinbaseValue, controlProgram)); err != nil {
 		return nil, err
 	}
 
@@ -392,7 +392,7 @@ func CreateTxFromTx(baseTx *types.Tx, outputIndex uint64, outputAmount uint64, c
 		AssetVersion: assetVersion,
 		TypedInput:   spendInput,
 	}
-	output := types.NewTxOutput(*consensus.BTMAssetID, outputAmount, ctrlProgram)
+	output := types.NewTxOutput(*consensus.MITYAssetID, outputAmount, ctrlProgram)
 	builder := txbuilder.NewBuilder(time.Now())
 	if err := builder.AddInput(txInput, &txbuilder.SigningInstruction{}); err != nil {
 		return nil, err

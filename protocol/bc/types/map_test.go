@@ -6,19 +6,19 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestMapSpendTx(t *testing.T) {
 	cases := []*TxData{
 		&TxData{
 			Inputs: []*TxInput{
-				NewSpendInput(nil, testutil.MustDecodeHash("fad5195a0c8e3b590b86a3c0a95e7529565888508aecca96e9aeda633002f409"), *consensus.BTMAssetID, 88, 3, []byte{1}),
+				NewSpendInput(nil, testutil.MustDecodeHash("fad5195a0c8e3b590b86a3c0a95e7529565888508aecca96e9aeda633002f409"), *consensus.MITYAssetID, 88, 3, []byte{1}),
 			},
 			Outputs: []*TxOutput{
-				NewTxOutput(*consensus.BTMAssetID, 80, []byte{1}),
+				NewTxOutput(*consensus.MITYAssetID, 80, []byte{1}),
 			},
 		},
 		&TxData{
@@ -26,17 +26,17 @@ func TestMapSpendTx(t *testing.T) {
 				NewIssuanceInput([]byte("nonce"), 254354, []byte("issuanceProgram"), [][]byte{[]byte("arguments1"), []byte("arguments2")}, []byte("assetDefinition")),
 			},
 			Outputs: []*TxOutput{
-				NewTxOutput(*consensus.BTMAssetID, 80, []byte{1}),
+				NewTxOutput(*consensus.MITYAssetID, 80, []byte{1}),
 			},
 		},
 		&TxData{
 			Inputs: []*TxInput{
 				NewIssuanceInput([]byte("nonce"), 254354, []byte("issuanceProgram"), [][]byte{[]byte("arguments1"), []byte("arguments2")}, []byte("assetDefinition")),
-				NewSpendInput(nil, testutil.MustDecodeHash("db7b16ac737440d6e38559996ddabb207d7ce84fbd6f3bfd2525d234761dc863"), *consensus.BTMAssetID, 88, 3, []byte{1}),
+				NewSpendInput(nil, testutil.MustDecodeHash("db7b16ac737440d6e38559996ddabb207d7ce84fbd6f3bfd2525d234761dc863"), *consensus.MITYAssetID, 88, 3, []byte{1}),
 			},
 			Outputs: []*TxOutput{
-				NewTxOutput(*consensus.BTMAssetID, 80, []byte{1}),
-				NewTxOutput(*consensus.BTMAssetID, 80, []byte{1}),
+				NewTxOutput(*consensus.MITYAssetID, 80, []byte{1}),
+				NewTxOutput(*consensus.MITYAssetID, 80, []byte{1}),
 			},
 		},
 	}
@@ -100,7 +100,7 @@ func TestMapCoinbaseTx(t *testing.T) {
 			NewCoinbaseInput([]byte("TestMapCoinbaseTx")),
 		},
 		Outputs: []*TxOutput{
-			NewTxOutput(*consensus.BTMAssetID, 800000000000, []byte{1}),
+			NewTxOutput(*consensus.MITYAssetID, 800000000000, []byte{1}),
 		},
 	}
 	oldOut := txData.Outputs[0]

@@ -1,22 +1,22 @@
-Bytom version 1.0.3 is now available from:
+Anonimitycash version 1.0.3 is now available from:
 
-  https://github.com/Bytom/bytom/releases/tag/v1.0.3
+  https://github.com/Anonimitycash/anonimitycash/releases/tag/v1.0.3
 
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/Bytom/bytom/issues
+  https://github.com/Anonimitycash/anonimitycash/issues
 
 How to Upgrade
 ===============
 
-If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Bytom.
-You can operate according to the user manual.[(Bytom User Manual)](https://bytom.io/wp-content/themes/freddo/images/wallet/BytomUsermanualV1.0_en.pdf)
+If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Anonimitycash.
+You can operate according to the user manual.[(Anonimitycash User Manual)](https://anonimitycash.io/wp-content/themes/freddo/images/wallet/AnonimitycashUsermanualV1.0_en.pdf)
 
 
 1.0.3 changelog
 ================
-__Bytom Node__
+__Anonimitycash Node__
 
 + `PR #969`
     - Fix x86-32 system exeception on build transaction.
@@ -39,7 +39,7 @@ __Bytom Node__
 + `PR #1039`
     - Modify error model for support high level error message 
 
-__Bytom Dashboard__
+__Anonimitycash Dashboard__
 
 + `a51081c`
     - Add progress bar for Sync Status.

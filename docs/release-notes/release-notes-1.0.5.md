@@ -1,22 +1,22 @@
-Bytom version 1.0.5 is now available from:
+Anonimitycash version 1.0.5 is now available from:
 
-  https://github.com/Bytom/bytom/releases/tag/v1.0.5
+  https://github.com/Anonimitycash/anonimitycash/releases/tag/v1.0.5
 
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/Bytom/bytom/issues
+  https://github.com/Anonimitycash/anonimitycash/issues
 
 How to Upgrade
 ===============
 
-If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Bytom.
-You can operate according to the user manual.[(Bytom User Manual)](https://bytom.io/wp-content/themes/freddo/images/wallet/BytomUsermanualV1.0_en.pdf)
+If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Anonimitycash.
+You can operate according to the user manual.[(Anonimitycash User Manual)](https://anonimitycash.io/wp-content/themes/freddo/images/wallet/AnonimitycashUsermanualV1.0_en.pdf)
 
 
 1.0.5 changelog
 ================
-__Bytom Node__
+__Anonimitycash Node__
 
 + `PR #1196`
     - Remove the old p2p TCP peer exchange module.
@@ -47,7 +47,7 @@ __Bytom Node__
 + `PR #1262`
     - Add spv support for full node，which mainly includes filtering address and sending Merkle block.
 
-__Bytom Dashboard__
+__Anonimitycash Dashboard__
 
 - Add Chinese translation to equity contract.
 - Fix password will be frozen for 5 mins when the password is wrong.
@@ -57,7 +57,7 @@ __Bytom Dashboard__
 __Equity Contract frontend__
 
 - Add contract template of RevealPreimage support for entering any character
-- Asset selection box support BTM，expect when locking value
+- Asset selection box support MITY，expect when locking value
 
 Credits
 --------

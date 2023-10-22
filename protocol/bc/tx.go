@@ -1,8 +1,8 @@
 package bc
 
 import (
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 // Tx is a wrapper for the entries-based representation of a transaction.

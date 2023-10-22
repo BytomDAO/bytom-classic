@@ -12,12 +12,12 @@ import (
 
 	"github.com/pborman/uuid"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/errors"
-	mnem "github.com/bytom/bytom-classic/wallet/mnemonic"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	mnem "github.com/anonimitycash/anonimitycash-classic/wallet/mnemonic"
 )
 
-// pre-define errors for supporting bytom errorFormatter
+// pre-define errors for supporting anonimitycash errorFormatter
 var (
 	ErrDuplicateKeyAlias = errors.New("duplicate key alias")
 	ErrXPubFormat        = errors.New("xpub format error")
@@ -113,7 +113,7 @@ func (h *HSM) createKeyFromMnemonic(alias string, auth string, mnemonic string) 
 	id := uuid.NewRandom()
 	key := &XKey{
 		ID:      id,
-		KeyType: "bytom_kd",
+		KeyType: "anonimitycash_kd",
 		XPub:    xpub,
 		XPrv:    xprv,
 		Alias:   alias,

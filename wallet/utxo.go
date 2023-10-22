@@ -5,14 +5,14 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/consensus/segwit"
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/consensus/segwit"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 // GetAccountUtxos return all account unspent outputs
@@ -173,7 +173,7 @@ func txInToUtxos(tx *types.Tx, statusFail bool) []*account.UTXO {
 			continue
 		}
 
-		if statusFail && *resOut.Source.Value.AssetId != *consensus.BTMAssetID {
+		if statusFail && *resOut.Source.Value.AssetId != *consensus.MITYAssetID {
 			continue
 		}
 
@@ -197,7 +197,7 @@ func txOutToUtxos(tx *types.Tx, statusFail bool, vaildHeight uint64) []*account.
 			continue
 		}
 
-		if statusFail && *out.AssetAmount.AssetId != *consensus.BTMAssetID {
+		if statusFail && *out.AssetAmount.AssetId != *consensus.MITYAssetID {
 			continue
 		}
 

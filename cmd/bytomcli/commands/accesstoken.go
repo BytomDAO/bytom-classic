@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 	jww "github.com/spf13/jwalterweatherman"
 
-	"github.com/bytom/bytom-classic/util"
+	"github.com/anonimitycash/anonimitycash-classic/util"
 )
 
 var createAccessTokenCmd = &cobra.Command{

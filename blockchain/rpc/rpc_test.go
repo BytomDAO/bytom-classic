@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestRPCCallJSON(t *testing.T) {
@@ -36,8 +36,8 @@ func TestRPCCallJSON(t *testing.T) {
 		if req.Header.Get("Content-Type") != "application/json" {
 			t.Errorf("got=%s; want=application/json", req.Header.Get("Content-Type"))
 		}
-		if !strings.HasPrefix(req.Header.Get("User-Agent"), "Bytom; ") {
-			t.Errorf("got=%s; want prefix='Bytom; '", req.Header.Get("User-Agent"))
+		if !strings.HasPrefix(req.Header.Get("User-Agent"), "Anonimitycash; ") {
+			t.Errorf("got=%s; want prefix='Anonimitycash; '", req.Header.Get("User-Agent"))
 		}
 		if req.URL.Path != "/example/rpc/path" {
 			t.Errorf("got=%s want=/example/rpc/path", req.URL.Path)

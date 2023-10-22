@@ -3,10 +3,10 @@ package state
 import (
 	"testing"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/database/storage"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/database/storage"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 var defaultEntry = map[bc.Hash]bc.Entry{
@@ -23,7 +23,7 @@ var gasOnlyTxEntry = map[bc.Hash]bc.Entry{
 	bc.Hash{V1: 0}: &bc.Output{
 		Source: &bc.ValueSource{
 			Value: &bc.AssetAmount{
-				AssetId: consensus.BTMAssetID,
+				AssetId: consensus.MITYAssetID,
 			},
 		},
 	},
@@ -222,7 +222,7 @@ func TestApplyBlock(t *testing.T) {
 			err: false,
 		},
 		{
-			// apply gas only tx, non-btm asset spent input will not be spent
+			// apply gas only tx, non-mity asset spent input will not be spent
 			block: &bc.Block{
 				BlockHeader: &bc.BlockHeader{
 					TransactionStatus: bc.NewTransactionStatus(),
@@ -256,7 +256,7 @@ func TestApplyBlock(t *testing.T) {
 			err:       false,
 		},
 		{
-			// apply gas only tx, non-btm asset spent output will not be store
+			// apply gas only tx, non-mity asset spent output will not be store
 			block: &bc.Block{
 				BlockHeader: &bc.BlockHeader{
 					TransactionStatus: bc.NewTransactionStatus(),

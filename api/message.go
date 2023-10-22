@@ -5,13 +5,13 @@ import (
 	"encoding/hex"
 	"strings"
 
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/common"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto"
-	"github.com/bytom/bytom-classic/crypto/ed25519"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
 )
 
 // SignMsgResp is response for sign message

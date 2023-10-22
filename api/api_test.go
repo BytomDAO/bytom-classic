@@ -6,10 +6,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bytom/bytom-classic/accesstoken"
-	"github.com/bytom/bytom-classic/blockchain/rpc"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/accesstoken"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/rpc"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestAPIHandler(t *testing.T) {

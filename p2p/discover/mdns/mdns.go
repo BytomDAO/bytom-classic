@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	instanceName = "bytomd"
-	serviceName  = "bytom%sLanDiscover"
+	instanceName = "anonimitycashd"
+	serviceName  = "anonimitycash%sLanDiscover"
 	domainName   = "local"
 )
 

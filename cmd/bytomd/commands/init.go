@@ -7,7 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	cfg "github.com/bytom/bytom-classic/config"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
 )
 
 var initFilesCmd = &cobra.Command{
@@ -36,5 +36,5 @@ func initFiles(cmd *cobra.Command, args []string) {
 		cfg.EnsureRoot(config.RootDir, "solonet")
 	}
 
-	log.WithFields(log.Fields{"module": logModule, "config": configFilePath}).Info("Initialized bytom")
+	log.WithFields(log.Fields{"module": logModule, "config": configFilePath}).Info("Initialized anonimitycash")
 }

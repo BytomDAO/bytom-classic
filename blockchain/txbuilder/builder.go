@@ -4,8 +4,8 @@ import (
 	"math"
 	"time"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 // NewBuilder return new TemplateBuilder instance

@@ -3,7 +3,7 @@ package security
 import (
 	log "github.com/sirupsen/logrus"
 
-	cfg "github.com/bytom/bytom-classic/config"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
 )
 
 const logModule = "p2pSecurity"

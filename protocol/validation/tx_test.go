@@ -6,14 +6,14 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/sha3pool"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/sha3pool"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func init() {
@@ -31,12 +31,12 @@ func TestGasStatus(t *testing.T) {
 			input: &GasState{
 				GasLeft:  10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			output: &GasState{
 				GasLeft:  10000 / consensus.VMGasRate,
 				GasUsed:  0,
-				BTMValue: 10000,
+				MITYValue: 10000,
 			},
 			f: func(input *GasState) error {
 				return input.setGas(10000, 0)
@@ -47,12 +47,12 @@ func TestGasStatus(t *testing.T) {
 			input: &GasState{
 				GasLeft:  10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			output: &GasState{
 				GasLeft:  10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			f: func(input *GasState) error {
 				return input.setGas(-10000, 0)
@@ -63,12 +63,12 @@ func TestGasStatus(t *testing.T) {
 			input: &GasState{
 				GasLeft:  consensus.DefaultGasCredit,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			output: &GasState{
 				GasLeft:  200000,
 				GasUsed:  0,
-				BTMValue: 80000000000,
+				MITYValue: 80000000000,
 			},
 			f: func(input *GasState) error {
 				return input.setGas(80000000000, 0)
@@ -79,12 +79,12 @@ func TestGasStatus(t *testing.T) {
 			input: &GasState{
 				GasLeft:  consensus.DefaultGasCredit,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			output: &GasState{
 				GasLeft:  200000,
 				GasUsed:  0,
-				BTMValue: math.MaxInt64,
+				MITYValue: math.MaxInt64,
 			},
 			f: func(input *GasState) error {
 				return input.setGas(math.MaxInt64, 0)
@@ -95,12 +95,12 @@ func TestGasStatus(t *testing.T) {
 			input: &GasState{
 				GasLeft:  10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			output: &GasState{
 				GasLeft:  10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			f: func(input *GasState) error {
 				return input.updateUsage(-1)
@@ -111,12 +111,12 @@ func TestGasStatus(t *testing.T) {
 			input: &GasState{
 				GasLeft:  10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			output: &GasState{
 				GasLeft:  9999,
 				GasUsed:  1,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			f: func(input *GasState) error {
 				return input.updateUsage(9999)
@@ -127,12 +127,12 @@ func TestGasStatus(t *testing.T) {
 			input: &GasState{
 				GasLeft:  -10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			output: &GasState{
 				GasLeft:  -10000,
 				GasUsed:  0,
-				BTMValue: 0,
+				MITYValue: 0,
 			},
 			f: func(input *GasState) error {
 				return input.updateUsage(math.MaxInt64)
@@ -232,12 +232,12 @@ func TestOverflow(t *testing.T) {
 		txOutputs := make([]*types.TxOutput, 0, len(outputs))
 
 		for _, amount := range inputs {
-			txInput := types.NewSpendInput(nil, *sourceID, *consensus.BTMAssetID, amount, 0, ctrlProgram)
+			txInput := types.NewSpendInput(nil, *sourceID, *consensus.MITYAssetID, amount, 0, ctrlProgram)
 			txInputs = append(txInputs, txInput)
 		}
 
 		for _, amount := range outputs {
-			txOutput := types.NewTxOutput(*consensus.BTMAssetID, amount, ctrlProgram)
+			txOutput := types.NewTxOutput(*consensus.MITYAssetID, amount, ctrlProgram)
 			txOutputs = append(txOutputs, txOutput)
 		}
 
@@ -593,7 +593,7 @@ func TestTxValidation(t *testing.T) {
 		{
 			desc: "normal coinbase tx",
 			f: func() {
-				addCoinbase(consensus.BTMAssetID, 100000, nil)
+				addCoinbase(consensus.MITYAssetID, 100000, nil)
 			},
 			err: nil,
 		},
@@ -607,7 +607,7 @@ func TestTxValidation(t *testing.T) {
 		{
 			desc: "coinbase tx is not first tx in block",
 			f: func() {
-				addCoinbase(consensus.BTMAssetID, 100000, nil)
+				addCoinbase(consensus.MITYAssetID, 100000, nil)
 				vs.block.Transactions[0] = nil
 			},
 			err: ErrWrongCoinbaseTransaction,
@@ -616,7 +616,7 @@ func TestTxValidation(t *testing.T) {
 			desc: "coinbase arbitrary size out of limit",
 			f: func() {
 				arbitrary := make([]byte, consensus.CoinbaseArbitrarySizeLimit+1)
-				addCoinbase(consensus.BTMAssetID, 100000, arbitrary)
+				addCoinbase(consensus.MITYAssetID, 100000, arbitrary)
 			},
 			err: ErrCoinbaseArbitraryOversize,
 		},
@@ -701,7 +701,7 @@ func TestCoinbase(t *testing.T) {
 			types.NewCoinbaseInput(nil),
 		},
 		Outputs: []*types.TxOutput{
-			types.NewTxOutput(*consensus.BTMAssetID, 888, cp),
+			types.NewTxOutput(*consensus.MITYAssetID, 888, cp),
 		},
 	})
 
@@ -731,7 +731,7 @@ func TestCoinbase(t *testing.T) {
 							types.NewCoinbaseInput(nil),
 						},
 						Outputs: []*types.TxOutput{
-							types.NewTxOutput(*consensus.BTMAssetID, 888, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 888, cp),
 						},
 					}),
 				},
@@ -749,11 +749,11 @@ func TestCoinbase(t *testing.T) {
 						SerializedSize: 1,
 						Inputs: []*types.TxInput{
 							types.NewCoinbaseInput(nil),
-							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.BTMAssetID, 100000000, 0, cp),
+							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.MITYAssetID, 100000000, 0, cp),
 						},
 						Outputs: []*types.TxOutput{
-							types.NewTxOutput(*consensus.BTMAssetID, 888, cp),
-							types.NewTxOutput(*consensus.BTMAssetID, 90000000, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 888, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 90000000, cp),
 						},
 					}),
 				},
@@ -770,12 +770,12 @@ func TestCoinbase(t *testing.T) {
 					types.MapTx(&types.TxData{
 						SerializedSize: 1,
 						Inputs: []*types.TxInput{
-							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.BTMAssetID, 100000000, 0, cp),
+							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.MITYAssetID, 100000000, 0, cp),
 							types.NewCoinbaseInput(nil),
 						},
 						Outputs: []*types.TxOutput{
-							types.NewTxOutput(*consensus.BTMAssetID, 888, cp),
-							types.NewTxOutput(*consensus.BTMAssetID, 90000000, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 888, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 90000000, cp),
 						},
 					}),
 				},
@@ -792,11 +792,11 @@ func TestCoinbase(t *testing.T) {
 						SerializedSize: 1,
 						Inputs: []*types.TxInput{
 							types.NewCoinbaseInput(nil),
-							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.BTMAssetID, 100000000, 0, cp),
+							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.MITYAssetID, 100000000, 0, cp),
 						},
 						Outputs: []*types.TxOutput{
-							types.NewTxOutput(*consensus.BTMAssetID, 888, cp),
-							types.NewTxOutput(*consensus.BTMAssetID, 90000000, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 888, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 90000000, cp),
 						},
 					}),
 				},
@@ -813,11 +813,11 @@ func TestCoinbase(t *testing.T) {
 						SerializedSize: 1,
 						Inputs: []*types.TxInput{
 							types.NewCoinbaseInput(nil),
-							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.BTMAssetID, 100000000, 0, retire),
+							types.NewSpendInput([][]byte{}, *newHash(8), *consensus.MITYAssetID, 100000000, 0, retire),
 						},
 						Outputs: []*types.TxOutput{
-							types.NewTxOutput(*consensus.BTMAssetID, 888, cp),
-							types.NewTxOutput(*consensus.BTMAssetID, 90000000, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 888, cp),
+							types.NewTxOutput(*consensus.MITYAssetID, 90000000, cp),
 						},
 					}),
 				},
@@ -922,7 +922,7 @@ func TestTimeRange(t *testing.T) {
 			mockGasTxInput(),
 		},
 		Outputs: []*types.TxOutput{
-			types.NewTxOutput(*consensus.BTMAssetID, 1, []byte{0x6a}),
+			types.NewTxOutput(*consensus.MITYAssetID, 1, []byte{0x6a}),
 		},
 	})
 
@@ -1148,7 +1148,7 @@ func mockBlock() *bc.Block {
 
 func mockGasTxInput() *types.TxInput {
 	cp, _ := vmutil.DefaultCoinbaseProgram()
-	return types.NewSpendInput([][]byte{}, *newHash(8), *consensus.BTMAssetID, 100000000, 0, cp)
+	return types.NewSpendInput([][]byte{}, *newHash(8), *consensus.MITYAssetID, 100000000, 0, cp)
 }
 
 // Like errors.Root, but also unwraps vm.Error objects.

@@ -10,9 +10,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	cmn "github.com/tendermint/tmlibs/common"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/p2p/upnp"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/upnp"
 )
 
 const (
@@ -70,11 +70,11 @@ func getUPNPExternalAddress(externalPort, internalPort int) (*NetAddress, error)
 	if externalPort == 0 {
 		externalPort = defaultExternalPort
 	}
-	externalPort, err = nat.AddPortMapping("tcp", externalPort, internalPort, "bytomd tcp", 0)
+	externalPort, err = nat.AddPortMapping("tcp", externalPort, internalPort, "anonimitycashd tcp", 0)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not add tcp UPNP port mapping")
 	}
-	externalPort, err = nat.AddPortMapping("udp", externalPort, internalPort, "bytomd udp", 0)
+	externalPort, err = nat.AddPortMapping("udp", externalPort, internalPort, "anonimitycashd udp", 0)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not add udp UPNP port mapping")
 	}
@@ -93,7 +93,7 @@ func splitHostPort(addr string) (host string, port int) {
 	return host, port
 }
 
-//DefaultListener Implements bytomd server Listener
+//DefaultListener Implements anonimitycashd server Listener
 type DefaultListener struct {
 	cmn.BaseService
 

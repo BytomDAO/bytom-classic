@@ -3,10 +3,10 @@ package protocol
 import (
 	"testing"
 
-	"github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/state"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestCalcReorganizeNodes(t *testing.T) {

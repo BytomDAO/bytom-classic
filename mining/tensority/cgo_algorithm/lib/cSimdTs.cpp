@@ -4,14 +4,14 @@
 #include <mutex>
 #include <signal.h>
 #include "cSimdTs.h"
-#include "BytomPoW.h"
+#include "AnonimitycashPoW.h"
 #include "seed.h"
 
 using namespace std;
 
-BytomMatList16* matList_int16;
+AnonimitycashMatList16* matList_int16;
 uint8_t result[32] = {0};
-map <vector<uint8_t>, BytomMatList16*> seedCache;
+map <vector<uint8_t>, AnonimitycashMatList16*> seedCache;
 static const int cacheSize = 42; //"Answer to the Ultimate Question of Life, the Universe, and Everything"
 mutex mtx;
 
@@ -28,16 +28,16 @@ uint8_t *SimdTs(uint8_t blockheader[32], uint8_t seed[32]){
         Words32 extSeed;
         init_seed(extSeed, exted);
 
-        matList_int16 = new BytomMatList16;
+        matList_int16 = new AnonimitycashMatList16;
         matList_int16->init(extSeed);
 
         seedCache.insert(make_pair(seedVec, matList_int16));
     }
 
-    iter_mineBytom(blockheader, 32, result);
+    iter_mineAnonimitycash(blockheader, 32, result);
 
     if(seedCache.size() > cacheSize) {
-        for(map<vector<uint8_t>, BytomMatList16*>::iterator it=seedCache.begin(); it!=seedCache.end(); ++it){
+        for(map<vector<uint8_t>, AnonimitycashMatList16*>::iterator it=seedCache.begin(); it!=seedCache.end(); ++it){
             delete it->second;
         }
         seedCache.clear();

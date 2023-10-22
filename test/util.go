@@ -4,18 +4,18 @@ import (
 	"context"
 	"time"
 
-	"github.com/bytom/bytom-classic/account"
-	"github.com/bytom/bytom-classic/blockchain/pseudohsm"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/database"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/account"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/pseudohsm"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 const (
@@ -37,7 +37,7 @@ func MockUTXO(controlProg *account.CtrlProgram) *account.UTXO {
 	utxo := &account.UTXO{}
 	utxo.OutputID = bc.Hash{V0: 1}
 	utxo.SourceID = bc.Hash{V0: 2}
-	utxo.AssetID = *consensus.BTMAssetID
+	utxo.AssetID = *consensus.MITYAssetID
 	utxo.Amount = 1000000000
 	utxo.SourcePos = 0
 	utxo.ControlProgram = controlProg.ControlProgram
@@ -59,7 +59,7 @@ func MockTx(utxo *account.UTXO, testAccount *account.Account) (*txbuilder.Templa
 	if err := b.AddInput(txInput, sigInst); err != nil {
 		return nil, nil, err
 	}
-	out := types.NewTxOutput(*consensus.BTMAssetID, 100, []byte{byte(vm.OP_FAIL)})
+	out := types.NewTxOutput(*consensus.MITYAssetID, 100, []byte{byte(vm.OP_FAIL)})
 	if err := b.AddOutput(out); err != nil {
 		return nil, nil, err
 	}

@@ -1,8 +1,8 @@
 package query
 
 import (
-	"github.com/bytom/bytom-classic/blockchain/query/filter"
-	"github.com/bytom/bytom-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/query/filter"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 var filterTable = filter.Table{

@@ -5,11 +5,11 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/state"
-	"github.com/bytom/bytom-classic/protocol/validation"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/validation"
 )
 
 // ErrBadTx is returned for transactions failing validation
@@ -53,7 +53,7 @@ func (c *Chain) ValidateTx(tx *types.Tx) (bool, error) {
 		log.WithFields(log.Fields{"module": logModule, "tx_id": tx.Tx.ID.String(), "error": err}).Info("transaction status fail")
 	}
 
-	return c.txPool.ProcessTransaction(tx, err != nil, bh.Height, gasStatus.BTMValue)
+	return c.txPool.ProcessTransaction(tx, err != nil, bh.Height, gasStatus.MITYValue)
 }
 
 var banedScripts = map[string]bool{

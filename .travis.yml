@@ -1,5 +1,5 @@
 language: go
-go_import_path: github.com/bytom/bytom
+go_import_path: github.com/anonimitycash/anonimitycash
 dist: trusty
 sudo: false
 

@@ -11,7 +11,7 @@
     {
       "coinbase_account": "alice",
       "post_states": [
-        {"name": "alice", "asset": "BTM", "amount": 41250000000}
+        {"name": "alice", "asset": "MITY", "amount": 41250000000}
       ],
       "append": 100
     },
@@ -21,17 +21,17 @@
         {
           "passwords": ["alice"],
           "inputs": [
-            {"type": "spend_account", "name": "alice", "amount": 6000000000, "asset": "BTM"}
+            {"type": "spend_account", "name": "alice", "amount": 6000000000, "asset": "MITY"}
           ],
           "outputs": [
-            {"type": "output", "name": "bob", "amount": 1000000000, "asset": "BTM"},
-            {"type": "output", "name": "alice", "amount": 4000000000, "asset": "BTM"}
+            {"type": "output", "name": "bob", "amount": 1000000000, "asset": "MITY"},
+            {"type": "output", "name": "alice", "amount": 4000000000, "asset": "MITY"}
           ]
         }
       ],
       "post_states": [
-        {"name": "alice", "asset": "BTM", "amount": 39250000000},
-        {"name": "bob", "asset": "BTM", "amount": 43250000000}
+        {"name": "alice", "asset": "MITY", "amount": 39250000000},
+        {"name": "bob", "asset": "MITY", "amount": 43250000000}
       ],
       "append": 0
     }

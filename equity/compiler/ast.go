@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
 )
 
 // Contract is a compiled Equity contract.

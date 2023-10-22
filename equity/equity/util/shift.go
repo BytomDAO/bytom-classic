@@ -6,9 +6,9 @@ import (
 	"encoding/hex"
 	"errors"
 
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 
-	"github.com/bytom/bytom-classic/equity/compiler"
+	"github.com/anonimitycash/anonimitycash-classic/equity/compiler"
 )
 
 const (

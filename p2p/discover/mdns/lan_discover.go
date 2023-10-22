@@ -7,7 +7,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/event"
 )
 
 const (

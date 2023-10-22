@@ -14,12 +14,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/tendermint/go-wire"
 
-	"github.com/bytom/bytom-classic/common"
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/crypto"
-	"github.com/bytom/bytom-classic/crypto/ed25519"
-	"github.com/bytom/bytom-classic/p2p/netutil"
-	"github.com/bytom/bytom-classic/version"
+	"github.com/anonimitycash/anonimitycash-classic/common"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/crypto"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/netutil"
+	"github.com/anonimitycash/anonimitycash-classic/version"
 )
 
 const (
@@ -158,7 +158,7 @@ type (
 )
 
 var (
-	versionPrefix     = []byte("bytom discovery")
+	versionPrefix     = []byte("anonimitycash discovery")
 	versionPrefixSize = len(versionPrefix)
 	nodeIDSize        = 32
 	sigSize           = 520 / 8

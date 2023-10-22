@@ -5,15 +5,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bytom/bytom-classic/blockchain/signers"
-	"github.com/bytom/bytom-classic/blockchain/txbuilder"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/signers"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/txbuilder"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
-func TestReserveBtmUtxoChain(t *testing.T) {
+func TestReserveMityUtxoChain(t *testing.T) {
 	txbuilder.ChainTxUtxoNum = 3
 	utxos := []*UTXO{}
 	m := mockAccountManager(t)
@@ -21,7 +21,7 @@ func TestReserveBtmUtxoChain(t *testing.T) {
 		utxo := &UTXO{
 			OutputID:  bc.Hash{V0: i},
 			AccountID: "TestAccountID",
-			AssetID:   *consensus.BTMAssetID,
+			AssetID:   *consensus.MITYAssetID,
 			Amount:    i * txbuilder.ChainTxMergeGas,
 		}
 		utxos = append(utxos, utxo)
@@ -64,7 +64,7 @@ func TestReserveBtmUtxoChain(t *testing.T) {
 
 	for i, c := range cases {
 		m.utxoKeeper.expireReservation(time.Unix(999999999, 0))
-		utxos, err := m.reserveBtmUtxoChain(&txbuilder.TemplateBuilder{}, "TestAccountID", c.amount, false)
+		utxos, err := m.reserveMityUtxoChain(&txbuilder.TemplateBuilder{}, "TestAccountID", c.amount, false)
 
 		if err != nil != c.err {
 			t.Fatalf("case %d got err %v want err = %v", i, err, c.err)
@@ -82,7 +82,7 @@ func TestReserveBtmUtxoChain(t *testing.T) {
 
 }
 
-func TestBuildBtmTxChain(t *testing.T) {
+func TestBuildMityTxChain(t *testing.T) {
 	txbuilder.ChainTxUtxoNum = 3
 	m := mockAccountManager(t)
 	cases := []struct {
@@ -158,13 +158,13 @@ func TestBuildBtmTxChain(t *testing.T) {
 		for _, amount := range c.inputUtxo {
 			utxos = append(utxos, &UTXO{
 				Amount:         amount * txbuilder.ChainTxMergeGas,
-				AssetID:        *consensus.BTMAssetID,
+				AssetID:        *consensus.MITYAssetID,
 				Address:        acp.Address,
 				ControlProgram: acp.ControlProgram,
 			})
 		}
 
-		tpls, gotUtxo, err := m.buildBtmTxChain(utxos, acct.Signer)
+		tpls, gotUtxo, err := m.buildMityTxChain(utxos, acct.Signer)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -196,8 +196,8 @@ func TestBuildBtmTxChain(t *testing.T) {
 }
 
 func TestMergeSpendAction(t *testing.T) {
-	testBTM := &bc.AssetID{}
-	if err := testBTM.UnmarshalText([]byte("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")); err != nil {
+	testMITY := &bc.AssetID{}
+	if err := testMITY.UnmarshalText([]byte("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")); err != nil {
 		t.Fatal(err)
 	}
 
@@ -221,21 +221,21 @@ func TestMergeSpendAction(t *testing.T) {
 			testActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  100,
 					},
 					AccountID: "test_account",
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  200,
 					},
 					AccountID: "test_account",
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  300,
 					},
 					AccountID: "test_account",
@@ -251,7 +251,7 @@ func TestMergeSpendAction(t *testing.T) {
 			wantActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  600,
 					},
 					AccountID: "test_account",
@@ -271,7 +271,7 @@ func TestMergeSpendAction(t *testing.T) {
 			testActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  100,
 					},
 					AccountID: "test_account",
@@ -285,7 +285,7 @@ func TestMergeSpendAction(t *testing.T) {
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  500,
 					},
 					AccountID: "test_account",
@@ -301,7 +301,7 @@ func TestMergeSpendAction(t *testing.T) {
 			wantActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  600,
 					},
 					AccountID: "test_account",
@@ -321,7 +321,7 @@ func TestMergeSpendAction(t *testing.T) {
 			testActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  100,
 					},
 					AccountID: "test_account",
@@ -358,7 +358,7 @@ func TestMergeSpendAction(t *testing.T) {
 			wantActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  100,
 					},
 					AccountID: "test_account",
@@ -385,21 +385,21 @@ func TestMergeSpendAction(t *testing.T) {
 			testActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  100,
 					},
 					AccountID: "test_account",
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  200,
 					},
 					AccountID: "test_account1",
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  500,
 					},
 					AccountID: "test_account",
@@ -415,14 +415,14 @@ func TestMergeSpendAction(t *testing.T) {
 			wantActions: []txbuilder.Action{
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  600,
 					},
 					AccountID: "test_account",
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  200,
 					},
 					AccountID: "test_account1",
@@ -445,7 +445,7 @@ func TestMergeSpendAction(t *testing.T) {
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  100,
 					},
 					AccountID: "test_account",
@@ -474,7 +474,7 @@ func TestMergeSpendAction(t *testing.T) {
 				}),
 				txbuilder.Action(&spendAction{
 					AssetAmount: bc.AssetAmount{
-						AssetId: testBTM,
+						AssetId: testMITY,
 						Amount:  100,
 					},
 					AccountID: "test_account",

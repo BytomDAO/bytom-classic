@@ -16,7 +16,7 @@ import (
 	"io"
 	"strconv"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519/internal/edwards25519"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/internal/edwards25519"
 )
 
 const (

@@ -10,10 +10,10 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestTransaction(t *testing.T) {
@@ -45,7 +45,7 @@ func TestTransaction(t *testing.T) {
 				TimeRange:      654,
 				Inputs: []*TxInput{
 					NewIssuanceInput([]byte("nonce"), 254354, []byte("issuanceProgram"), [][]byte{[]byte("arguments1"), []byte("arguments2")}, []byte("assetDefinition")),
-					NewSpendInput([][]byte{[]byte("arguments3"), []byte("arguments4")}, testutil.MustDecodeHash("fad5195a0c8e3b590b86a3c0a95e7529565888508aecca96e9aeda633002f409"), *consensus.BTMAssetID, 254354, 3, []byte("spendProgram")),
+					NewSpendInput([][]byte{[]byte("arguments3"), []byte("arguments4")}, testutil.MustDecodeHash("fad5195a0c8e3b590b86a3c0a95e7529565888508aecca96e9aeda633002f409"), *consensus.MITYAssetID, 254354, 3, []byte("spendProgram")),
 				},
 				Outputs: []*TxOutput{
 					NewTxOutput(testutil.MustDecodeAsset("a69849e11add96ac7053aad22ba2349a4abf5feb0475a0afcadff4e128be76cf"), 254354, []byte("true")),
@@ -111,8 +111,8 @@ func TestTransaction(t *testing.T) {
 					NewCoinbaseInput([]byte("arbitrary")),
 				},
 				Outputs: []*TxOutput{
-					NewTxOutput(*consensus.BTMAssetID, 254354, []byte("true")),
-					NewTxOutput(*consensus.BTMAssetID, 254354, []byte("false")),
+					NewTxOutput(*consensus.MITYAssetID, 254354, []byte("true")),
+					NewTxOutput(*consensus.MITYAssetID, 254354, []byte("false")),
 				},
 			}),
 			hex: strings.Join([]string{

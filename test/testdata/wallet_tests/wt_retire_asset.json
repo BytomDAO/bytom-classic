@@ -13,7 +13,7 @@
     {
       "coinbase_account": "alice",
       "post_states": [
-        {"name": "alice", "asset": "BTM", "amount": 41250000000}
+        {"name": "alice", "asset": "MITY", "amount": 41250000000}
       ],
       "append": 100
     },
@@ -23,22 +23,22 @@
         {
           "passwords": ["alice"],
           "inputs": [
-            {"type": "spend_account", "name": "alice", "amount": 30000000000, "asset": "BTM"}
+            {"type": "spend_account", "name": "alice", "amount": 30000000000, "asset": "MITY"}
           ],
           "outputs": [
-            {"type": "output", "name": "bob", "amount": 5000000000, "asset": "BTM"},
-            {"type": "output", "name": "bob", "amount": 5000000000, "asset": "BTM"},
-            {"type": "output", "name": "bob", "amount": 5000000000, "asset": "BTM"},
-            {"type": "output", "name": "alice", "amount": 5000000000, "asset": "BTM"},
-            {"type": "output", "name": "alice", "amount": 5000000000, "asset": "BTM"},
-            {"type": "output", "name": "alice", "amount": 2000000000, "asset": "BTM"},
-            {"type": "output", "name": "alice", "amount": 2000000000, "asset": "BTM"}
+            {"type": "output", "name": "bob", "amount": 5000000000, "asset": "MITY"},
+            {"type": "output", "name": "bob", "amount": 5000000000, "asset": "MITY"},
+            {"type": "output", "name": "bob", "amount": 5000000000, "asset": "MITY"},
+            {"type": "output", "name": "alice", "amount": 5000000000, "asset": "MITY"},
+            {"type": "output", "name": "alice", "amount": 5000000000, "asset": "MITY"},
+            {"type": "output", "name": "alice", "amount": 2000000000, "asset": "MITY"},
+            {"type": "output", "name": "alice", "amount": 2000000000, "asset": "MITY"}
           ]
         }
       ],
       "post_states": [
-        {"name": "alice", "asset": "BTM", "amount": 25250000000},
-        {"name": "bob", "asset": "BTM", "amount": 15000000000}
+        {"name": "alice", "asset": "MITY", "amount": 25250000000},
+        {"name": "bob", "asset": "MITY", "amount": 15000000000}
       ]
     },
     {
@@ -47,7 +47,7 @@
         {
           "passwords": ["alice"],
           "inputs": [
-            {"type": "spend_account", "name": "alice", "amount": 1000000000, "asset": "BTM"},
+            {"type": "spend_account", "name": "alice", "amount": 1000000000, "asset": "MITY"},
             {"type": "issue", "name": "alice", "amount": 100, "asset": "GOLD"}
           ],
           "outputs": [
@@ -56,9 +56,9 @@
         }
       ],
       "post_states": [
-        {"name": "alice", "asset": "BTM", "amount": 24250000000},
+        {"name": "alice", "asset": "MITY", "amount": 24250000000},
         {"name": "alice", "asset": "GOLD", "amount": 100},
-        {"name": "bob", "asset": "BTM", "amount": 15000000000}
+        {"name": "bob", "asset": "MITY", "amount": 15000000000}
       ]
     },
     {
@@ -67,29 +67,29 @@
         {
           "passwords": ["bob"],
           "inputs": [
-            {"type": "spend_account", "name": "bob", "amount": 5000000000, "asset": "BTM"}
+            {"type": "spend_account", "name": "bob", "amount": 5000000000, "asset": "MITY"}
           ],
           "outputs": [
-            {"type": "output", "name": "alice", "amount": 1000000000, "asset": "BTM"},
-            {"type": "output", "name": "bob", "amount": 3000000000, "asset": "BTM"}
+            {"type": "output", "name": "alice", "amount": 1000000000, "asset": "MITY"},
+            {"type": "output", "name": "bob", "amount": 3000000000, "asset": "MITY"}
           ]
         },
         {
           "passwords": ["alice", "bob"],
           "inputs": [
-            {"type": "spend_account", "name": "bob", "amount": 2000000000, "asset": "BTM"},
+            {"type": "spend_account", "name": "bob", "amount": 2000000000, "asset": "MITY"},
             {"type": "spend_account", "name": "alice", "amount": 50, "asset": "GOLD"}
           ],
           "outputs": [
             {"type": "output", "name": "bob", "amount": 50, "asset": "GOLD"},
-            {"type": "output", "name": "alice", "amount": 1000000000, "asset": "BTM"}
+            {"type": "output", "name": "alice", "amount": 1000000000, "asset": "MITY"}
           ]
         }
       ],
       "post_states": [
-        {"name": "alice", "asset": "BTM", "amount": 26250000000},
+        {"name": "alice", "asset": "MITY", "amount": 26250000000},
         {"name": "alice", "asset": "GOLD", "amount": 50},
-        {"name": "bob", "asset": "BTM", "amount": 11000000000},
+        {"name": "bob", "asset": "MITY", "amount": 11000000000},
         {"name": "bob", "asset": "GOLD", "amount": 50}
       ]
     },
@@ -99,7 +99,7 @@
         {
           "passwords": ["alice"],
           "inputs": [
-            {"type": "spend_account", "name": "alice", "amount": 1000000000, "asset": "BTM"},
+            {"type": "spend_account", "name": "alice", "amount": 1000000000, "asset": "MITY"},
             {"type": "spend_account", "name": "alice", "amount": 20, "asset": "GOLD"}
           ],
           "outputs": [
@@ -108,9 +108,9 @@
         }
       ],
       "post_states": [
-        {"name": "alice", "asset": "BTM", "amount": 25250000000},
+        {"name": "alice", "asset": "MITY", "amount": 25250000000},
         {"name": "alice", "asset": "GOLD", "amount": 30},
-        {"name": "bob", "asset": "BTM", "amount": 11000000000},
+        {"name": "bob", "asset": "MITY", "amount": 11000000000},
         {"name": "bob", "asset": "GOLD", "amount": 50}
       ]
     }

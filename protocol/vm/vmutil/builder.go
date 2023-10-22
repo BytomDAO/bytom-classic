@@ -3,8 +3,8 @@ package vmutil
 import (
 	"encoding/binary"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
 )
 
 type Builder struct {

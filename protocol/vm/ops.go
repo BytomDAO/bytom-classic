@@ -6,8 +6,8 @@ import (
 	"math"
 	"reflect"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/math/checked"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/math/checked"
 )
 
 type Op uint8

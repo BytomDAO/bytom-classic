@@ -5,15 +5,15 @@ import (
 
 	"time"
 
-	"github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/database"
-	"github.com/bytom/bytom-classic/database/storage"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
-	"github.com/bytom/bytom-classic/protocol/state"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	"github.com/anonimitycash/anonimitycash-classic/database/storage"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/state"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 var blockMap map[int][]*attachBlock
@@ -53,7 +53,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0031")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 					},
@@ -79,7 +79,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0031")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41250000000, testutil.MustDecodeHexString("00143d05e891b165b165afefa2e861e83a9745f80d8c")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41250000000, testutil.MustDecodeHexString("00143d05e891b165b165afefa2e861e83a9745f80d8c")),
 							},
 						}),
 					},
@@ -108,14 +108,14 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0032")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 					},
 				},
 				verifyResult: []*bc.TxVerifyResult{{StatusFail: false}},
 			},
-			// with spend btm transaction
+			// with spend mity transaction
 			{
 				block: &types.Block{
 					BlockHeader: types.BlockHeader{
@@ -135,7 +135,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0032")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 						types.NewTx(types.TxData{
@@ -148,19 +148,19 @@ func init() {
 										testutil.MustDecodeHexString("33b05e00e19cb2bdbc8a6a67b4f1e03fc265534bcfc7641b305c8204fb486f79"),
 									},
 									testutil.MustDecodeHash("28b7b53d8dc90006bf97e0a4eaae2a72ec3d869873188698b694beaf20789f21"),
-									*consensus.BTMAssetID, 10000000000, 0,
+									*consensus.MITYAssetID, 10000000000, 0,
 									testutil.MustDecodeHexString("0014cade6dd7cbe2ea2b8ab90dfb8756dda4ba1624bc"),
 								),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 9900000000, testutil.MustDecodeHexString("00143d05e891b165b165afefa2e861e83a9745f80d8c")),
+								types.NewTxOutput(*consensus.MITYAssetID, 9900000000, testutil.MustDecodeHexString("00143d05e891b165b165afefa2e861e83a9745f80d8c")),
 							},
 						}),
 					},
 				},
 				verifyResult: []*bc.TxVerifyResult{{StatusFail: false}, {StatusFail: false}},
 			},
-			// with btm retire transaction
+			// with mity retire transaction
 			{
 				block: &types.Block{
 					BlockHeader: types.BlockHeader{
@@ -180,7 +180,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0032")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 						types.NewTx(types.TxData{
@@ -193,12 +193,12 @@ func init() {
 										testutil.MustDecodeHexString("33b05e00e19cb2bdbc8a6a67b4f1e03fc265534bcfc7641b305c8204fb486f79"),
 									},
 									testutil.MustDecodeHash("28b7b53d8dc90006bf97e0a4eaae2a72ec3d869873188698b694beaf20789f21"),
-									*consensus.BTMAssetID, 10000000000, 0,
+									*consensus.MITYAssetID, 10000000000, 0,
 									testutil.MustDecodeHexString("0014cade6dd7cbe2ea2b8ab90dfb8756dda4ba1624bc"),
 								),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 9900000000, testutil.MustDecodeHexString("6a")), // retire
+								types.NewTxOutput(*consensus.MITYAssetID, 9900000000, testutil.MustDecodeHexString("6a")), // retire
 							},
 						}),
 					},
@@ -225,7 +225,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0032")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 						types.NewTx(types.TxData{
@@ -238,7 +238,7 @@ func init() {
 										testutil.MustDecodeHexString("33b05e00e19cb2bdbc8a6a67b4f1e03fc265534bcfc7641b305c8204fb486f79"),
 									},
 									testutil.MustDecodeHash("28b7b53d8dc90006bf97e0a4eaae2a72ec3d869873188698b694beaf20789f21"),
-									*consensus.BTMAssetID, 10000000000, 0,
+									*consensus.MITYAssetID, 10000000000, 0,
 									testutil.MustDecodeHexString("0014cade6dd7cbe2ea2b8ab90dfb8756dda4ba1624bc"),
 								),
 								types.NewIssuanceInput(
@@ -250,7 +250,7 @@ func init() {
 								),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 								types.NewTxOutput(testutil.MustDecodeAsset("641ccb49dd38df9921a55e020d40a2323589c36ab5557f8a249ee01cc09d1836"), 10000000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
@@ -278,7 +278,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0032")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 						types.NewTx(types.TxData{
@@ -291,7 +291,7 @@ func init() {
 										testutil.MustDecodeHexString("33b05e00e19cb2bdbc8a6a67b4f1e03fc265534bcfc7641b305c8204fb486f79"),
 									},
 									testutil.MustDecodeHash("28b7b53d8dc90006bf97e0a4eaae2a72ec3d869873188698b694beaf20789f21"),
-									*consensus.BTMAssetID, 10000000000, 0,
+									*consensus.MITYAssetID, 10000000000, 0,
 									testutil.MustDecodeHexString("0014cade6dd7cbe2ea2b8ab90dfb8756dda4ba1624bc"),
 								),
 								types.NewIssuanceInput(
@@ -304,7 +304,7 @@ func init() {
 								),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 								types.NewTxOutput(testutil.MustDecodeAsset("641ccb49dd38df9921a55e020d40a2323589c36ab5557f8a249ee01cc09d1836"), 10000000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
@@ -312,7 +312,7 @@ func init() {
 				},
 				verifyResult: []*bc.TxVerifyResult{{StatusFail: false}, {StatusFail: true}},
 			},
-			// with non btm transaction
+			// with non mity transaction
 			{
 				block: &types.Block{
 					BlockHeader: types.BlockHeader{
@@ -332,7 +332,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0032")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 						types.NewTx(types.TxData{
@@ -345,7 +345,7 @@ func init() {
 										testutil.MustDecodeHexString("33b05e00e19cb2bdbc8a6a67b4f1e03fc265534bcfc7641b305c8204fb486f79"),
 									},
 									testutil.MustDecodeHash("28b7b53d8dc90006bf97e0a4eaae2a72ec3d869873188698b694beaf20789f21"),
-									*consensus.BTMAssetID, 10000000000, 0,
+									*consensus.MITYAssetID, 10000000000, 0,
 									testutil.MustDecodeHexString("0014cade6dd7cbe2ea2b8ab90dfb8756dda4ba1624bc"),
 								),
 								types.NewSpendInput(
@@ -359,7 +359,7 @@ func init() {
 								),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 								types.NewTxOutput(testutil.MustDecodeAsset("641ccb49dd38df9921a55e020d40a2323589c36ab5557f8a249ee01cc09d1836"), 10000000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
@@ -367,7 +367,7 @@ func init() {
 				},
 				verifyResult: []*bc.TxVerifyResult{{StatusFail: false}, {StatusFail: false}},
 			},
-			// with non btm transaction but status fail is true
+			// with non mity transaction but status fail is true
 			{
 				block: &types.Block{
 					BlockHeader: types.BlockHeader{
@@ -387,7 +387,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0032")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41350000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 						types.NewTx(types.TxData{
@@ -400,7 +400,7 @@ func init() {
 										testutil.MustDecodeHexString("33b05e00e19cb2bdbc8a6a67b4f1e03fc265534bcfc7641b305c8204fb486f79"),
 									},
 									testutil.MustDecodeHash("28b7b53d8dc90006bf97e0a4eaae2a72ec3d869873188698b694beaf20789f21"),
-									*consensus.BTMAssetID, 10000000000, 0,
+									*consensus.MITYAssetID, 10000000000, 0,
 									testutil.MustDecodeHexString("0014cade6dd7cbe2ea2b8ab90dfb8756dda4ba1624bc"),
 								),
 								types.NewSpendInput(
@@ -415,7 +415,7 @@ func init() {
 								),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 9900000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 								types.NewTxOutput(testutil.MustDecodeAsset("641ccb49dd38df9921a55e020d40a2323589c36ab5557f8a249ee01cc09d1836"), 10000000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
@@ -445,7 +445,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0033")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 					},
@@ -472,7 +472,7 @@ func init() {
 								types.NewCoinbaseInput(testutil.MustDecodeHexString("0033")),
 							},
 							Outputs: []*types.TxOutput{
-								types.NewTxOutput(*consensus.BTMAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
+								types.NewTxOutput(*consensus.MITYAssetID, 41250000000, testutil.MustDecodeHexString("0014024bb9bfc639bdac292ff9ceb41b5c6f5a970eab")),
 							},
 						}),
 					},
@@ -588,7 +588,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "attach a block with btm transaction normally",
+			desc:     "attach a block with mity transaction normally",
 			newBlock: blockMap[2][1].block,
 			initStore: createStoreItems([]int{0, 1}, []*attachBlock{blockMap[0][0], blockMap[1][0]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("c93b687f98d039046cd2afd514c62f5d1c2c3b0804e4845b00a33e736ef48a33"))),
@@ -696,7 +696,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "attach a block with non btm transaction",
+			desc:     "attach a block with non mity transaction",
 			newBlock: blockMap[2][5].block,
 			initStore: createStoreItems([]int{0, 1}, []*attachBlock{blockMap[0][0], blockMap[1][0]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("be164edbce8bcd1d890c1164541b8418fdcb257499757d3b88561bca06e97e29"))),
@@ -729,7 +729,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "attach a block with non btm transaction but status fail is true",
+			desc:     "attach a block with non mity transaction but status fail is true",
 			newBlock: blockMap[2][6].block,
 			initStore: createStoreItems([]int{0, 1}, []*attachBlock{blockMap[0][0], blockMap[1][0]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("be164edbce8bcd1d890c1164541b8418fdcb257499757d3b88561bca06e97e29"))),
@@ -784,7 +784,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "rollback a block has spend btm transaction",
+			desc:     "rollback a block has spend mity transaction",
 			newBlock: blockMap[3][0].block,
 			initStore: createStoreItems([]int{0, 1, 3}, []*attachBlock{blockMap[0][0], blockMap[1][0], blockMap[2][0], blockMap[2][1]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("c93b687f98d039046cd2afd514c62f5d1c2c3b0804e4845b00a33e736ef48a33"))),
@@ -874,7 +874,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "rollback a block has spend non btm",
+			desc:     "rollback a block has spend non mity",
 			newBlock: blockMap[3][0].block,
 			initStore: createStoreItems([]int{0, 1, 3}, []*attachBlock{blockMap[0][0], blockMap[1][0], blockMap[2][0], blockMap[2][5]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("c93b687f98d039046cd2afd514c62f5d1c2c3b0804e4845b00a33e736ef48a33"))),
@@ -910,7 +910,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "rollback a block has spend non btm but status fail is true",
+			desc:     "rollback a block has spend non mity but status fail is true",
 			newBlock: blockMap[3][0].block,
 			initStore: createStoreItems([]int{0, 1, 3}, []*attachBlock{blockMap[0][0], blockMap[1][0], blockMap[2][0], blockMap[2][6]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("c93b687f98d039046cd2afd514c62f5d1c2c3b0804e4845b00a33e736ef48a33"))),
@@ -974,7 +974,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "rollback a block has spend btm tx, and from orphan manage",
+			desc:     "rollback a block has spend mity tx, and from orphan manage",
 			newBlock: blockMap[2][0].block,
 			initStore: createStoreItems([]int{0, 1, 2}, []*attachBlock{blockMap[0][0], blockMap[1][0], blockMap[2][1]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("c93b687f98d039046cd2afd514c62f5d1c2c3b0804e4845b00a33e736ef48a33"))),
@@ -1082,7 +1082,7 @@ func TestProcessBlock(t *testing.T) {
 			wantError:        false,
 		},
 		{
-			desc:     "rollback a block has non btm tx, and from orphan manage",
+			desc:     "rollback a block has non mity tx, and from orphan manage",
 			newBlock: blockMap[2][0].block,
 			initStore: createStoreItems([]int{0, 1, 2}, []*attachBlock{blockMap[0][0], blockMap[1][0], blockMap[2][5]}, &storeItem{
 				key: database.CalcUtxoKey(hashPtr(testutil.MustDecodeHash("c93b687f98d039046cd2afd514c62f5d1c2c3b0804e4845b00a33e736ef48a33"))),
@@ -1167,7 +1167,7 @@ func createStoreItems(mainChainIndexes []int, attachBlocks []*attachBlock, extra
 		for i, tx := range block.Transactions {
 			statusFail := attachBlock.verifyResult[i].StatusFail
 			for _, input := range tx.Inputs {
-				if statusFail && input.AssetID() != *consensus.BTMAssetID {
+				if statusFail && input.AssetID() != *consensus.MITYAssetID {
 					continue
 				}
 
@@ -1182,7 +1182,7 @@ func createStoreItems(mainChainIndexes []int, attachBlocks []*attachBlock, extra
 				items = append(items[0:index], items[index+1:]...)
 			}
 			for j, output := range tx.Outputs {
-				if statusFail && *tx.Outputs[j].AssetId != *consensus.BTMAssetID {
+				if statusFail && *tx.Outputs[j].AssetId != *consensus.MITYAssetID {
 					continue
 				}
 				if output.ControlProgram[0] == 0x6a {

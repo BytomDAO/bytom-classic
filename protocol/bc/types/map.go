@@ -1,10 +1,10 @@
 package types
 
 import (
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/vm"
-	"github.com/bytom/bytom-classic/protocol/vm/vmutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/vm/vmutil"
 )
 
 // MapTx converts a types TxData object into its entries-based
@@ -28,7 +28,7 @@ func MapTx(oldTx *TxData) *bc.Tx {
 		case *bc.Spend:
 			ord = e.Ordinal
 			spentOutputIDs[*e.SpentOutputId] = true
-			if *e.WitnessDestination.Value.AssetId == *consensus.BTMAssetID {
+			if *e.WitnessDestination.Value.AssetId == *consensus.MITYAssetID {
 				tx.GasInputIDs = append(tx.GasInputIDs, id)
 			}
 

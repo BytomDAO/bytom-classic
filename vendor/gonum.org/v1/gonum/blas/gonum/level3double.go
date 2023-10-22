@@ -64,9 +64,9 @@ func (Implementation) Dtrsm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 
 	if alpha == 0 {
 		for i := 0; i < m; i++ {
-			btmp := b[i*ldb : i*ldb+n]
-			for j := range btmp {
-				btmp[j] = 0
+			mityp := b[i*ldb : i*ldb+n]
+			for j := range mityp {
+				mityp[j] = 0
 			}
 		}
 		return
@@ -76,43 +76,43 @@ func (Implementation) Dtrsm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 		if tA == blas.NoTrans {
 			if ul == blas.Upper {
 				for i := m - 1; i >= 0; i-- {
-					btmp := b[i*ldb : i*ldb+n]
+					mityp := b[i*ldb : i*ldb+n]
 					if alpha != 1 {
-						for j := range btmp {
-							btmp[j] *= alpha
+						for j := range mityp {
+							mityp[j] *= alpha
 						}
 					}
 					for ka, va := range a[i*lda+i+1 : i*lda+m] {
 						k := ka + i + 1
 						if va != 0 {
-							f64.AxpyUnitaryTo(btmp, -va, b[k*ldb:k*ldb+n], btmp)
+							f64.AxpyUnitaryTo(mityp, -va, b[k*ldb:k*ldb+n], mityp)
 						}
 					}
 					if nonUnit {
 						tmp := 1 / a[i*lda+i]
 						for j := 0; j < n; j++ {
-							btmp[j] *= tmp
+							mityp[j] *= tmp
 						}
 					}
 				}
 				return
 			}
 			for i := 0; i < m; i++ {
-				btmp := b[i*ldb : i*ldb+n]
+				mityp := b[i*ldb : i*ldb+n]
 				if alpha != 1 {
 					for j := 0; j < n; j++ {
-						btmp[j] *= alpha
+						mityp[j] *= alpha
 					}
 				}
 				for k, va := range a[i*lda : i*lda+i] {
 					if va != 0 {
-						f64.AxpyUnitaryTo(btmp, -va, b[k*ldb:k*ldb+n], btmp)
+						f64.AxpyUnitaryTo(mityp, -va, b[k*ldb:k*ldb+n], mityp)
 					}
 				}
 				if nonUnit {
 					tmp := 1 / a[i*lda+i]
 					for j := 0; j < n; j++ {
-						btmp[j] *= tmp
+						mityp[j] *= tmp
 					}
 				}
 			}
@@ -121,45 +121,45 @@ func (Implementation) Dtrsm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 		// Cases where a is transposed
 		if ul == blas.Upper {
 			for k := 0; k < m; k++ {
-				btmpk := b[k*ldb : k*ldb+n]
+				mitypk := b[k*ldb : k*ldb+n]
 				if nonUnit {
 					tmp := 1 / a[k*lda+k]
 					for j := 0; j < n; j++ {
-						btmpk[j] *= tmp
+						mitypk[j] *= tmp
 					}
 				}
 				for ia, va := range a[k*lda+k+1 : k*lda+m] {
 					i := ia + k + 1
 					if va != 0 {
-						btmp := b[i*ldb : i*ldb+n]
-						f64.AxpyUnitaryTo(btmp, -va, btmpk, btmp)
+						mityp := b[i*ldb : i*ldb+n]
+						f64.AxpyUnitaryTo(mityp, -va, mitypk, mityp)
 					}
 				}
 				if alpha != 1 {
 					for j := 0; j < n; j++ {
-						btmpk[j] *= alpha
+						mitypk[j] *= alpha
 					}
 				}
 			}
 			return
 		}
 		for k := m - 1; k >= 0; k-- {
-			btmpk := b[k*ldb : k*ldb+n]
+			mitypk := b[k*ldb : k*ldb+n]
 			if nonUnit {
 				tmp := 1 / a[k*lda+k]
 				for j := 0; j < n; j++ {
-					btmpk[j] *= tmp
+					mitypk[j] *= tmp
 				}
 			}
 			for i, va := range a[k*lda : k*lda+k] {
 				if va != 0 {
-					btmp := b[i*ldb : i*ldb+n]
-					f64.AxpyUnitaryTo(btmp, -va, btmpk, btmp)
+					mityp := b[i*ldb : i*ldb+n]
+					f64.AxpyUnitaryTo(mityp, -va, mitypk, mityp)
 				}
 			}
 			if alpha != 1 {
 				for j := 0; j < n; j++ {
-					btmpk[j] *= alpha
+					mitypk[j] *= alpha
 				}
 			}
 		}
@@ -169,20 +169,20 @@ func (Implementation) Dtrsm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 	if tA == blas.NoTrans {
 		if ul == blas.Upper {
 			for i := 0; i < m; i++ {
-				btmp := b[i*ldb : i*ldb+n]
+				mityp := b[i*ldb : i*ldb+n]
 				if alpha != 1 {
 					for j := 0; j < n; j++ {
-						btmp[j] *= alpha
+						mityp[j] *= alpha
 					}
 				}
-				for k, vb := range btmp {
+				for k, vb := range mityp {
 					if vb != 0 {
-						if btmp[k] != 0 {
+						if mityp[k] != 0 {
 							if nonUnit {
-								btmp[k] /= a[k*lda+k]
+								mityp[k] /= a[k*lda+k]
 							}
-							btmpk := btmp[k+1 : n]
-							f64.AxpyUnitaryTo(btmpk, -btmp[k], a[k*lda+k+1:k*lda+n], btmpk)
+							mitypk := mityp[k+1 : n]
+							f64.AxpyUnitaryTo(mitypk, -mityp[k], a[k*lda+k+1:k*lda+n], mitypk)
 						}
 					}
 				}
@@ -190,18 +190,18 @@ func (Implementation) Dtrsm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 			return
 		}
 		for i := 0; i < m; i++ {
-			btmp := b[i*lda : i*lda+n]
+			mityp := b[i*lda : i*lda+n]
 			if alpha != 1 {
 				for j := 0; j < n; j++ {
-					btmp[j] *= alpha
+					mityp[j] *= alpha
 				}
 			}
 			for k := n - 1; k >= 0; k-- {
-				if btmp[k] != 0 {
+				if mityp[k] != 0 {
 					if nonUnit {
-						btmp[k] /= a[k*lda+k]
+						mityp[k] /= a[k*lda+k]
 					}
-					f64.AxpyUnitaryTo(btmp, -btmp[k], a[k*lda:k*lda+k], btmp)
+					f64.AxpyUnitaryTo(mityp, -mityp[k], a[k*lda:k*lda+k], mityp)
 				}
 			}
 		}
@@ -210,25 +210,25 @@ func (Implementation) Dtrsm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 	// Cases where a is transposed.
 	if ul == blas.Upper {
 		for i := 0; i < m; i++ {
-			btmp := b[i*lda : i*lda+n]
+			mityp := b[i*lda : i*lda+n]
 			for j := n - 1; j >= 0; j-- {
-				tmp := alpha*btmp[j] - f64.DotUnitary(a[j*lda+j+1:j*lda+n], btmp[j+1:])
+				tmp := alpha*mityp[j] - f64.DotUnitary(a[j*lda+j+1:j*lda+n], mityp[j+1:])
 				if nonUnit {
 					tmp /= a[j*lda+j]
 				}
-				btmp[j] = tmp
+				mityp[j] = tmp
 			}
 		}
 		return
 	}
 	for i := 0; i < m; i++ {
-		btmp := b[i*lda : i*lda+n]
+		mityp := b[i*lda : i*lda+n]
 		for j := 0; j < n; j++ {
-			tmp := alpha*btmp[j] - f64.DotUnitary(a[j*lda:j*lda+j], btmp)
+			tmp := alpha*mityp[j] - f64.DotUnitary(a[j*lda:j*lda+j], mityp)
 			if nonUnit {
 				tmp /= a[j*lda+j]
 			}
-			btmp[j] = tmp
+			mityp[j] = tmp
 		}
 	}
 }
@@ -295,9 +295,9 @@ func (Implementation) Dsymm(s blas.Side, ul blas.Uplo, m, n int, alpha float64, 
 	if s == blas.Left {
 		for i := 0; i < m; i++ {
 			atmp := alpha * a[i*lda+i]
-			btmp := b[i*ldb : i*ldb+n]
+			mityp := b[i*ldb : i*ldb+n]
 			ctmp := c[i*ldc : i*ldc+n]
-			for j, v := range btmp {
+			for j, v := range mityp {
 				ctmp[j] *= beta
 				ctmp[j] += atmp * v
 			}
@@ -333,11 +333,11 @@ func (Implementation) Dsymm(s blas.Side, ul blas.Uplo, m, n int, alpha float64, 
 				tmp := alpha * b[i*ldb+j]
 				var tmp2 float64
 				atmp := a[j*lda+j+1 : j*lda+n]
-				btmp := b[i*ldb+j+1 : i*ldb+n]
+				mityp := b[i*ldb+j+1 : i*ldb+n]
 				ctmp := c[i*ldc+j+1 : i*ldc+n]
 				for k, v := range atmp {
 					ctmp[k] += tmp * v
-					tmp2 += btmp[k] * v
+					tmp2 += mityp[k] * v
 				}
 				c[i*ldc+j] *= beta
 				c[i*ldc+j] += tmp*a[j*lda+j] + alpha*tmp2
@@ -350,11 +350,11 @@ func (Implementation) Dsymm(s blas.Side, ul blas.Uplo, m, n int, alpha float64, 
 			tmp := alpha * b[i*ldb+j]
 			var tmp2 float64
 			atmp := a[j*lda : j*lda+j]
-			btmp := b[i*ldb : i*ldb+j]
+			mityp := b[i*ldb : i*ldb+j]
 			ctmp := c[i*ldc : i*ldc+j]
 			for k, v := range atmp {
 				ctmp[k] += tmp * v
-				tmp2 += btmp[k] * v
+				tmp2 += mityp[k] * v
 			}
 			c[i*ldc+j] *= beta
 			c[i*ldc+j] += tmp*a[j*lda+j] + alpha*tmp2
@@ -559,14 +559,14 @@ func (Implementation) Dsyr2k(ul blas.Uplo, tA blas.Transpose, n, k int, alpha fl
 		if ul == blas.Upper {
 			for i := 0; i < n; i++ {
 				atmp := a[i*lda : i*lda+k]
-				btmp := b[i*ldb : i*ldb+k]
+				mityp := b[i*ldb : i*ldb+k]
 				ctmp := c[i*ldc+i : i*ldc+n]
 				for jc := range ctmp {
 					j := i + jc
 					var tmp1, tmp2 float64
 					binner := b[j*ldb : j*ldb+k]
 					for l, v := range a[j*lda : j*lda+k] {
-						tmp1 += v * btmp[l]
+						tmp1 += v * mityp[l]
 						tmp2 += atmp[l] * binner[l]
 					}
 					ctmp[jc] *= beta
@@ -577,13 +577,13 @@ func (Implementation) Dsyr2k(ul blas.Uplo, tA blas.Transpose, n, k int, alpha fl
 		}
 		for i := 0; i < n; i++ {
 			atmp := a[i*lda : i*lda+k]
-			btmp := b[i*ldb : i*ldb+k]
+			mityp := b[i*ldb : i*ldb+k]
 			ctmp := c[i*ldc : i*ldc+i+1]
 			for j := 0; j <= i; j++ {
 				var tmp1, tmp2 float64
 				binner := b[j*ldb : j*ldb+k]
 				for l, v := range a[j*lda : j*lda+k] {
-					tmp1 += v * btmp[l]
+					tmp1 += v * mityp[l]
 					tmp2 += atmp[l] * binner[l]
 				}
 				ctmp[j] *= beta
@@ -603,10 +603,10 @@ func (Implementation) Dsyr2k(ul blas.Uplo, tA blas.Transpose, n, k int, alpha fl
 			for l := 0; l < k; l++ {
 				tmp1 := alpha * b[l*lda+i]
 				tmp2 := alpha * a[l*lda+i]
-				btmp := b[l*ldb+i : l*ldb+n]
+				mityp := b[l*ldb+i : l*ldb+n]
 				if tmp1 != 0 || tmp2 != 0 {
 					for j, v := range a[l*lda+i : l*lda+n] {
-						ctmp[j] += v*tmp1 + btmp[j]*tmp2
+						ctmp[j] += v*tmp1 + mityp[j]*tmp2
 					}
 				}
 			}
@@ -623,10 +623,10 @@ func (Implementation) Dsyr2k(ul blas.Uplo, tA blas.Transpose, n, k int, alpha fl
 		for l := 0; l < k; l++ {
 			tmp1 := alpha * b[l*lda+i]
 			tmp2 := alpha * a[l*lda+i]
-			btmp := b[l*ldb : l*ldb+i+1]
+			mityp := b[l*ldb : l*ldb+i+1]
 			if tmp1 != 0 || tmp2 != 0 {
 				for j, v := range a[l*lda : l*lda+i+1] {
-					ctmp[j] += v*tmp1 + btmp[j]*tmp2
+					ctmp[j] += v*tmp1 + mityp[j]*tmp2
 				}
 			}
 		}
@@ -672,9 +672,9 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 	}
 	if alpha == 0 {
 		for i := 0; i < m; i++ {
-			btmp := b[i*ldb : i*ldb+n]
-			for j := range btmp {
-				btmp[j] = 0
+			mityp := b[i*ldb : i*ldb+n]
+			for j := range mityp {
+				mityp[j] = 0
 			}
 		}
 		return
@@ -689,15 +689,15 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 					if nonUnit {
 						tmp *= a[i*lda+i]
 					}
-					btmp := b[i*ldb : i*ldb+n]
-					for j := range btmp {
-						btmp[j] *= tmp
+					mityp := b[i*ldb : i*ldb+n]
+					for j := range mityp {
+						mityp[j] *= tmp
 					}
 					for ka, va := range a[i*lda+i+1 : i*lda+m] {
 						k := ka + i + 1
 						tmp := alpha * va
 						if tmp != 0 {
-							f64.AxpyUnitaryTo(btmp, tmp, b[k*ldb:k*ldb+n], btmp)
+							f64.AxpyUnitaryTo(mityp, tmp, b[k*ldb:k*ldb+n], mityp)
 						}
 					}
 				}
@@ -708,14 +708,14 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 				if nonUnit {
 					tmp *= a[i*lda+i]
 				}
-				btmp := b[i*ldb : i*ldb+n]
-				for j := range btmp {
-					btmp[j] *= tmp
+				mityp := b[i*ldb : i*ldb+n]
+				for j := range mityp {
+					mityp[j] *= tmp
 				}
 				for k, va := range a[i*lda : i*lda+i] {
 					tmp := alpha * va
 					if tmp != 0 {
-						f64.AxpyUnitaryTo(btmp, tmp, b[k*ldb:k*ldb+n], btmp)
+						f64.AxpyUnitaryTo(mityp, tmp, b[k*ldb:k*ldb+n], mityp)
 					}
 				}
 			}
@@ -724,13 +724,13 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 		// Cases where a is transposed.
 		if ul == blas.Upper {
 			for k := m - 1; k >= 0; k-- {
-				btmpk := b[k*ldb : k*ldb+n]
+				mitypk := b[k*ldb : k*ldb+n]
 				for ia, va := range a[k*lda+k+1 : k*lda+m] {
 					i := ia + k + 1
-					btmp := b[i*ldb : i*ldb+n]
+					mityp := b[i*ldb : i*ldb+n]
 					tmp := alpha * va
 					if tmp != 0 {
-						f64.AxpyUnitaryTo(btmp, tmp, btmpk, btmp)
+						f64.AxpyUnitaryTo(mityp, tmp, mitypk, mityp)
 					}
 				}
 				tmp := alpha
@@ -739,19 +739,19 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 				}
 				if tmp != 1 {
 					for j := 0; j < n; j++ {
-						btmpk[j] *= tmp
+						mitypk[j] *= tmp
 					}
 				}
 			}
 			return
 		}
 		for k := 0; k < m; k++ {
-			btmpk := b[k*ldb : k*ldb+n]
+			mitypk := b[k*ldb : k*ldb+n]
 			for i, va := range a[k*lda : k*lda+k] {
-				btmp := b[i*ldb : i*ldb+n]
+				mityp := b[i*ldb : i*ldb+n]
 				tmp := alpha * va
 				if tmp != 0 {
-					f64.AxpyUnitaryTo(btmp, tmp, btmpk, btmp)
+					f64.AxpyUnitaryTo(mityp, tmp, mitypk, mityp)
 				}
 			}
 			tmp := alpha
@@ -760,7 +760,7 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 			}
 			if tmp != 1 {
 				for j := 0; j < n; j++ {
-					btmpk[j] *= tmp
+					mitypk[j] *= tmp
 				}
 			}
 		}
@@ -770,17 +770,17 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 	if tA == blas.NoTrans {
 		if ul == blas.Upper {
 			for i := 0; i < m; i++ {
-				btmp := b[i*ldb : i*ldb+n]
+				mityp := b[i*ldb : i*ldb+n]
 				for k := n - 1; k >= 0; k-- {
-					tmp := alpha * btmp[k]
+					tmp := alpha * mityp[k]
 					if tmp != 0 {
-						btmp[k] = tmp
+						mityp[k] = tmp
 						if nonUnit {
-							btmp[k] *= a[k*lda+k]
+							mityp[k] *= a[k*lda+k]
 						}
 						for ja, v := range a[k*lda+k+1 : k*lda+n] {
 							j := ja + k + 1
-							btmp[j] += tmp * v
+							mityp[j] += tmp * v
 						}
 					}
 				}
@@ -788,15 +788,15 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 			return
 		}
 		for i := 0; i < m; i++ {
-			btmp := b[i*ldb : i*ldb+n]
+			mityp := b[i*ldb : i*ldb+n]
 			for k := 0; k < n; k++ {
-				tmp := alpha * btmp[k]
+				tmp := alpha * mityp[k]
 				if tmp != 0 {
-					btmp[k] = tmp
+					mityp[k] = tmp
 					if nonUnit {
-						btmp[k] *= a[k*lda+k]
+						mityp[k] *= a[k*lda+k]
 					}
-					f64.AxpyUnitaryTo(btmp, tmp, a[k*lda:k*lda+k], btmp)
+					f64.AxpyUnitaryTo(mityp, tmp, a[k*lda:k*lda+k], mityp)
 				}
 			}
 		}
@@ -805,27 +805,27 @@ func (Implementation) Dtrmm(s blas.Side, ul blas.Uplo, tA blas.Transpose, d blas
 	// Cases where a is transposed.
 	if ul == blas.Upper {
 		for i := 0; i < m; i++ {
-			btmp := b[i*ldb : i*ldb+n]
-			for j, vb := range btmp {
+			mityp := b[i*ldb : i*ldb+n]
+			for j, vb := range mityp {
 				tmp := vb
 				if nonUnit {
 					tmp *= a[j*lda+j]
 				}
-				tmp += f64.DotUnitary(a[j*lda+j+1:j*lda+n], btmp[j+1:n])
-				btmp[j] = alpha * tmp
+				tmp += f64.DotUnitary(a[j*lda+j+1:j*lda+n], mityp[j+1:n])
+				mityp[j] = alpha * tmp
 			}
 		}
 		return
 	}
 	for i := 0; i < m; i++ {
-		btmp := b[i*ldb : i*ldb+n]
+		mityp := b[i*ldb : i*ldb+n]
 		for j := n - 1; j >= 0; j-- {
-			tmp := btmp[j]
+			tmp := mityp[j]
 			if nonUnit {
 				tmp *= a[j*lda+j]
 			}
-			tmp += f64.DotUnitary(a[j*lda:j*lda+j], btmp[:j])
-			btmp[j] = alpha * tmp
+			tmp += f64.DotUnitary(a[j*lda:j*lda+j], mityp[:j])
+			mityp[j] = alpha * tmp
 		}
 	}
 }

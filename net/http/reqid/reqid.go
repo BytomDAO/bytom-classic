@@ -51,7 +51,7 @@ func New() string {
 
 // NewContext returns a new Context that carries reqid.
 // It also adds a log prefix to print the request ID using
-// package bytom/log.
+// package anonimitycash/log.
 func NewContext(ctx context.Context, reqid string) context.Context {
 	ctx = context.WithValue(ctx, reqIDKey, reqid)
 	return ctx

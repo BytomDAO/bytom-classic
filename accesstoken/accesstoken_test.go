@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/errors"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
 )
 
 func TestCreate(t *testing.T) {

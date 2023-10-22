@@ -11,17 +11,17 @@ import (
 	"github.com/tendermint/go-crypto"
 	cmn "github.com/tendermint/tmlibs/common"
 
-	cfg "github.com/bytom/bytom-classic/config"
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/p2p/connection"
-	"github.com/bytom/bytom-classic/p2p/discover/dht"
-	"github.com/bytom/bytom-classic/p2p/discover/mdns"
-	"github.com/bytom/bytom-classic/p2p/netutil"
-	"github.com/bytom/bytom-classic/p2p/security"
-	"github.com/bytom/bytom-classic/version"
+	cfg "github.com/anonimitycash/anonimitycash-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/connection"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/discover/dht"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/discover/mdns"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/netutil"
+	"github.com/anonimitycash/anonimitycash-classic/p2p/security"
+	"github.com/anonimitycash/anonimitycash-classic/version"
 )
 
 const (

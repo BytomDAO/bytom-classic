@@ -3,7 +3,7 @@ package vm
 import (
 	"testing"
 
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestBitwiseOps(t *testing.T) {

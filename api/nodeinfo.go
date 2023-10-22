@@ -4,10 +4,10 @@ import (
 	"context"
 	"net"
 
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/netsync"
-	"github.com/bytom/bytom-classic/p2p"
-	"github.com/bytom/bytom-classic/version"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/netsync"
+	"github.com/anonimitycash/anonimitycash-classic/p2p"
+	"github.com/anonimitycash/anonimitycash-classic/version"
 )
 
 type VersionInfo struct {

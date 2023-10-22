@@ -7,10 +7,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/bytom/bytom-classic/util"
+	"github.com/anonimitycash/anonimitycash-classic/util"
 )
 
-// bytomcli usage template
+// anonimitycashcli usage template
 var usageTemplate = `Usage:{{if .Runnable}}
   {{.UseLine}}{{end}}{{if .HasAvailableSubCommands}}
   {{.CommandPath}} [command]{{end}}{{if gt (len .Aliases) 0}}
@@ -80,11 +80,11 @@ func isUserError(err error) bool {
 	return userErrorRegexp.MatchString(err.Error())
 }
 
-// BytomcliCmd is Bytomcli's root command.
-// Every other command attached to BytomcliCmd is a child command to it.
-var BytomcliCmd = &cobra.Command{
-	Use:   "bytomcli",
-	Short: "Bytomcli is a commond line client for bytom core (a.k.a. bytomd)",
+// AnonimitycashcliCmd is Anonimitycashcli's root command.
+// Every other command attached to AnonimitycashcliCmd is a child command to it.
+var AnonimitycashcliCmd = &cobra.Command{
+	Use:   "anonimitycashcli",
+	Short: "Anonimitycashcli is a commond line client for anonimitycash core (a.k.a. anonimitycashd)",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
 			cmd.SetUsageTemplate(usageTemplate)
@@ -93,90 +93,90 @@ var BytomcliCmd = &cobra.Command{
 	},
 }
 
-// Execute adds all child commands to the root command BytomcliCmd and sets flags appropriately.
+// Execute adds all child commands to the root command AnonimitycashcliCmd and sets flags appropriately.
 func Execute() {
 
 	AddCommands()
 	AddTemplateFunc()
 
-	if _, err := BytomcliCmd.ExecuteC(); err != nil {
+	if _, err := AnonimitycashcliCmd.ExecuteC(); err != nil {
 		os.Exit(util.ErrLocalExe)
 	}
 }
 
-// AddCommands adds child commands to the root command BytomcliCmd.
+// AddCommands adds child commands to the root command AnonimitycashcliCmd.
 func AddCommands() {
-	BytomcliCmd.AddCommand(createAccessTokenCmd)
-	BytomcliCmd.AddCommand(listAccessTokenCmd)
-	BytomcliCmd.AddCommand(deleteAccessTokenCmd)
-	BytomcliCmd.AddCommand(checkAccessTokenCmd)
+	AnonimitycashcliCmd.AddCommand(createAccessTokenCmd)
+	AnonimitycashcliCmd.AddCommand(listAccessTokenCmd)
+	AnonimitycashcliCmd.AddCommand(deleteAccessTokenCmd)
+	AnonimitycashcliCmd.AddCommand(checkAccessTokenCmd)
 
-	BytomcliCmd.AddCommand(createAccountCmd)
-	BytomcliCmd.AddCommand(deleteAccountCmd)
-	BytomcliCmd.AddCommand(listAccountsCmd)
-	BytomcliCmd.AddCommand(updateAccountAliasCmd)
-	BytomcliCmd.AddCommand(createAccountReceiverCmd)
-	BytomcliCmd.AddCommand(listAddressesCmd)
-	BytomcliCmd.AddCommand(validateAddressCmd)
-	BytomcliCmd.AddCommand(listPubKeysCmd)
+	AnonimitycashcliCmd.AddCommand(createAccountCmd)
+	AnonimitycashcliCmd.AddCommand(deleteAccountCmd)
+	AnonimitycashcliCmd.AddCommand(listAccountsCmd)
+	AnonimitycashcliCmd.AddCommand(updateAccountAliasCmd)
+	AnonimitycashcliCmd.AddCommand(createAccountReceiverCmd)
+	AnonimitycashcliCmd.AddCommand(listAddressesCmd)
+	AnonimitycashcliCmd.AddCommand(validateAddressCmd)
+	AnonimitycashcliCmd.AddCommand(listPubKeysCmd)
 
-	BytomcliCmd.AddCommand(createAssetCmd)
-	BytomcliCmd.AddCommand(getAssetCmd)
-	BytomcliCmd.AddCommand(listAssetsCmd)
-	BytomcliCmd.AddCommand(updateAssetAliasCmd)
+	AnonimitycashcliCmd.AddCommand(createAssetCmd)
+	AnonimitycashcliCmd.AddCommand(getAssetCmd)
+	AnonimitycashcliCmd.AddCommand(listAssetsCmd)
+	AnonimitycashcliCmd.AddCommand(updateAssetAliasCmd)
 
-	BytomcliCmd.AddCommand(getTransactionCmd)
-	BytomcliCmd.AddCommand(listTransactionsCmd)
+	AnonimitycashcliCmd.AddCommand(getTransactionCmd)
+	AnonimitycashcliCmd.AddCommand(listTransactionsCmd)
 
-	BytomcliCmd.AddCommand(getUnconfirmedTransactionCmd)
-	BytomcliCmd.AddCommand(listUnconfirmedTransactionsCmd)
-	BytomcliCmd.AddCommand(decodeRawTransactionCmd)
+	AnonimitycashcliCmd.AddCommand(getUnconfirmedTransactionCmd)
+	AnonimitycashcliCmd.AddCommand(listUnconfirmedTransactionsCmd)
+	AnonimitycashcliCmd.AddCommand(decodeRawTransactionCmd)
 
-	BytomcliCmd.AddCommand(listUnspentOutputsCmd)
-	BytomcliCmd.AddCommand(listBalancesCmd)
+	AnonimitycashcliCmd.AddCommand(listUnspentOutputsCmd)
+	AnonimitycashcliCmd.AddCommand(listBalancesCmd)
 
-	BytomcliCmd.AddCommand(rescanWalletCmd)
-	BytomcliCmd.AddCommand(walletInfoCmd)
+	AnonimitycashcliCmd.AddCommand(rescanWalletCmd)
+	AnonimitycashcliCmd.AddCommand(walletInfoCmd)
 
-	BytomcliCmd.AddCommand(buildTransactionCmd)
-	BytomcliCmd.AddCommand(signTransactionCmd)
-	BytomcliCmd.AddCommand(submitTransactionCmd)
-	BytomcliCmd.AddCommand(estimateTransactionGasCmd)
+	AnonimitycashcliCmd.AddCommand(buildTransactionCmd)
+	AnonimitycashcliCmd.AddCommand(signTransactionCmd)
+	AnonimitycashcliCmd.AddCommand(submitTransactionCmd)
+	AnonimitycashcliCmd.AddCommand(estimateTransactionGasCmd)
 
-	BytomcliCmd.AddCommand(getBlockCountCmd)
-	BytomcliCmd.AddCommand(getBlockHashCmd)
-	BytomcliCmd.AddCommand(getBlockCmd)
-	BytomcliCmd.AddCommand(getBlockHeaderCmd)
-	BytomcliCmd.AddCommand(getDifficultyCmd)
-	BytomcliCmd.AddCommand(getHashRateCmd)
+	AnonimitycashcliCmd.AddCommand(getBlockCountCmd)
+	AnonimitycashcliCmd.AddCommand(getBlockHashCmd)
+	AnonimitycashcliCmd.AddCommand(getBlockCmd)
+	AnonimitycashcliCmd.AddCommand(getBlockHeaderCmd)
+	AnonimitycashcliCmd.AddCommand(getDifficultyCmd)
+	AnonimitycashcliCmd.AddCommand(getHashRateCmd)
 
-	BytomcliCmd.AddCommand(createKeyCmd)
-	BytomcliCmd.AddCommand(deleteKeyCmd)
-	BytomcliCmd.AddCommand(listKeysCmd)
-	BytomcliCmd.AddCommand(updateKeyAliasCmd)
-	BytomcliCmd.AddCommand(resetKeyPwdCmd)
-	BytomcliCmd.AddCommand(checkKeyPwdCmd)
+	AnonimitycashcliCmd.AddCommand(createKeyCmd)
+	AnonimitycashcliCmd.AddCommand(deleteKeyCmd)
+	AnonimitycashcliCmd.AddCommand(listKeysCmd)
+	AnonimitycashcliCmd.AddCommand(updateKeyAliasCmd)
+	AnonimitycashcliCmd.AddCommand(resetKeyPwdCmd)
+	AnonimitycashcliCmd.AddCommand(checkKeyPwdCmd)
 
-	BytomcliCmd.AddCommand(signMsgCmd)
-	BytomcliCmd.AddCommand(verifyMsgCmd)
-	BytomcliCmd.AddCommand(decodeProgCmd)
+	AnonimitycashcliCmd.AddCommand(signMsgCmd)
+	AnonimitycashcliCmd.AddCommand(verifyMsgCmd)
+	AnonimitycashcliCmd.AddCommand(decodeProgCmd)
 
-	BytomcliCmd.AddCommand(createTransactionFeedCmd)
-	BytomcliCmd.AddCommand(listTransactionFeedsCmd)
-	BytomcliCmd.AddCommand(deleteTransactionFeedCmd)
-	BytomcliCmd.AddCommand(getTransactionFeedCmd)
-	BytomcliCmd.AddCommand(updateTransactionFeedCmd)
+	AnonimitycashcliCmd.AddCommand(createTransactionFeedCmd)
+	AnonimitycashcliCmd.AddCommand(listTransactionFeedsCmd)
+	AnonimitycashcliCmd.AddCommand(deleteTransactionFeedCmd)
+	AnonimitycashcliCmd.AddCommand(getTransactionFeedCmd)
+	AnonimitycashcliCmd.AddCommand(updateTransactionFeedCmd)
 
-	BytomcliCmd.AddCommand(isMiningCmd)
-	BytomcliCmd.AddCommand(setMiningCmd)
+	AnonimitycashcliCmd.AddCommand(isMiningCmd)
+	AnonimitycashcliCmd.AddCommand(setMiningCmd)
 
-	BytomcliCmd.AddCommand(netInfoCmd)
-	BytomcliCmd.AddCommand(gasRateCmd)
+	AnonimitycashcliCmd.AddCommand(netInfoCmd)
+	AnonimitycashcliCmd.AddCommand(gasRateCmd)
 
-	BytomcliCmd.AddCommand(versionCmd)
+	AnonimitycashcliCmd.AddCommand(versionCmd)
 }
 
-// AddTemplateFunc adds usage template to the root command BytomcliCmd.
+// AddTemplateFunc adds usage template to the root command AnonimitycashcliCmd.
 func AddTemplateFunc() {
 	walletEnableCmd := []string{
 		createAccountCmd.Name(),

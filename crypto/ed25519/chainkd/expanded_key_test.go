@@ -5,7 +5,7 @@ import (
 	"crypto"
 	"testing"
 
-	"github.com/bytom/bytom-classic/crypto/ed25519"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519"
 )
 
 // Testing basic InnerSign+Verify and the invariants:

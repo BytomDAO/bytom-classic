@@ -9,13 +9,13 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bytom/bytom-classic/consensus"
-	"github.com/bytom/bytom-classic/crypto/ed25519/chainkd"
-	"github.com/bytom/bytom-classic/database"
-	dbm "github.com/bytom/bytom-classic/database/leveldb"
-	"github.com/bytom/bytom-classic/event"
-	"github.com/bytom/bytom-classic/protocol"
-	"github.com/bytom/bytom-classic/testutil"
+	"github.com/anonimitycash/anonimitycash-classic/consensus"
+	"github.com/anonimitycash/anonimitycash-classic/crypto/ed25519/chainkd"
+	"github.com/anonimitycash/anonimitycash-classic/database"
+	dbm "github.com/anonimitycash/anonimitycash-classic/database/leveldb"
+	"github.com/anonimitycash/anonimitycash-classic/event"
+	"github.com/anonimitycash/anonimitycash-classic/protocol"
+	"github.com/anonimitycash/anonimitycash-classic/testutil"
 )
 
 func TestDefineAssetWithLowercase(t *testing.T) {
@@ -68,9 +68,9 @@ func TestDefineAsset(t *testing.T) {
 	}
 }
 
-func TestDefineBtmAsset(t *testing.T) {
+func TestDefineMityAsset(t *testing.T) {
 	reg := mockNewRegistry(t)
-	_, err := reg.Define([]chainkd.XPub{testutil.TestXPub}, 1, nil, 0, consensus.BTMAlias, nil)
+	_, err := reg.Define([]chainkd.XPub{testutil.TestXPub}, 1, nil, 0, consensus.MITYAlias, nil)
 	if err == nil {
 		testutil.FatalErr(t, err)
 	}

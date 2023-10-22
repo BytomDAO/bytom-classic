@@ -1,17 +1,17 @@
-Bytom version 1.0.2 is now available from:
+Anonimitycash version 1.0.2 is now available from:
 
-  https://github.com/Bytom/bytom/releases/tag/v1.0.2
+  https://github.com/Anonimitycash/anonimitycash/releases/tag/v1.0.2
 
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/Bytom/bytom/issues
+  https://github.com/Anonimitycash/anonimitycash/issues
 
 How to Upgrade
 ===============
 
-If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Bytom.
-You can operate according to the user manual.[(Bytom User Manual)](URL 'https://bytom.io/wp-content/themes/freddo/images/wallet/BytomUsermanualV1.0_en.pdf')
+If you are running an older version, shut it down. Wait until it has quited completely, and then run the new version Anonimitycash.
+You can operate according to the user manual.[(Anonimitycash User Manual)](URL 'https://anonimitycash.io/wp-content/themes/freddo/images/wallet/AnonimitycashUsermanualV1.0_en.pdf')
 
 
 1.0.2 changelog

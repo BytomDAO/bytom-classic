@@ -3,7 +3,7 @@ package txbuilder
 import (
 	"encoding/json"
 
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
 )
 
 // DataWitness used sign transaction

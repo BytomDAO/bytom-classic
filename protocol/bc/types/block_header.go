@@ -6,13 +6,13 @@ import (
 	"io"
 	"time"
 
-	"github.com/bytom/bytom-classic/encoding/blockchain"
-	"github.com/bytom/bytom-classic/encoding/bufpool"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/blockchain"
+	"github.com/anonimitycash/anonimitycash-classic/encoding/bufpool"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
 )
 
-// BlockHeader defines information about a block and is used in the Bytom
+// BlockHeader defines information about a block and is used in the Anonimitycash
 type BlockHeader struct {
 	Version           uint64  // The version of the block.
 	Height            uint64  // The height of the block.

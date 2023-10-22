@@ -12,7 +12,7 @@ import (
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"github.com/sirupsen/logrus"
 
-	"github.com/bytom/bytom-classic/config"
+	"github.com/anonimitycash/anonimitycash-classic/config"
 )
 
 const (
@@ -28,26 +28,26 @@ func InitLogFile(config *config.Config) error {
 		return err
 	}
 
-	hook := newBtmHook(logPath)
+	hook := newMityHook(logPath)
 	logrus.AddHook(hook)
 	logrus.SetOutput(ioutil.Discard) //控制台不输出
 	fmt.Printf("all logs are output in the %s directory\n", logPath)
 	return nil
 }
 
-type BtmHook struct {
+type MityHook struct {
 	logPath string
 	lock    *sync.Mutex
 }
 
-func newBtmHook(logPath string) *BtmHook {
-	hook := &BtmHook{lock: new(sync.Mutex)}
+func newMityHook(logPath string) *MityHook {
+	hook := &MityHook{lock: new(sync.Mutex)}
 	hook.logPath = logPath
 	return hook
 }
 
 // Write a log line to an io.Writer.
-func (hook *BtmHook) ioWrite(entry *logrus.Entry) error {
+func (hook *MityHook) ioWrite(entry *logrus.Entry) error {
 	module := "general"
 	if data, ok := entry.Data["module"]; ok {
 		module = data.(string)
@@ -93,13 +93,13 @@ func clearLockFiles(logPath string) error {
 	return nil
 }
 
-func (hook *BtmHook) Fire(entry *logrus.Entry) error {
+func (hook *MityHook) Fire(entry *logrus.Entry) error {
 	hook.lock.Lock()
 	defer hook.lock.Unlock()
 	return hook.ioWrite(entry)
 }
 
 // Levels returns configured log levels.
-func (hook *BtmHook) Levels() []logrus.Level {
+func (hook *MityHook) Levels() []logrus.Level {
 	return logrus.AllLevels
 }

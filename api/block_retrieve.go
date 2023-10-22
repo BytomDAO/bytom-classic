@@ -5,12 +5,12 @@ import (
 
 	"gopkg.in/fatih/set.v0"
 
-	"github.com/bytom/bytom-classic/blockchain/query"
-	"github.com/bytom/bytom-classic/consensus/difficulty"
-	chainjson "github.com/bytom/bytom-classic/encoding/json"
-	"github.com/bytom/bytom-classic/errors"
-	"github.com/bytom/bytom-classic/protocol/bc"
-	"github.com/bytom/bytom-classic/protocol/bc/types"
+	"github.com/anonimitycash/anonimitycash-classic/blockchain/query"
+	"github.com/anonimitycash/anonimitycash-classic/consensus/difficulty"
+	chainjson "github.com/anonimitycash/anonimitycash-classic/encoding/json"
+	"github.com/anonimitycash/anonimitycash-classic/errors"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc"
+	"github.com/anonimitycash/anonimitycash-classic/protocol/bc/types"
 )
 
 // return best block hash
